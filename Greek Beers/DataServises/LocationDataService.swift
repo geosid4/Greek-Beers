@@ -12,16 +12,6 @@ class LocationDataService {
     
     static let locations: [Location] = [
         Location(
-            name: "Welcome",
-            cityName: "Greek Beers",
-            coordinates: CLLocationCoordinate2D(latitude: 38.2749497, longitude: 23.8102717),
-            description: "Greece",
-            imageNames: [
-                "beer",
-                "beer"
-            ],
-            link: ""),
-        Location(
             name: "Βεργίνα",
             cityName: "Κομοτηνή",
             coordinates: CLLocationCoordinate2D(latitude: 41.122439, longitude: 25.406558),
@@ -68,17 +58,6 @@ class LocationDataService {
         Location(
         name: "Corfu Beer",
         cityName: "Κέρκυρα",
-        coordinates: CLLocationCoordinate2D(latitude: 39.623777, longitude: 19.921086),
-        description: "Η Κερκυραϊκή ζυθοποιία ιδρύθηκε το 2006 στην Κέρκυρα. Στόχος της να επενδύσει σε καινοτόμα προϊόντα με σεβασμό στις παραδόσεις και στον πολιτισμό του τόπου. Όραμά της να αριστεύσει στο επιχειρηματικό, κοινωνικό και πολιτιστικό έργο που έχει αναλάβει. Ακολουθώντας πάντα τις αξίες της εταιρίας, όπως καινοτομία, ποιότητα, εμπειρία, παράδοση και υπερηφάνεια για τον τόπο της.",
-        imageNames: [
-            "corfu512",
-            "corfu1024"
-        ],
-        link: "https://corfubeer.com/"),
-    
-        Location(
-        name: "Git Test",
-        cityName: "Git 4",
         coordinates: CLLocationCoordinate2D(latitude: 39.623777, longitude: 19.921086),
         description: "Η Κερκυραϊκή ζυθοποιία ιδρύθηκε το 2006 στην Κέρκυρα. Στόχος της να επενδύσει σε καινοτόμα προϊόντα με σεβασμό στις παραδόσεις και στον πολιτισμό του τόπου. Όραμά της να αριστεύσει στο επιχειρηματικό, κοινωνικό και πολιτιστικό έργο που έχει αναλάβει. Ακολουθώντας πάντα τις αξίες της εταιρίας, όπως καινοτομία, ποιότητα, εμπειρία, παράδοση και υπερηφάνεια για τον τόπο της.",
         imageNames: [

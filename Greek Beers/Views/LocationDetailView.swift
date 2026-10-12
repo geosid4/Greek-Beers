@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LocationDetailView: View {
     
+    @Environment(\.dismiss) private var dismiss
+    
     let location: Location
     
     var body: some View {
@@ -29,6 +31,9 @@ struct LocationDetailView: View {
             }
         }
         .ignoresSafeArea()
+        .overlay(alignment: .topLeading) {
+            backButton
+        }
     }
 }
 
@@ -40,9 +45,24 @@ struct LocationDetailView_Previews: PreviewProvider {
 
 extension LocationDetailView {
     
+    private var backButton: some View {
+        Button {
+            dismiss()
+        } label: {
+            Image(systemName: "xmark")
+                .font(.headline)
+                .padding(16)
+                .foregroundColor(.primary)
+                .background(.thickMaterial)
+                .cornerRadius(10)
+                .shadow(radius: 4)
+                .padding()
+        }
+    }
+    
     private var imageSelection: some View {
         TabView {
-            ForEach(location.imageNames, id: \.self){
+            ForEach(location.imageNames.filter { UIImage(named: $0) != nil }, id: \.self){
                 Image($0)
                     .resizable()
                     .scaledToFill()
