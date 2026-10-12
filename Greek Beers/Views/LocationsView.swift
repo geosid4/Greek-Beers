@@ -83,9 +83,9 @@ extension LocationsView {
                             vm.showNextLocation(location: location)
                         }
                 }
+                .annotationTitles(.hidden)
             }
         }
-        .annotationTitles(.hidden)
     }
     
     private var locationsPreviewStack: some View {
