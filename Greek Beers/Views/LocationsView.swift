@@ -73,18 +73,19 @@ extension LocationsView {
     }
     
     private var mapLayer: some View {
-        Map(coordinateRegion: $vm.mapRegion,
-            annotationItems: vm.locations,
-            annotationContent: { location in
-            MapAnnotation(coordinate: location.coordinates) {
-                LocationMapAnnotationView()
-                    .scaleEffect(vm.mapLocation == location ? 1 : 0.7)
-                    .shadow(radius: 10)
-                    .onTapGesture {
-                        vm.showNextLocation(location: location)
-                    }
+        Map(position: $vm.cameraPosition) {
+            ForEach(vm.locations) { location in
+                Annotation("", coordinate: location.coordinates) {
+                    LocationMapAnnotationView()
+                        .scaleEffect(vm.mapLocation == location ? 1 : 0.7)
+                        .shadow(radius: 10)
+                        .onTapGesture {
+                            vm.showNextLocation(location: location)
+                        }
+                }
             }
-        })
+        }
+        .annotationTitles(.hidden)
     }
     
     private var locationsPreviewStack: some View {
