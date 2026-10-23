@@ -90,6 +90,9 @@ extension BeersView {
                 ForEach(StyleFamily.allCases.filter(vm.selectedFamilies.contains)) { family in
                     FilterToken(title: family.name) { vm.toggle(family) }
                 }
+                ForEach(BeerTag.allCases.filter(vm.selectedTags.contains)) { tag in
+                    FilterToken(title: tag.name) { vm.toggle(tag) }
+                }
                 ForEach(Region.allCases.filter(vm.selectedRegions.contains)) { region in
                     FilterToken(title: region.name) { vm.toggle(region) }
                 }

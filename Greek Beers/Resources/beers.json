@@ -10,6 +10,7 @@
     "color": "pale",
     "filtered": false,
     "localIngredients": [],
+    "tags": [],
     "description": "Η θολή ξανθιά ale της ζυθοποιίας, με αρώματα εσπεριδοειδών και ήπια πικράδα.",
     "source": "https://chiosbeer.gr/cb/shop/freshchiosbeer/",
     "lastVerified": "2026-10-23"
@@ -25,6 +26,9 @@
     "color": "dark",
     "filtered": false,
     "localIngredients": [],
+    "tags": [
+      "smoked"
+    ],
     "description": "Μαύρη porter με καβουρδισμένες βύνες και βύνη καπνισμένη σε ξύλο οξιάς.",
     "source": "https://chiosbeer.gr/cb/shop/smokedrobustporter/",
     "lastVerified": "2026-10-23"
@@ -34,12 +38,15 @@
     "breweryId": "chios",
     "name": "Chios Beer Barbeque",
     "style": "Smoked Ale",
-    "styleFamily": "specialty",
+    "styleFamily": "amber-red",
     "abv": 5.5,
     "ibu": null,
     "color": "amber",
     "filtered": false,
     "localIngredients": [],
+    "tags": [
+      "smoked"
+    ],
     "description": "Κεχριμπαρένια καπνιστή ale με έντονα ξυλώδη αρώματα, φτιαγμένη για ψητά.",
     "source": "https://chiosbeer.gr/cb/shop/chios-beer-bbq-barbeque/",
     "lastVerified": "2026-10-23"
@@ -57,6 +64,7 @@
     "localIngredients": [
       "μαστίχα Χίου"
     ],
+    "tags": [],
     "description": "Απαλή μπύρα σίτου με διακριτική γεύση από αυθεντική μαστίχα Χίου.",
     "source": "https://chiosbeer.gr/cb/shop/chios-beer-wheat-%CE%BC%CF%80%CF%8D%CF%81%CE%B1-%CE%BC%CE%B5-%CE%BC%CE%B1%CF%83%CF%84%CE%AF%CF%87%CE%B1/",
     "lastVerified": "2026-10-23"
@@ -72,6 +80,7 @@
     "color": "pale",
     "filtered": null,
     "localIngredients": [],
+    "tags": [],
     "description": "Ισορροπημένη IPA με πλούσια αρώματα λυκίσκου και ήπια πικράδα.",
     "source": "https://chiosbeer.gr/cb/shop/chios-ipa-india-pale-ale/",
     "lastVerified": "2026-10-23"
@@ -87,6 +96,7 @@
     "color": "pale",
     "filtered": null,
     "localIngredients": [],
+    "tags": [],
     "description": "Δυνατή θολή ale με αρωματικούς λυκίσκους, για να συνοδεύει φαγητό.",
     "source": "https://chiosbeer.gr/cb/shop/alos12bottles/",
     "lastVerified": "2026-10-23"
@@ -105,6 +115,7 @@
     "localIngredients": [
       "βύνη Θράκης"
     ],
+    "tags": [],
     "description": "Η κλασική χρυσόξανθη lager της Βεργίνας, με 100% βύνη Θράκης.",
     "source": "https://www.verginabeer.com/beer/vergina-lager/",
     "lastVerified": "2026-10-23"
@@ -123,6 +134,7 @@
     "localIngredients": [
       "βύνη Θράκης"
     ],
+    "tags": [],
     "description": "Κόκκινη lager με καβουρδισμένες και καραμελωμένες βύνες.",
     "source": "https://www.verginabeer.com/beer/vergina-red/",
     "lastVerified": "2026-10-23"
@@ -141,6 +153,7 @@
     "localIngredients": [
       "βύνη Θράκης"
     ],
+    "tags": [],
     "description": "Θολή μπύρα σίτου με αρώματα γαρίφαλου και μπανάνας, πολυβραβευμένη.",
     "source": "https://www.verginabeer.com/beer/vergina-weiss/",
     "lastVerified": "2026-10-23"
@@ -159,6 +172,7 @@
     "localIngredients": [
       "βύνη Θράκης"
     ],
+    "tags": [],
     "description": "Αφιλτράριστη δυνατή lager σε περιορισμένη έκδοση.",
     "source": "https://www.verginabeer.com/beer/strong-lager/",
     "lastVerified": "2026-10-23"
@@ -177,6 +191,7 @@
     "localIngredients": [
       "βύνη Θράκης"
     ],
+    "tags": [],
     "description": "Αφιλτράριστη ξηρή stout με καβουρδισμένες βύνες.",
     "source": "https://www.verginabeer.com/beer/vergina-black/",
     "lastVerified": "2026-10-23"
@@ -186,7 +201,7 @@
     "breweryId": "vergina",
     "name": "Βεργίνα Alcohol Free",
     "style": "Lager χωρίς αλκοόλ",
-    "styleFamily": "low-no-alcohol",
+    "styleFamily": "lager",
     "abv": 0.4,
     "ibu": 17,
     "ibuMax": 19,
@@ -195,6 +210,7 @@
     "localIngredients": [
       "βύνη Θράκης"
     ],
+    "tags": [],
     "description": "Η συνταγή της Βεργίνα Lager με ειδική μαγιά που κρατά το αλκοόλ στο 0,4%.",
     "source": "https://www.verginabeer.com/beer/alcohol-free/",
     "lastVerified": "2026-10-23"
@@ -213,6 +229,10 @@
     "localIngredients": [
       "βύνη Θράκης"
     ],
+    "tags": [
+      "honey",
+      "spiced"
+    ],
     "description": "Δυνατή ale διπλής ζύμωσης με θυμαρίσιο μέλι, περγαμόντο και ροζ πιπέρι.",
     "source": "https://www.verginabeer.com/beer/vergina-honey-spice/",
     "lastVerified": "2026-10-23"
@@ -222,7 +242,7 @@
     "breweryId": "vergina",
     "name": "Βεργίνα Radler",
     "style": "Radler",
-    "styleFamily": "low-no-alcohol",
+    "styleFamily": "lager",
     "abv": 2.0,
     "ibu": 8,
     "ibuMax": 12,
@@ -230,6 +250,10 @@
     "filtered": null,
     "localIngredients": [
       "βύνη Θράκης"
+    ],
+    "tags": [
+      "fruit",
+      "honey"
     ],
     "description": "Ελαφριά μπύρα με λεμόνι, μέλι και λεμονόχορτο.",
     "source": "https://www.verginabeer.com/beer/vergina-radler/",
@@ -246,6 +270,7 @@
     "color": "pale",
     "filtered": true,
     "localIngredients": [],
+    "tags": [],
     "description": "Lager με χαμηλή πικράδα και φρουτώδη αρώματα από dry hopping.",
     "source": "https://septem.gr/s-beers-mylos.html",
     "lastVerified": "2026-10-23"
@@ -261,6 +286,7 @@
     "color": "pale",
     "filtered": true,
     "localIngredients": [],
+    "tags": [],
     "description": "Χρυσή pilsner με έντονα αρώματα λουλουδιών, εσπεριδοειδών και λυκίσκου.",
     "source": "https://septem.gr/s-beers-monday.html",
     "lastVerified": "2026-10-23"
@@ -276,6 +302,7 @@
     "color": null,
     "filtered": false,
     "localIngredients": [],
+    "tags": [],
     "description": "Η πρώτη ελληνική wheat IPA, με τροπικά αρώματα λυκίσκου.",
     "source": "https://septem.gr/s-beers-wday.html",
     "lastVerified": "2026-10-23"
@@ -291,6 +318,7 @@
     "color": "amber",
     "filtered": true,
     "localIngredients": [],
+    "tags": [],
     "description": "Κόκκινη ale με νότες καραμέλας και καβουρδισμένων ξηρών καρπών.",
     "source": "https://septem.gr/s-beers-thursday.html",
     "lastVerified": "2026-10-23"
@@ -306,6 +334,7 @@
     "color": "amber",
     "filtered": true,
     "localIngredients": [],
+    "tags": [],
     "description": "Χρυσοχάλκινη pale ale με τσέχικο και νεοζηλανδέζικο λυκίσκο.",
     "source": "https://septem.gr/s-beers-friday.html",
     "lastVerified": "2026-10-23"
@@ -321,6 +350,7 @@
     "color": "dark",
     "filtered": true,
     "localIngredients": [],
+    "tags": [],
     "description": "Μαύρη porter από πέντε βύνες και αγγλικό λυκίσκο Fuggles.",
     "source": "https://septem.gr/s-beers-saturday.html",
     "lastVerified": "2026-10-23"
@@ -336,6 +366,9 @@
     "color": "pale",
     "filtered": true,
     "localIngredients": [],
+    "tags": [
+      "honey"
+    ],
     "description": "Χρυσή ale διπλής ζύμωσης με μέλι ανθέων.",
     "source": "https://septem.gr/s-beers-sunday.html",
     "lastVerified": "2026-10-23"
@@ -351,6 +384,7 @@
     "color": null,
     "filtered": false,
     "localIngredients": [],
+    "tags": [],
     "description": "Δυνατή IPA με αμερικανικούς λυκίσκους Mosaic, Citra και Simcoe.",
     "source": "https://septem.gr/s-beers-8thday.html",
     "lastVerified": "2026-10-23"
@@ -366,6 +400,7 @@
     "color": null,
     "filtered": null,
     "localIngredients": [],
+    "tags": [],
     "description": "Θολή NEIPA με αρώματα ροδάκινου, μάνγκο και εσπεριδοειδών, χαμηλή πικράδα.",
     "source": "https://septem.gr/s-beers-giorni.html",
     "lastVerified": "2026-10-23"
@@ -375,12 +410,15 @@
     "breweryId": "septem",
     "name": "Dilemma",
     "style": "Barley Wine Barrel Aged",
-    "styleFamily": "specialty",
+    "styleFamily": "strong-ale",
     "abv": 10.9,
     "ibu": 75,
     "color": "amber",
     "filtered": null,
     "localIngredients": [],
+    "tags": [
+      "barrel-aged"
+    ],
     "description": "Barley wine που ωριμάζει οκτώ μήνες σε δρύινα βαρέλια.",
     "source": "https://septem.gr/s-beers-dilemma.html",
     "lastVerified": "2026-10-23"
@@ -396,6 +434,9 @@
     "color": "dark",
     "filtered": false,
     "localIngredients": [],
+    "tags": [
+      "barrel-aged"
+    ],
     "description": "Imperial stout που ωριμάζει οκτώ μήνες σε δρύινα βαρέλια ρουμιού και ουίσκι.",
     "source": "https://septem.gr/s-beers-kleos.html",
     "lastVerified": "2026-10-23"
@@ -411,6 +452,7 @@
     "color": "amber",
     "filtered": false,
     "localIngredients": [],
+    "tags": [],
     "description": "Δυνατή κόκκινη IPA, η πρώτη ελληνική του στυλ, με βραβεία.",
     "source": "https://septem.gr/s-beers-lava.html",
     "lastVerified": "2026-10-23"
@@ -426,6 +468,7 @@
     "color": "amber",
     "filtered": false,
     "localIngredients": [],
+    "tags": [],
     "description": "Αφιλτράριστη pilsner με αργή ζύμωση πολλών εβδομάδων.",
     "source": "https://vambeer.gr/project/pilsner/",
     "lastVerified": "2026-10-23"
@@ -443,6 +486,7 @@
     "localIngredients": [
       "ελληνικό κριθάρι"
     ],
+    "tags": [],
     "description": "Αφιλτράριστη lager από ελληνικό κριθάρι, με νότες εσπεριδοειδών.",
     "source": "https://vambeer.gr/project/beers/",
     "lastVerified": "2026-10-23"
@@ -458,6 +502,7 @@
     "color": "amber",
     "filtered": null,
     "localIngredients": [],
+    "tags": [],
     "description": "Κόκκινη ale με νότες καραμέλας, εσπεριδοειδών και λουλουδιών.",
     "source": "https://corfubeer.com/products/corfu-beer/",
     "lastVerified": "2026-10-23"
@@ -473,6 +518,7 @@
     "color": "dark",
     "filtered": null,
     "localIngredients": [],
+    "tags": [],
     "description": "Σκούρα ale με γεύσεις σοκολάτας, καραμέλας και καφέ.",
     "source": "https://corfubeer.com/products/corfu-beer/",
     "lastVerified": "2026-10-23"
@@ -488,6 +534,7 @@
     "color": null,
     "filtered": false,
     "localIngredients": [],
+    "tags": [],
     "description": "Γεμάτη IPA διπλής ζύμωσης με αρώματα εσπεριδοειδών και τροπικών φρούτων.",
     "source": "https://corfubeer.com/products/corfu-beer/",
     "lastVerified": "2026-10-23"
@@ -503,6 +550,7 @@
     "color": null,
     "filtered": null,
     "localIngredients": [],
+    "tags": [],
     "description": "Μπύρα σίτου με νότες γαρίφαλου, μπανάνας και βανίλιας.",
     "source": "https://corfubeer.com/products/corfu-beer/",
     "lastVerified": "2026-10-23"
@@ -518,6 +566,9 @@
     "color": null,
     "filtered": null,
     "localIngredients": [],
+    "tags": [
+      "honey"
+    ],
     "description": "Δυνατή μπύρα με μέλι ανθέων, εμπνευσμένη από την Οδύσσεια.",
     "source": "https://corfubeer.com/products/corfu-beer/",
     "lastVerified": "2026-10-23"
@@ -533,6 +584,7 @@
     "color": "pale",
     "filtered": null,
     "localIngredients": [],
+    "tags": [],
     "description": "Διαυγής ξανθιά pilsner με γεμάτο σώμα και έντονο άρωμα λυκίσκου.",
     "source": "https://corfubeer.com/products/corfu-beer/",
     "lastVerified": "2026-10-23"
@@ -548,6 +600,7 @@
     "color": null,
     "filtered": false,
     "localIngredients": [],
+    "tags": [],
     "description": "Ζωντανή μπύρα που διαρκεί 15 μέρες και πωλείται μόνο σε επιλεγμένα σημεία.",
     "source": "https://corfubeer.com/products/corfu-beer/",
     "lastVerified": "2026-10-23"
@@ -563,6 +616,7 @@
     "color": "pale",
     "filtered": null,
     "localIngredients": [],
+    "tags": [],
     "description": "Ελαφριά, δροσερή lager από τέσσερις βύνες κριθαριού.",
     "source": "https://corfubeer.com/products/corfu-beer/",
     "lastVerified": "2026-10-23"
@@ -572,12 +626,15 @@
     "breweryId": "corfu",
     "name": "Royal Ionian Radler",
     "style": "Radler",
-    "styleFamily": "low-no-alcohol",
+    "styleFamily": "lager",
     "abv": 2.0,
     "ibu": null,
     "color": null,
     "filtered": null,
     "localIngredients": [],
+    "tags": [
+      "fruit"
+    ],
     "description": "Ελαφριά μπύρα με χυμό λεμονιού, φυσικά θολή.",
     "source": "https://corfubeer.com/products/royal-ionnian/",
     "lastVerified": "2026-10-23"
@@ -594,6 +651,7 @@
     "color": "pale",
     "filtered": null,
     "localIngredients": [],
+    "tags": [],
     "description": "Διαυγής χρυσή pilsner με αρώματα λουλουδιών και εσπεριδοειδών, Top Lager στα Greek Beer Awards 2024.",
     "source": "https://voreiabeer.com/oi-byres-mas/voreia-pilsner-beer/",
     "lastVerified": "2026-10-23"
@@ -610,6 +668,7 @@
     "color": "amber",
     "filtered": null,
     "localIngredients": [],
+    "tags": [],
     "description": "Κεχριμπαρένια IPA με αμερικανικό λυκίσκο και αρώματα εσπεριδοειδών και πεύκου.",
     "source": "https://voreiabeer.com/oi-byres-mas/voreia-ipa-beer/",
     "lastVerified": "2026-10-23"
@@ -628,6 +687,7 @@
     "localIngredients": [
       "ελληνικό κριθάρι"
     ],
+    "tags": [],
     "description": "Αφιλτράριστη σοκολατένια stout από έξι βύνες, χάλκινο μετάλλιο στο Brussels Beer Challenge 2015.",
     "source": "https://voreiabeer.com/oi-byres-mas/voreia-stout-beer/",
     "lastVerified": "2026-10-23"
@@ -646,6 +706,7 @@
     "localIngredients": [
       "ελληνικό σιτάρι"
     ],
+    "tags": [],
     "description": "Δροσερή μπύρα σίτου με κόλιανδρο και πορτοκάλι.",
     "source": "https://voreiabeer.com/oi-byres-mas/voreia-wit-beer/",
     "lastVerified": "2026-10-23"
@@ -656,12 +717,15 @@
     "brandId": "voreia",
     "name": "VOREIA Smoked Amber Ale",
     "style": "Smoked Amber Ale",
-    "styleFamily": "specialty",
+    "styleFamily": "amber-red",
     "abv": 7.0,
     "ibu": null,
     "color": "amber",
     "filtered": null,
     "localIngredients": [],
+    "tags": [
+      "smoked"
+    ],
     "description": "Καπνιστή κεχριμπαρένια ale με σίκαλη και καραμελωμένες βύνες βελγικού τύπου.",
     "source": "https://voreiabeer.com/oi-byres-mas/voreia-smoked-amber-ale/",
     "lastVerified": "2026-10-23"
@@ -678,6 +742,9 @@
     "color": "amber",
     "filtered": null,
     "localIngredients": [],
+    "tags": [
+      "spiced"
+    ],
     "description": "Δυνατή porter με κανέλα, βανίλια, κάρδαμο, τόνκα, παλαιωμένο ρούμι και καφέ.",
     "source": "https://voreiabeer.com/oi-byres-mas/voreia-imperial-porter-beer/",
     "lastVerified": "2026-10-23"
@@ -688,12 +755,13 @@
     "brandId": "voreia",
     "name": "VOREIA Low Alcohol",
     "style": "Low Alcohol Pale Ale",
-    "styleFamily": "low-no-alcohol",
+    "styleFamily": "pale-ale-ipa",
     "abv": 0.8,
     "ibu": null,
     "color": "pale",
     "filtered": null,
     "localIngredients": [],
+    "tags": [],
     "description": "Pale ale με μόλις 0,8% αλκοόλ που κρατά γεμάτο σώμα και φρουτώδη αρώματα λυκίσκου.",
     "source": "https://voreiabeer.com/oi-byres-mas/voreia-low-alcohol-beer/",
     "lastVerified": "2026-10-23"
@@ -710,6 +778,7 @@
     "color": "amber",
     "filtered": null,
     "localIngredients": [],
+    "tags": [],
     "description": "Κόκκινη ale με νότες καραμέλας, μπισκότου, σοκολάτας και αμυγδάλου.",
     "source": "https://voreiabeer.com/oi-byres-mas/voreia-irish-red/",
     "lastVerified": "2026-10-23"
@@ -726,6 +795,7 @@
     "color": "pale",
     "filtered": null,
     "localIngredients": [],
+    "tags": [],
     "description": "Ανοιχτόξανθη βοημική lager με τσέχικο λυκίσκο Saaz.",
     "source": "https://voreiabeer.com/oi-byres-mas/voreia-lager-beer/",
     "lastVerified": "2026-10-23"
@@ -742,6 +812,7 @@
     "color": "pale",
     "filtered": null,
     "localIngredients": [],
+    "tags": [],
     "description": "Ελαφριά pale ale με αρώματα εσπεριδοειδών και τροπικών φρούτων.",
     "source": "https://voreiabeer.com/oi-byres-mas/voreia-session-pale-ale/",
     "lastVerified": "2026-10-23"
@@ -758,6 +829,7 @@
     "color": null,
     "filtered": null,
     "localIngredients": [],
+    "tags": [],
     "description": "Lager με λυκίσκους Huell Melon και Vic Secret και dry hopping, με αρώματα πεπονιού και ανανά.",
     "source": "https://www.sirisbrewery.com/happy-brewers/",
     "lastVerified": "2026-10-23"
@@ -774,6 +846,7 @@
     "color": null,
     "filtered": null,
     "localIngredients": [],
+    "tags": [],
     "description": "IPA με Mosaic, Centennial και El Dorado, με αρώματα ροδάκινου, μάνγκο και μούρων.",
     "source": "https://www.sirisbrewery.com/happy-brewers/",
     "lastVerified": "2026-10-23"
@@ -790,6 +863,7 @@
     "color": null,
     "filtered": null,
     "localIngredients": [],
+    "tags": [],
     "description": "Θολή NEIPA με Sabro και Idaho 7 και χαμηλή πικράδα.",
     "source": "https://www.sirisbrewery.com/happy-brewers/",
     "lastVerified": "2026-10-23"

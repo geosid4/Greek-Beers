@@ -109,9 +109,9 @@ extension StyleFamily {
         case .amberRed: Color(red: 0.72, green: 0.27, blue: 0.14)
         case .dark: Color(red: 0.22, green: 0.12, blue: 0.07)
         case .belgian: Color(red: 0.70, green: 0.35, blue: 0.12)
+        case .strongAle: Color(red: 0.55, green: 0.24, blue: 0.10)
         case .sour: Color(red: 0.84, green: 0.33, blue: 0.38)
         case .specialty: Color(red: 0.62, green: 0.68, blue: 0.32)
-        case .lowNoAlcohol: Color(red: 0.93, green: 0.88, blue: 0.70)
         }
     }
 }

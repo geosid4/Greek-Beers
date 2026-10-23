@@ -35,6 +35,17 @@ struct FiltersView: View {
                         }
                     }
 
+                    Section("Χαρακτηριστικά") {
+                        ForEach(vm.tags, id: \.tag) { tag, count in
+                            checkRow(tag.name, count: count, isOn: vm.selectedTags.contains(tag)) {
+                                Image(systemName: tag.symbol)
+                                    .foregroundStyle(Color.accentColor)
+                            } toggle: {
+                                vm.toggle(tag)
+                            }
+                        }
+                    }
+
                     Section("Περιφέρεια") {
                         ForEach(vm.regions, id: \.region) { region, count in
                             checkRow(region.name, count: count, isOn: vm.selectedRegions.contains(region)) {

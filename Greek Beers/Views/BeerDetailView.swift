@@ -271,6 +271,8 @@ extension BeerDetailView {
     private var facts: some View {
         let rows: [(String, String)] = [
             ("Οικογένεια", beer.styleFamily.name),
+            // Unfiltered has its own row, and low alcohol shows in the ABV tile
+            ("Χαρακτηριστικά", beer.tags.isEmpty ? nil : beer.tags.map(\.name).joined(separator: ", ")),
             ("Φιλτράρισμα", beer.filtered.map { $0 ? "Φιλτραρισμένη" : "Αφιλτράριστη" })
         ].compactMap { label, value in value.map { (label, $0) } }
 

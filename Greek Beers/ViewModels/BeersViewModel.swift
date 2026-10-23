@@ -25,10 +25,12 @@ final class BeersViewModel {
     var selectedBreweryIds: Set<String> = []
     var selectedFamilies: Set<StyleFamily> = []
     var selectedRegions: Set<Region> = []
+    var selectedTags: Set<BeerTag> = []
     var localIngredientsOnly = false
 
     var activeFilterCount: Int {
-        selectedBreweryIds.count + selectedFamilies.count + selectedRegions.count + (localIngredientsOnly ? 1 : 0)
+        selectedBreweryIds.count + selectedFamilies.count + selectedRegions.count + selectedTags.count
+            + (localIngredientsOnly ? 1 : 0)
     }
 
     var filteredBeers: [Beer] {
@@ -36,6 +38,7 @@ final class BeersViewModel {
             (selectedBreweryIds.isEmpty || selectedBreweryIds.contains(beer.breweryId))
                 && (selectedFamilies.isEmpty || selectedFamilies.contains(beer.styleFamily))
                 && (selectedRegions.isEmpty || brewery(for: beer).map { selectedRegions.contains($0.region) } == true)
+                && (selectedTags.isEmpty || !selectedTags.isDisjoint(with: beer.characteristics))
                 && (!localIngredientsOnly || !beer.localIngredients.isEmpty)
                 && matchesSearch(beer)
         })
@@ -64,6 +67,13 @@ final class BeersViewModel {
         }
     }
 
+    var tags: [(tag: BeerTag, count: Int)] {
+        BeerTag.allCases.compactMap { tag in
+            let count = catalog.beers.filter { $0.characteristics.contains(tag) }.count
+            return count > 0 ? (tag, count) : nil
+        }
+    }
+
     init(catalog: Catalog = .bundled) {
         self.catalog = catalog
     }
@@ -80,10 +90,15 @@ final class BeersViewModel {
         selectedRegions.formSymmetricDifference([region])
     }
 
+    func toggle(_ tag: BeerTag) {
+        selectedTags.formSymmetricDifference([tag])
+    }
+
     func clearFilters() {
         selectedBreweryIds = []
         selectedFamilies = []
         selectedRegions = []
+        selectedTags = []
         localIngredientsOnly = false
     }
 
@@ -105,6 +120,7 @@ final class BeersViewModel {
         guard !query.isEmpty else { return true }
         let fields = [beer.name, beer.style, beer.styleFamily.name]
             + beer.localIngredients
+            + beer.characteristics.map(\.name)
             + [brand(for: beer)?.name, brewery(for: beer)?.name, brewery(for: beer)?.city].compactMap { $0 }
         return fields.contains { $0.localizedStandardContains(query) }
     }
