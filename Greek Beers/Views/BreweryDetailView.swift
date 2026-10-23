@@ -12,7 +12,9 @@ import SwiftUI
 struct BreweryDetailView: View {
 
     @Environment(\.openURL) private var openURL
+    @Environment(\.modelContext) private var modelContext
     @Query private var logs: [BeerLog]
+    @Query private var breweryLogs: [BreweryLog]
 
     let brewery: Brewery
     let beers: [Beer]
@@ -21,6 +23,9 @@ struct BreweryDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 actions
+                if brewery.canBeVisited {
+                    visitCard
+                }
                 beersSection
                 aboutSection
             }
@@ -78,11 +83,65 @@ extension BreweryDetailView {
         return components.url!
     }
 
+    private var visitedAt: Date? {
+        breweryLogs.first { $0.breweryId == brewery.id }?.visitedAt
+    }
+
+    // The brewery's stamp in the Passport: gray and dashed until the user has been there
+    private var visitCard: some View {
+        HStack(spacing: 14) {
+            PassportStamp(brewery: brewery, isVisited: visitedAt != nil, size: 64)
+
+            VStack(alignment: .leading, spacing: 6) {
+                if let visitedAt {
+                    Text("Σφραγίστηκε \(visitedAt.formatted(date: .abbreviated, time: .omitted))")
+                        .font(.headline)
+                    Text("Η επίσκεψη μετράει στο διαβατήριό σου, ξεχωριστά από τις μπύρες.")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                } else {
+                    Text("Η σφραγίδα της \(brewery.name)")
+                        .font(.headline)
+                    Text("Πέρασες από τη ζυθοποιία; Σφράγισε το διαβατήριό σου.")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+
+                Button(visitedAt == nil ? "Σφράγισε επίσκεψη" : "Αναίρεση") {
+                    withAnimation(.snappy) {
+                        modelContext.updateLog(for: brewery) { log in
+                            log.visitedAt = log.visitedAt == nil ? .now : nil
+                        }
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .foregroundStyle(Palette.background)
+                .controlSize(.small)
+                .padding(.top, 2)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(14)
+        .background(Palette.surface, in: .rect(cornerRadius: 18))
+    }
+
     private var beersSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Μπύρες")
-                .font(.title3)
-                .fontWeight(.semibold)
+            HStack(alignment: .firstTextBaseline) {
+                Text("Μπύρες")
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                Spacer()
+                if !beers.isEmpty {
+                    Text("Δοκίμασες \(triedCount)/\(beers.count)")
+                        .font(.subheadline.monospacedDigit())
+                        .foregroundStyle(.secondary)
+                }
+            }
+
+            if !beers.isEmpty {
+                ProgressView(value: Double(triedCount), total: Double(beers.count))
+            }
 
             if beers.isEmpty {
                 Text("Δεν έχουμε καταχωρίσει ακόμα μπύρες γι' αυτή τη ζυθοποιία.")
@@ -98,6 +157,11 @@ extension BreweryDetailView {
                 }
             }
         }
+    }
+
+    private var triedCount: Int {
+        let tried = Set(logs.filter(\.isTried).map(\.beerId))
+        return beers.filter { tried.contains($0.id) }.count
     }
 
     private var aboutSection: some View {

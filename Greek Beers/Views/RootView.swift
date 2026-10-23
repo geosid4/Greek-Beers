@@ -41,7 +41,7 @@ struct RootView: View {
                 .tag(AppTab.discover)
 
             JourneyView()
-                .tabItem { Label("Journey", systemImage: "medal") }
+                .tabItem { Label("Διαβατήριο", systemImage: "book.closed") }
                 .tag(AppTab.journey)
         }
     }

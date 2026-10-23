@@ -32,6 +32,11 @@ struct Brewery: Identifiable, Hashable, Decodable {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
 
+    // Gypsy brewers have no place of their own; unknown visitability still gets a stamp
+    var canBeVisited: Bool {
+        kind != .gypsy && visitable != false
+    }
+
     enum Kind: String, Decodable, CaseIterable, Identifiable {
         case microbrewery
         case industrial

@@ -97,6 +97,35 @@ struct BreweryLogoView: View {
     }
 }
 
+// A brewery's stamp in the Passport: the logo in a ring, solid amber once visited
+struct PassportStamp: View {
+
+    let brewery: Brewery
+    let isVisited: Bool
+    var size: CGFloat = 60
+
+    var body: some View {
+        ZStack(alignment: .bottomTrailing) {
+            BreweryLogoView(brewery: brewery, size: size * 0.58)
+                .opacity(isVisited ? 1 : 0.45)
+                .frame(width: size, height: size)
+                .overlay {
+                    Circle()
+                        .strokeBorder(isVisited ? Color.accentColor : Color.secondary,
+                                      style: StrokeStyle(lineWidth: isVisited ? 3 : 1.5, dash: isVisited ? [] : [4, 5]))
+                }
+
+            if isVisited {
+                Image(systemName: "checkmark.seal.fill")
+                    .font(.system(size: size * 0.28))
+                    .foregroundStyle(Color.accentColor, Palette.background)
+            }
+        }
+        .accessibilityElement()
+        .accessibilityLabel(isVisited ? "\(brewery.name), επισκέφθηκες" : "\(brewery.name), χωρίς επίσκεψη")
+    }
+}
+
 // Five tappable stars. Tapping the current rating again clears it
 struct StarRating: View {
 

@@ -40,13 +40,18 @@ final class BreweryLog {
 
     @Attribute(.unique) var breweryId: String
     var isFavorite: Bool
+    // nil until the user stamps a visit. Kept apart from tried beers: drinking a brewery's
+    // beer at home is not the same achievement as going there
+    var visitedAt: Date?
 
     init(breweryId: String) {
         self.breweryId = breweryId
         self.isFavorite = false
     }
 
-    var isEmpty: Bool { !isFavorite }
+    var isVisited: Bool { visitedAt != nil }
+
+    var isEmpty: Bool { !isFavorite && visitedAt == nil }
 }
 
 extension ModelContext {
