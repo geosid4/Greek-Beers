@@ -14,7 +14,7 @@ struct IntroView: View {
 
     var body: some View {
         if isActive {
-            BreweriesView()
+            RootView()
         } else {
             VStack {
                 Image("beer")

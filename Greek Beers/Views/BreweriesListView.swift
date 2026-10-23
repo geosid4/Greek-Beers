@@ -8,116 +8,29 @@
 
 import SwiftUI
 
+// The sheet's list state: search and filters in the header, breweries grouped by region below
 struct BreweriesListView: View {
 
     @Environment(BreweriesViewModel.self) private var vm
 
     var body: some View {
-        VStack(spacing: 8) {
-            searchField
-            filterBar
-
-            if vm.filteredBreweries.isEmpty {
-                emptyState
-            } else {
-                list
-            }
+        if vm.filteredBreweries.isEmpty {
+            emptyState
+        } else {
+            list
         }
-        .padding(.top, 4)
     }
 }
 
 #Preview {
-    BreweriesListView()
-        .environment(BreweriesViewModel())
+    VStack {
+        BreweriesListView.Header()
+        BreweriesListView()
+    }
+    .environment(BreweriesViewModel())
 }
 
 extension BreweriesListView {
-
-    private var searchField: some View {
-        @Bindable var vm = vm
-
-        return HStack {
-            Image(systemName: "magnifyingglass")
-                .foregroundStyle(.secondary)
-            TextField("Ζυθοποιία, πόλη ή μπύρα", text: $vm.searchText)
-                .autocorrectionDisabled()
-                .submitLabel(.search)
-            if !vm.searchText.isEmpty {
-                Button {
-                    vm.searchText = ""
-                } label: {
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundStyle(.secondary)
-                }
-                .accessibilityLabel("Καθαρισμός αναζήτησης")
-            }
-        }
-        .padding(10)
-        .background(.quaternary, in: .rect(cornerRadius: 10))
-        .padding(.horizontal)
-    }
-
-    private var filterBar: some View {
-        @Bindable var vm = vm
-
-        return ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 8) {
-                Menu {
-                    Picker("Περιφέρεια", selection: $vm.regionFilter) {
-                        Text("Όλες οι περιφέρειες").tag(Region?.none)
-                        ForEach(vm.availableRegions) { region in
-                            Text(region.name).tag(Region?.some(region))
-                        }
-                    }
-                } label: {
-                    filterChip(vm.regionFilter?.name ?? "Περιφέρεια",
-                               isActive: vm.regionFilter != nil,
-                               showsMenuIndicator: true)
-                }
-
-                Menu {
-                    Picker("Τύπος", selection: $vm.kindFilter) {
-                        Text("Όλοι οι τύποι").tag(Brewery.Kind?.none)
-                        ForEach(vm.availableKinds) { kind in
-                            Text(kind.name).tag(Brewery.Kind?.some(kind))
-                        }
-                    }
-                } label: {
-                    filterChip(vm.kindFilter?.name ?? "Τύπος",
-                               isActive: vm.kindFilter != nil,
-                               showsMenuIndicator: true)
-                }
-
-                Button {
-                    vm.visitableOnly.toggle()
-                } label: {
-                    filterChip("Επισκέψιμες", isActive: vm.visitableOnly, showsMenuIndicator: false)
-                }
-
-                if vm.isFiltering {
-                    Button("Καθαρισμός", action: vm.clearFilters)
-                        .font(.subheadline)
-                }
-            }
-            .padding(.horizontal)
-        }
-    }
-
-    private func filterChip(_ title: String, isActive: Bool, showsMenuIndicator: Bool) -> some View {
-        HStack(spacing: 4) {
-            Text(title)
-            if showsMenuIndicator {
-                Image(systemName: "chevron.down")
-                    .font(.caption2)
-            }
-        }
-        .font(.subheadline)
-        .padding(.horizontal, 12)
-        .padding(.vertical, 6)
-        .foregroundStyle(isActive ? Color.white : Color.primary)
-        .background(isActive ? Color.accentColor : Color.secondary.opacity(0.15), in: .capsule)
-    }
 
     private var list: some View {
         List {
@@ -125,11 +38,10 @@ extension BreweriesListView {
                 Section(group.region.name) {
                     ForEach(group.breweries) { brewery in
                         Button {
-                            vm.show(brewery)
+                            vm.select(brewery)
                         } label: {
-                            listRowView(brewery: brewery)
+                            row(brewery: brewery)
                         }
-                        .padding(.vertical, 4)
                         .listRowBackground(Color.clear)
                     }
                 }
@@ -138,7 +50,6 @@ extension BreweriesListView {
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
         .scrollDismissesKeyboard(.immediately)
-        .frame(maxHeight: 400)
     }
 
     private var emptyState: some View {
@@ -156,25 +67,167 @@ extension BreweriesListView {
         .frame(maxWidth: .infinity)
     }
 
-    private func listRowView(brewery: Brewery) -> some View {
-        HStack {
-            if let imageName = brewery.imageNames.first {
-                Image(imageName)
-                    .resizable()
-                    .scaledToFit()
-                    .padding(3)
-                    .frame(width: 45, height: 45)
-                    .background(Color.white, in: .rect(cornerRadius: 10))
-            }
-            VStack(alignment: .leading) {
+    private func row(brewery: Brewery) -> some View {
+        let beerCount = vm.catalog.beers(for: brewery).count
+
+        return HStack(spacing: 12) {
+            BreweryLogoView(brewery: brewery, size: 44)
+            VStack(alignment: .leading, spacing: 2) {
                 Text(brewery.name)
                     .font(.headline)
-                Text("\(brewery.city) · \(brewery.kind.name)")
+                Text("\(brewery.city) · \(beerCount) \(beerCount == 1 ? "μπύρα" : "μπύρες")")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+            Image(systemName: "chevron.right")
+                .font(.footnote)
+                .foregroundStyle(.tertiary)
         }
         .foregroundStyle(Color.primary)
+        .contentShape(.rect)
+    }
+}
+
+extension BreweriesListView {
+
+    // Stays visible when the sheet is collapsed, so search is always one tap away
+    struct Header: View {
+
+        @Environment(BreweriesViewModel.self) private var vm
+        @FocusState private var searchFocused: Bool
+
+        var body: some View {
+            VStack(spacing: 10) {
+                searchField
+                filterBar
+            }
+            .padding(.bottom, 10)
+            .onChange(of: searchFocused) { _, focused in
+                if focused {
+                    withAnimation(.snappy) { vm.sheetDetent = .large }
+                }
+            }
+        }
+
+        private var searchField: some View {
+            @Bindable var vm = vm
+
+            return HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundStyle(.secondary)
+                TextField("Ζυθοποιία, πόλη ή μπύρα", text: $vm.searchText)
+                    .focused($searchFocused)
+                    .autocorrectionDisabled()
+                    .submitLabel(.search)
+                if !vm.searchText.isEmpty {
+                    Button {
+                        vm.searchText = ""
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundStyle(.secondary)
+                    }
+                    .accessibilityLabel("Καθαρισμός αναζήτησης")
+                }
+            }
+            .padding(10)
+            .background(.quaternary, in: .rect(cornerRadius: 12))
+            .padding(.horizontal)
+        }
+
+        private var filterBar: some View {
+            @Bindable var vm = vm
+
+            return ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 8) {
+                    Menu {
+                        Picker("Περιφέρεια", selection: $vm.regionFilter) {
+                            Text("Όλες οι περιφέρειες").tag(Region?.none)
+                            ForEach(vm.availableRegions) { region in
+                                Text(region.name).tag(Region?.some(region))
+                            }
+                        }
+                    } label: {
+                        FilterChip(title: vm.regionFilter?.name ?? "Περιφέρεια",
+                                   isActive: vm.regionFilter != nil,
+                                   showsMenuIndicator: true)
+                    }
+
+                    Menu {
+                        Picker("Τύπος", selection: $vm.kindFilter) {
+                            Text("Όλοι οι τύποι").tag(Brewery.Kind?.none)
+                            ForEach(vm.availableKinds) { kind in
+                                Text(kind.name).tag(Brewery.Kind?.some(kind))
+                            }
+                        }
+                    } label: {
+                        FilterChip(title: vm.kindFilter?.name ?? "Τύπος",
+                                   isActive: vm.kindFilter != nil,
+                                   showsMenuIndicator: true)
+                    }
+
+                    Button {
+                        vm.visitableOnly.toggle()
+                    } label: {
+                        FilterChip(title: "Επισκέψιμες", isActive: vm.visitableOnly, showsMenuIndicator: false)
+                    }
+
+                    if vm.isFiltering {
+                        Button("Καθαρισμός", action: vm.clearFilters)
+                            .font(.subheadline)
+                    }
+                }
+                .padding(.horizontal)
+            }
+        }
+    }
+}
+
+struct FilterChip: View {
+
+    let title: String
+    let isActive: Bool
+    let showsMenuIndicator: Bool
+
+    var body: some View {
+        HStack(spacing: 4) {
+            Text(title)
+            if showsMenuIndicator {
+                Image(systemName: "chevron.down")
+                    .font(.caption2)
+            }
+        }
+        .font(.subheadline)
+        .padding(.horizontal, 12)
+        .padding(.vertical, 6)
+        .foregroundStyle(isActive ? Color.white : Color.primary)
+        .background(isActive ? Color.accentColor : Color.secondary.opacity(0.15), in: .capsule)
+    }
+}
+
+// Logos have white backgrounds, so they always sit on white, even in dark mode
+struct BreweryLogoView: View {
+
+    let brewery: Brewery
+    let size: CGFloat
+
+    var body: some View {
+        Group {
+            if let imageName = brewery.imageNames.first {
+                Image(imageName)
+                    .resizable()
+                    .scaledToFit()
+            } else {
+                Image(systemName: "mug.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundStyle(Color.accentColor)
+                    .padding(size * 0.15)
+            }
+        }
+        .padding(size * 0.08)
+        .frame(width: size, height: size)
+        .background(.white, in: .rect(cornerRadius: size * 0.25))
+        .accessibilityHidden(true)
     }
 }

@@ -16,21 +16,12 @@ final class BreweriesViewModel {
 
     var breweries: [Brewery] { catalog.breweries }
 
-    //Brewery currently shown on the map
-    var selectedBrewery: Brewery? {
-        didSet {
-            if let selectedBrewery { updateMapRegion(brewery: selectedBrewery) }
-        }
-    }
+    //Brewery open in the sheet, nil while the sheet shows the list
+    private(set) var selectedBrewery: Brewery?
 
     var cameraPosition: MapCameraPosition = .automatic
-    private let mapSpan = MKCoordinateSpan(latitudeDelta: 7.0, longitudeDelta: 7.0)
 
-    //Show list of breweries
-    var showBreweryList = false
-
-    //Show brewery detail sheet
-    var sheetBrewery: Brewery?
+    var sheetDetent: SheetDetent = .collapsed
 
     //Search and filters
     var searchText = ""
@@ -91,48 +82,55 @@ final class BreweriesViewModel {
 
     init(catalog: Catalog = .bundled) {
         self.catalog = catalog
-        self.selectedBrewery = catalog.breweries.first
-        if let first = catalog.breweries.first {
-            updateMapRegion(brewery: first)
+        self.cameraPosition = .region(Self.region(fitting: catalog.breweries))
+    }
+
+    //Frames every brewery that passes the filters, e.g. after the filters change
+    func frameFilteredBreweries() {
+        guard !filteredBreweries.isEmpty else { return }
+        withAnimation(.snappy) {
+            cameraPosition = .region(Self.region(fitting: filteredBreweries))
         }
     }
 
-    private func updateMapRegion(brewery: Brewery) {
-        withAnimation(.easeInOut) {
+    // MapKit's .automatic framing gets clipped by the camera bounds, so frame the pins ourselves
+    private static func region(fitting breweries: [Brewery]) -> MKCoordinateRegion {
+        guard let first = breweries.first else {
+            return MKCoordinateRegion(
+                center: CLLocationCoordinate2D(latitude: 38.6, longitude: 24.2),
+                span: MKCoordinateSpan(latitudeDelta: 7, longitudeDelta: 7))
+        }
+        var minLat = first.latitude, maxLat = first.latitude
+        var minLon = first.longitude, maxLon = first.longitude
+        for brewery in breweries.dropFirst() {
+            minLat = min(minLat, brewery.latitude)
+            maxLat = max(maxLat, brewery.latitude)
+            minLon = min(minLon, brewery.longitude)
+            maxLon = max(maxLon, brewery.longitude)
+        }
+        // Margin so edge pins aren't cut off, and a floor so one pin doesn't zoom to street level
+        return MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: (minLat + maxLat) / 2, longitude: (minLon + maxLon) / 2),
+            span: MKCoordinateSpan(latitudeDelta: max((maxLat - minLat) * 1.4, 1.5),
+                                   longitudeDelta: max((maxLon - minLon) * 1.4, 1.5)))
+    }
+
+    func select(_ brewery: Brewery) {
+        withAnimation(.snappy) {
+            selectedBrewery = brewery
+            sheetDetent = .medium
             cameraPosition = .region(MKCoordinateRegion(
                 center: brewery.coordinates,
-                span: mapSpan))
+                span: MKCoordinateSpan(latitudeDelta: 1.5, longitudeDelta: 1.5)))
         }
     }
 
-    func toggleBreweryList() {
-        withAnimation(.easeInOut) {
-            showBreweryList.toggle()
+    //Back to the list, with the map framing every visible pin again
+    func deselect() {
+        withAnimation(.snappy) {
+            selectedBrewery = nil
+            sheetDetent = .collapsed
         }
-    }
-
-    func show(_ brewery: Brewery) {
-        withAnimation(.easeInOut) {
-            selectedBrewery = brewery
-            showBreweryList = false
-        }
-    }
-
-    // Steps through the breweries that pass the filters
-    func nextButtonPressed() {
-        let candidates = filteredBreweries
-        guard let first = candidates.first else {
-            print("Ώρα για Ουίσκι!")
-            return
-        }
-        guard let selectedBrewery,
-              let currentIndex = candidates.firstIndex(of: selectedBrewery) else {
-            show(first)
-            return
-        }
-
-        // Wrap around to the first brewery after the last one
-        let nextIndex = (currentIndex + 1) % candidates.count
-        show(candidates[nextIndex])
+        frameFilteredBreweries()
     }
 }
