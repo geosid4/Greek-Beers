@@ -15,7 +15,8 @@ enum AppTab: Hashable {
 @Observable
 final class AppRouter {
 
-    var tab: AppTab = .discover
+    // Opens on the beers: most visits start from a beer in hand, not a place
+    var tab: AppTab = .beers
 
     func showOnMap(_ brewery: Brewery, using breweries: BreweriesViewModel) {
         tab = .discover
@@ -31,13 +32,13 @@ struct RootView: View {
         @Bindable var router = router
 
         TabView(selection: $router.tab) {
-            DiscoverView()
-                .tabItem { Label("Discover", systemImage: "map") }
-                .tag(AppTab.discover)
-
             BeersView()
                 .tabItem { Label("Μπύρες", systemImage: "mug") }
                 .tag(AppTab.beers)
+
+            DiscoverView()
+                .tabItem { Label("Χάρτης", systemImage: "map") }
+                .tag(AppTab.discover)
 
             JourneyView()
                 .tabItem { Label("Journey", systemImage: "medal") }

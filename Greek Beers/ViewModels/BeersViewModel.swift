@@ -5,6 +5,21 @@
 
 import Foundation
 
+// A group of beers the Beers tab can open on its own page
+enum BeerCollection: Hashable {
+    case family(StyleFamily)
+    case localIngredients
+    case region(Region)
+
+    var title: String {
+        switch self {
+        case .family(let family): family.name
+        case .localIngredients: "Με ελληνικά υλικά"
+        case .region(let region): region.name
+        }
+    }
+}
+
 @Observable
 final class BeersViewModel {
 
@@ -18,33 +33,37 @@ final class BeersViewModel {
 
     let catalog: Catalog
 
-    //Search, filters and sorting
     var searchText = ""
-    var familyFilter: StyleFamily?
-    var localIngredientsOnly = false
     var sortOrder: SortOrder = .name
 
-    var isFiltering: Bool {
-        !searchText.isEmpty || familyFilter != nil || localIngredientsOnly
+    var isSearching: Bool {
+        !searchText.trimmingCharacters(in: .whitespaces).isEmpty
     }
 
-    //Only the families some beer belongs to, so filters never offer empty choices
-    var availableFamilies: [StyleFamily] {
-        let used = Set(catalog.beers.map(\.styleFamily))
-        return StyleFamily.allCases.filter(used.contains)
+    var searchResults: [Beer] {
+        sorted(catalog.beers.filter(matchesSearch))
     }
 
-    //Beers that pass the search and filters, grouped by style family in declaration order
-    var beersByFamily: [(family: StyleFamily, beers: [Beer])] {
-        let filtered = catalog.beers.filter { beer in
-            (familyFilter == nil || beer.styleFamily == familyFilter)
-                && (!localIngredientsOnly || !beer.localIngredients.isEmpty)
-                && matchesSearch(beer)
+    var allBeers: [Beer] {
+        sorted(catalog.beers)
+    }
+
+    var beersWithLocalIngredients: [Beer] {
+        beers(in: .localIngredients)
+    }
+
+    //Style families and regions that have at least one beer, with how many
+    var families: [(family: StyleFamily, count: Int)] {
+        StyleFamily.allCases.compactMap { family in
+            let count = catalog.beers.filter { $0.styleFamily == family }.count
+            return count > 0 ? (family, count) : nil
         }
-        let grouped = Dictionary(grouping: filtered, by: \.styleFamily)
-        return StyleFamily.allCases.compactMap { family in
-            guard let beers = grouped[family] else { return nil }
-            return (family, sorted(beers))
+    }
+
+    var regions: [(region: Region, count: Int)] {
+        Region.allCases.compactMap { region in
+            let count = beers(in: .region(region)).count
+            return count > 0 ? (region, count) : nil
         }
     }
 
@@ -52,17 +71,22 @@ final class BeersViewModel {
         self.catalog = catalog
     }
 
+    func beers(in collection: BeerCollection) -> [Beer] {
+        let beers = catalog.beers.filter { beer in
+            switch collection {
+            case .family(let family): beer.styleFamily == family
+            case .localIngredients: !beer.localIngredients.isEmpty
+            case .region(let region): brewery(for: beer)?.region == region
+            }
+        }
+        return sorted(beers)
+    }
+
     func brewery(for beer: Beer) -> Brewery? {
         catalog.breweries.first { $0.id == beer.breweryId }
     }
 
-    func clearFilters() {
-        searchText = ""
-        familyFilter = nil
-        localIngredientsOnly = false
-    }
-
-    // Case and accent insensitive; also matches the brewery and the local ingredients
+    // Case and accent insensitive; also matches the brewery, its city and the local ingredients
     private func matchesSearch(_ beer: Beer) -> Bool {
         let query = searchText.trimmingCharacters(in: .whitespaces)
         guard !query.isEmpty else { return true }

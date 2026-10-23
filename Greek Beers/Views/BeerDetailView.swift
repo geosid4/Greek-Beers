@@ -31,7 +31,7 @@ struct BeerDetailView: View {
                     breweryCard(brewery)
                 }
                 facts
-                if let description = beer.description {
+                if let description = beer.displayDescription {
                     Text(description)
                         .font(.body)
                         .foregroundStyle(.secondary)
@@ -71,7 +71,7 @@ extension BeerDetailView {
 
     private var header: some View {
         HStack(spacing: 16) {
-            BeerColorSwatch(beer: beer, size: 64)
+            BeerGlassView(beer: beer, height: 96)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(beer.name)

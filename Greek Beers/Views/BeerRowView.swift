@@ -16,8 +16,7 @@ struct BeerRowView: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            BeerColorSwatch(beer: beer, size: 20)
-                .padding(.top, 2)
+            BeerGlassView(beer: beer, height: 34)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(beer.name)
@@ -54,36 +53,6 @@ struct BeerRowView: View {
             parts.append("\(ibu) IBU")
         }
         return parts.joined(separator: " · ")
-    }
-}
-
-struct BeerColorSwatch: View {
-
-    let beer: Beer
-    let size: CGFloat
-
-    var body: some View {
-        Circle()
-            .fill(beer.displayColor)
-            .overlay(Circle().strokeBorder(.secondary.opacity(0.3)))
-            .frame(width: size, height: size)
-            .accessibilityHidden(true)
-    }
-}
-
-extension Beer {
-
-    var formattedABV: String? {
-        abv.map { "\($0.formatted(.number.precision(.fractionLength(0...1))))% ABV" }
-    }
-
-    var displayColor: Color {
-        switch color {
-        case .pale: Color(red: 0.96, green: 0.80, blue: 0.35)
-        case .amber: Color(red: 0.80, green: 0.45, blue: 0.15)
-        case .dark: Color(red: 0.25, green: 0.13, blue: 0.08)
-        case nil: Color.secondary.opacity(0.2)
-        }
     }
 }
 

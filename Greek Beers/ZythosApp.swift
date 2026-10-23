@@ -17,7 +17,7 @@ struct ZythosApp: App {
 
     var body: some Scene {
         WindowGroup {
-            IntroView()
+            RootView()
                 .environment(breweries)
                 .environment(beers)
                 .environment(router)
