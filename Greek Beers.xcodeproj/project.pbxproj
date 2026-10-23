@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A7E00000000000000000041 /* Catalog in Resources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000040 /* Catalog */; };
 		5A7E00000000000000000023 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000022 /* FiltersView.swift */; };
 		5A7E00000000000000000021 /* BreweryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000020 /* BreweryPickerView.swift */; };
 		5A7E0000000000000000001D /* BeerCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E0000000000000000001C /* BeerCardView.swift */; };
@@ -24,8 +25,6 @@
 		26C02B292A5E82920057DA88 /* BreweriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C02B282A5E82920057DA88 /* BreweriesListView.swift */; };
 		26C02B2D2A5EF92D0057DA88 /* BreweryMapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C02B2C2A5EF92D0057DA88 /* BreweryMapAnnotationView.swift */; };
 		5A7E00000000000000000002 /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000001 /* Beer.swift */; };
-		5A7E00000000000000000004 /* breweries.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000003 /* breweries.json */; };
-		5A7E00000000000000000006 /* beers.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000005 /* beers.json */; };
 		5A7E00000000000000000009 /* BeerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000008 /* BeerRowView.swift */; };
 		5A7E0000000000000000000B /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E0000000000000000000A /* BottomSheet.swift */; };
 		5A7E0000000000000000000D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E0000000000000000000C /* RootView.swift */; };
@@ -36,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A7E00000000000000000040 /* Catalog */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Catalog; sourceTree = "<group>"; };
 		5A7E00000000000000000022 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
 		5A7E00000000000000000020 /* BreweryPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryPickerView.swift; sourceTree = "<group>"; };
 		5A7E0000000000000000001C /* BeerCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerCardView.swift; sourceTree = "<group>"; };
@@ -54,8 +54,6 @@
 		26C02B282A5E82920057DA88 /* BreweriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweriesListView.swift; sourceTree = "<group>"; };
 		26C02B2C2A5EF92D0057DA88 /* BreweryMapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryMapAnnotationView.swift; sourceTree = "<group>"; };
 		5A7E00000000000000000001 /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
-		5A7E00000000000000000003 /* breweries.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = breweries.json; sourceTree = "<group>"; };
-		5A7E00000000000000000005 /* beers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = beers.json; sourceTree = "<group>"; };
 		5A7E00000000000000000008 /* BeerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerRowView.swift; sourceTree = "<group>"; };
 		5A7E0000000000000000000A /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		5A7E0000000000000000000C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -96,7 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				266FCA842A5DB66A0085D145 /* Services */,
-				5A7E00000000000000000007 /* Resources */,
+				5A7E00000000000000000040 /* Catalog */,
 				266FCA812A5DB2B70085D145 /* Models */,
 				266FCA802A5DB2AA0085D145 /* ViewModels */,
 				266FCA7F2A5DB29A0085D145 /* Views */,
@@ -164,15 +162,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		5A7E00000000000000000007 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				5A7E00000000000000000003 /* breweries.json */,
-				5A7E00000000000000000005 /* beers.json */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -233,8 +222,7 @@
 			files = (
 				266FCA752A5DA3B40085D145 /* Preview Assets.xcassets in Resources */,
 				266FCA722A5DA3B40085D145 /* Assets.xcassets in Resources */,
-				5A7E00000000000000000004 /* breweries.json in Resources */,
-				5A7E00000000000000000006 /* beers.json in Resources */,
+				5A7E00000000000000000041 /* Catalog in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

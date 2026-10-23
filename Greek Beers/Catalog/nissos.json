@@ -1,0 +1,79 @@
+{
+  "id": "nissos",
+  "name": "Νήσος",
+  "city": "Τήνος",
+  "region": "south-aegean",
+  "kind": "microbrewery",
+  "founded": null,
+  "latitude": 37.549,
+  "longitude": 25.2,
+  "description": "Η Μικροζυθοποιία Κυκλάδων φτιάχνει τη μπύρα Νήσος στη Βαγιά της Τήνου. Δέχεται επισκέπτες για γευσιγνωσία και ξενάγηση στον χώρο παραγωγής.",
+  "imageNames": [],
+  "website": "https://nissos.beer/",
+  "visitable": true,
+  "source": "https://nissos.beer/beers/",
+  "lastVerified": "2026-10-23",
+  "beers": [
+    {
+      "id": "nissos-pilsner",
+      "name": "Νήσος Pilsner",
+      "style": "Bohemian Pilsner",
+      "styleFamily": "pilsner",
+      "abv": 5.0,
+      "color": "pale",
+      "description": "Η κλασική Νήσος, η πρώτη ελληνική pilsner με ασημένιο European Beer Star.",
+      "source": "https://nissos.beer/beers/nissos-greek-island-pilsner/"
+    },
+    {
+      "id": "nissos-all-day",
+      "name": "Νήσος All Day",
+      "style": "European Lager",
+      "styleFamily": "lager",
+      "abv": 4.5,
+      "color": "pale",
+      "description": "Βιολογική lager χωρίς γλουτένη, ελεγμένη σε κάθε παρτίδα.",
+      "source": "https://nissos.beer/beers/nissos-all-day/"
+    },
+    {
+      "id": "nissos-easy-ipa",
+      "name": "Νήσος Easy IPA",
+      "style": "Session IPA",
+      "styleFamily": "pale-ale-ipa",
+      "abv": 4.6,
+      "color": "pale",
+      "description": "Ελαφριά IPA με αρώματα που θυμίζουν θαλασσινή αύρα, άγρια βότανα και λεμόνι.",
+      "source": "https://nissos.beer/beers/nissos-easy-ipa/"
+    },
+    {
+      "id": "nissos-tholi",
+      "name": "Νήσος Θολή",
+      "style": "Keller",
+      "styleFamily": "lager",
+      "abv": 6.2,
+      "color": "pale",
+      "filtered": false,
+      "description": "Αφιλτράριστη keller, φρέσκια όπως βγαίνει από το κελάρι.",
+      "source": "https://nissos.beer/beers/nissos-tholi/"
+    },
+    {
+      "id": "nissos-7-beaufort",
+      "name": "Νήσος 7 Μποφόρ",
+      "style": "Baltic Porter",
+      "styleFamily": "dark",
+      "abv": 7.0,
+      "color": "dark",
+      "description": "Σχεδόν μαύρη Baltic porter με βρώμη και νότες καφέ και κακάο.",
+      "source": "https://nissos.beer/beers/nissos-7-beaufort/"
+    },
+    {
+      "id": "nissos-apokalypsi",
+      "name": "Νήσος Αποκάλυψη",
+      "style": "Abbey Double Ale",
+      "styleFamily": "belgian",
+      "abv": 6.5,
+      "color": "amber",
+      "description": "Ρουμπινί μοναστηριακή ale με σίκαλη, μαγιά βελγικού τύπου και δεύτερη ζύμωση.",
+      "source": "https://nissos.beer/beers/nissos-apocalypsi/"
+    }
+  ]
+}

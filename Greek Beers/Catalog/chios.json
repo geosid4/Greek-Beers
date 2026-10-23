@@ -1,0 +1,98 @@
+{
+  "id": "chios",
+  "name": "Μπύρα Χίου",
+  "city": "Χίος",
+  "region": "north-aegean",
+  "kind": "microbrewery",
+  "founded": 2009,
+  "latitude": 38.369114,
+  "longitude": 26.136987,
+  "description": "Το 2009, δύο φίλοι, αποφάσισαν να ξεκινήσουν μια επιχειρηματική δραστηριότητα στο υπέροχο νησί της Χίου, νησί καταγωγής του Ιάκωβου. Μετά από πολλές συζητήσεις και την εμπειρία, μιας μέρας, ερασιτεχνικής ζυθοποίησης του Μάνου, κατέληξαν στην ιδέα της δημιουργίας της Χιώτικης Μπύρας. Δεν θα μπορούσε άλλωστε, ένα νησί με τόσα τοπικά προϊόντα, να μην έχει την δική του μπύρα.",
+  "imageNames": [
+    "chios"
+  ],
+  "website": "https://chiosbeer.gr/cb/",
+  "visitable": null,
+  "source": "https://chiosbeer.gr/cb/",
+  "lastVerified": null,
+  "beers": [
+    {
+      "id": "chios-fresh",
+      "name": "Φρέσκια Μπύρα Χίου",
+      "style": "Pale Ale",
+      "styleFamily": "pale-ale-ipa",
+      "abv": 4.9,
+      "color": "pale",
+      "filtered": false,
+      "description": "Η θολή ξανθιά ale της ζυθοποιίας, με αρώματα εσπεριδοειδών και ήπια πικράδα.",
+      "source": "https://chiosbeer.gr/cb/shop/freshchiosbeer/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "chios-smoked-porter",
+      "name": "Smoked Robust Porter",
+      "style": "Smoked Robust Porter",
+      "styleFamily": "dark",
+      "abv": 6.2,
+      "color": "dark",
+      "filtered": false,
+      "tags": [
+        "smoked"
+      ],
+      "description": "Μαύρη porter με καβουρδισμένες βύνες και βύνη καπνισμένη σε ξύλο οξιάς.",
+      "source": "https://chiosbeer.gr/cb/shop/smokedrobustporter/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "chios-bbq",
+      "name": "Chios Beer Barbeque",
+      "style": "Smoked Ale",
+      "styleFamily": "amber-red",
+      "abv": 5.5,
+      "color": "amber",
+      "filtered": false,
+      "tags": [
+        "smoked"
+      ],
+      "description": "Κεχριμπαρένια καπνιστή ale με έντονα ξυλώδη αρώματα, φτιαγμένη για ψητά.",
+      "source": "https://chiosbeer.gr/cb/shop/chios-beer-bbq-barbeque/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "chios-wheat",
+      "name": "Chios Beer Wheat",
+      "style": "Witbier με μαστίχα",
+      "styleFamily": "wheat",
+      "abv": 5.5,
+      "color": "pale",
+      "localIngredients": [
+        "μαστίχα Χίου"
+      ],
+      "description": "Απαλή μπύρα σίτου με διακριτική γεύση από αυθεντική μαστίχα Χίου.",
+      "source": "https://chiosbeer.gr/cb/shop/chios-beer-wheat-%CE%BC%CF%80%CF%8D%CF%81%CE%B1-%CE%BC%CE%B5-%CE%BC%CE%B1%CF%83%CF%84%CE%AF%CF%87%CE%B1/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "chios-ipa",
+      "name": "Chios Beer IPA",
+      "style": "India Pale Ale",
+      "styleFamily": "pale-ale-ipa",
+      "abv": 6.3,
+      "color": "pale",
+      "description": "Ισορροπημένη IPA με πλούσια αρώματα λυκίσκου και ήπια πικράδα.",
+      "source": "https://chiosbeer.gr/cb/shop/chios-ipa-india-pale-ale/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "chios-alos",
+      "name": "Άλως",
+      "style": "Pale Ale",
+      "styleFamily": "pale-ale-ipa",
+      "abv": 7.0,
+      "color": "pale",
+      "description": "Δυνατή θολή ale με αρωματικούς λυκίσκους, για να συνοδεύει φαγητό.",
+      "source": "https://chiosbeer.gr/cb/shop/alos12bottles/",
+      "lastVerified": "2026-10-23"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "id": "mikonu",
+  "name": "Mikonu",
+  "city": "Μύκονος",
+  "region": "south-aegean",
+  "kind": "microbrewery",
+  "founded": null,
+  "latitude": 37.462,
+  "longitude": 25.323,
+  "description": "Η Mykonos Brewing Company φτιάχνει τις μπύρες Mikonu, που κυκλοφορούν κυρίως στη Μύκονο. Έχει taproom στον Τούρλο με γευσιγνωσίες, και μια σειρά που ωριμάζει σε βαρέλια ελληνικού κρασιού και αποσταγμάτων.",
+  "imageNames": [],
+  "website": "https://mikonu.gr/",
+  "visitable": true,
+  "source": "https://mikonu.gr/beers/coreSeries",
+  "lastVerified": "2026-10-23",
+  "beers": [
+    {
+      "id": "mikonu-fragosko",
+      "name": "Fragos'ko",
+      "style": "Δεν δηλώνεται",
+      "styleFamily": "specialty"
+    },
+    {
+      "id": "mikonu-blonde-saison",
+      "name": "Blonde Saison",
+      "style": "Saison",
+      "styleFamily": "belgian",
+      "color": "pale"
+    },
+    {
+      "id": "mikonu-bohemian-pilsner",
+      "name": "Bohemian Pilsner",
+      "style": "Bohemian Pilsner",
+      "styleFamily": "pilsner",
+      "color": "pale"
+    },
+    {
+      "id": "mikonu-fresh-lager",
+      "name": "Fresh Lager",
+      "style": "Lager",
+      "styleFamily": "lager",
+      "color": "pale"
+    },
+    {
+      "id": "mikonu-ipa",
+      "name": "Mikonu IPA",
+      "style": "India Pale Ale",
+      "styleFamily": "pale-ale-ipa"
+    }
+  ]
+}

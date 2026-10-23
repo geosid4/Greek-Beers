@@ -1,0 +1,85 @@
+{
+  "id": "santorini-brewing",
+  "name": "Santorini Brewing Company",
+  "city": "Σαντορίνη",
+  "region": "south-aegean",
+  "kind": "microbrewery",
+  "founded": 2011,
+  "latitude": 36.3755,
+  "longitude": 25.4727,
+  "description": "Ζυθοποιία στη Μέσα Γωνιά της Σαντορίνης, γνωστή για τη σειρά Donkey. Όλες οι μπύρες της είναι αφιλτράριστες και απαστερίωτες, και κάποιες κυκλοφορίες πωλούνται μόνο στο κατάστημα της ζυθοποιίας.",
+  "imageNames": [],
+  "website": "https://santorinibrewingcompany.gr/",
+  "visitable": true,
+  "source": "https://santorinibrewingcompany.gr/beers",
+  "lastVerified": "2026-10-23",
+  "beers": [
+    {
+      "id": "santorini-yellow-donkey",
+      "name": "Yellow Donkey",
+      "style": "Pale Ale",
+      "styleFamily": "pale-ale-ipa",
+      "abv": 5.0,
+      "ibu": 19,
+      "filtered": false,
+      "description": "Η πιο γνωστή μπύρα της ζυθοποιίας, ξανθιά pale ale με αρώματα εσπεριδοειδών."
+    },
+    {
+      "id": "santorini-red-donkey",
+      "name": "Red Donkey",
+      "style": "Amber Ale",
+      "styleFamily": "amber-red",
+      "abv": 5.5,
+      "ibu": 26,
+      "color": "amber",
+      "filtered": false,
+      "description": "Καστανή amber ale από καβουρδισμένες βύνες, με μαγιά βελγικού τύπου."
+    },
+    {
+      "id": "santorini-crazy-donkey",
+      "name": "Crazy Donkey",
+      "style": "India Pale Ale",
+      "styleFamily": "pale-ale-ipa",
+      "abv": 5.8,
+      "ibu": 60,
+      "filtered": false,
+      "description": "Η ζυθοποιία τη χαρακτηρίζει την πρώτη IPA που φτιάχτηκε στην Ελλάδα, το 2013."
+    },
+    {
+      "id": "santorini-white-donkey",
+      "name": "White Donkey",
+      "style": "Weissbier",
+      "styleFamily": "wheat",
+      "abv": 5.2,
+      "ibu": 19,
+      "filtered": false,
+      "description": "Εποχική μπύρα σίτου από ίσα μέρη σίτου και κριθαριού, σε μικρές παρτίδες."
+    },
+    {
+      "id": "santorini-slow-donkey",
+      "name": "Slow Donkey",
+      "style": "Barrel-aged Pale Ale",
+      "styleFamily": "pale-ale-ipa",
+      "abv": 9.0,
+      "ibu": 40,
+      "filtered": false,
+      "localIngredients": [
+        "μούστος Ασύρτικο"
+      ],
+      "tags": [
+        "barrel-aged"
+      ],
+      "description": "Δυνατή ale που ωριμάζει 10–14 μήνες σε βαρέλια Βινσάντο ή ρακής, με μούστο Ασύρτικο. Πωλείται μόνο στη ζυθοποιία."
+    },
+    {
+      "id": "santorini-lazy-ass",
+      "name": "Lazy Ass",
+      "style": "Lager",
+      "styleFamily": "lager",
+      "abv": 5.0,
+      "ibu": 15,
+      "filtered": false,
+      "description": "Η μόνη lager της σειράς, αφιλτράριστη με dry hopping."
+    }
+  ]
+}

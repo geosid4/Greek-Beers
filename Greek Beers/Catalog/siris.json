@@ -1,0 +1,182 @@
+{
+  "id": "siris",
+  "name": "Siris Craft Brewery",
+  "city": "Σέρρες",
+  "region": "central-macedonia",
+  "kind": "microbrewery",
+  "founded": null,
+  "latitude": 41.05,
+  "longitude": 23.49,
+  "description": "Μικροζυθοποιία στο 6ο χιλιόμετρο της εθνικής οδού Σερρών – Θεσσαλονίκης. Φτιάχνει δύο σειρές: την κλασική VOREIA, με Pilsner που βραβεύτηκε ως Top Lager στα Greek Beer Awards 2024, και την πειραματική Happy Brewers με hoppy lager και IPA.",
+  "imageNames": [],
+  "website": "https://www.sirisbrewery.com/",
+  "visitable": true,
+  "brands": [
+    {
+      "id": "voreia",
+      "name": "VOREIA",
+      "website": "https://voreiabeer.com/"
+    },
+    {
+      "id": "happy-brewers",
+      "name": "Happy Brewers",
+      "website": "https://www.sirisbrewery.com/happy-brewers/"
+    }
+  ],
+  "source": "https://www.sirisbrewery.com/",
+  "lastVerified": "2026-10-23",
+  "beers": [
+    {
+      "id": "siris-voreia-pilsner",
+      "brandId": "voreia",
+      "name": "VOREIA Pilsner",
+      "style": "Pilsner",
+      "styleFamily": "pilsner",
+      "abv": 4.5,
+      "color": "pale",
+      "description": "Διαυγής χρυσή pilsner με αρώματα λουλουδιών και εσπεριδοειδών, Top Lager στα Greek Beer Awards 2024.",
+      "source": "https://voreiabeer.com/oi-byres-mas/voreia-pilsner-beer/"
+    },
+    {
+      "id": "siris-voreia-ipa",
+      "brandId": "voreia",
+      "name": "VOREIA IPA",
+      "style": "India Pale Ale",
+      "styleFamily": "pale-ale-ipa",
+      "abv": 6.0,
+      "color": "amber",
+      "description": "Κεχριμπαρένια IPA με αμερικανικό λυκίσκο και αρώματα εσπεριδοειδών και πεύκου.",
+      "source": "https://voreiabeer.com/oi-byres-mas/voreia-ipa-beer/"
+    },
+    {
+      "id": "siris-voreia-stout",
+      "brandId": "voreia",
+      "name": "VOREIA Stout",
+      "style": "Stout",
+      "styleFamily": "dark",
+      "abv": 6.2,
+      "color": "dark",
+      "filtered": false,
+      "localIngredients": [
+        "ελληνικό κριθάρι"
+      ],
+      "description": "Αφιλτράριστη σοκολατένια stout από έξι βύνες, χάλκινο μετάλλιο στο Brussels Beer Challenge 2015.",
+      "source": "https://voreiabeer.com/oi-byres-mas/voreia-stout-beer/"
+    },
+    {
+      "id": "siris-voreia-wit",
+      "brandId": "voreia",
+      "name": "VOREIA Wit",
+      "style": "Witbier",
+      "styleFamily": "wheat",
+      "abv": 5.5,
+      "color": "pale",
+      "localIngredients": [
+        "ελληνικό σιτάρι"
+      ],
+      "description": "Δροσερή μπύρα σίτου με κόλιανδρο και πορτοκάλι.",
+      "source": "https://voreiabeer.com/oi-byres-mas/voreia-wit-beer/"
+    },
+    {
+      "id": "siris-voreia-smoked-amber",
+      "brandId": "voreia",
+      "name": "VOREIA Smoked Amber Ale",
+      "style": "Smoked Amber Ale",
+      "styleFamily": "amber-red",
+      "abv": 7.0,
+      "color": "amber",
+      "tags": [
+        "smoked"
+      ],
+      "description": "Καπνιστή κεχριμπαρένια ale με σίκαλη και καραμελωμένες βύνες βελγικού τύπου.",
+      "source": "https://voreiabeer.com/oi-byres-mas/voreia-smoked-amber-ale/"
+    },
+    {
+      "id": "siris-voreia-imperial-porter",
+      "brandId": "voreia",
+      "name": "VOREIA Imperial Porter",
+      "style": "Imperial Porter",
+      "styleFamily": "dark",
+      "abv": 8.5,
+      "color": "amber",
+      "tags": [
+        "spiced"
+      ],
+      "description": "Δυνατή porter με κανέλα, βανίλια, κάρδαμο, τόνκα, παλαιωμένο ρούμι και καφέ.",
+      "source": "https://voreiabeer.com/oi-byres-mas/voreia-imperial-porter-beer/"
+    },
+    {
+      "id": "siris-voreia-low-alcohol",
+      "brandId": "voreia",
+      "name": "VOREIA Low Alcohol",
+      "style": "Low Alcohol Pale Ale",
+      "styleFamily": "pale-ale-ipa",
+      "abv": 0.8,
+      "color": "pale",
+      "description": "Pale ale με μόλις 0,8% αλκοόλ που κρατά γεμάτο σώμα και φρουτώδη αρώματα λυκίσκου.",
+      "source": "https://voreiabeer.com/oi-byres-mas/voreia-low-alcohol-beer/"
+    },
+    {
+      "id": "siris-voreia-irish-red",
+      "brandId": "voreia",
+      "name": "VOREIA Irish Red",
+      "style": "Irish Red Ale",
+      "styleFamily": "amber-red",
+      "abv": 5.2,
+      "color": "amber",
+      "description": "Κόκκινη ale με νότες καραμέλας, μπισκότου, σοκολάτας και αμυγδάλου.",
+      "source": "https://voreiabeer.com/oi-byres-mas/voreia-irish-red/"
+    },
+    {
+      "id": "siris-voreia-lager",
+      "brandId": "voreia",
+      "name": "VOREIA Lager",
+      "style": "Bohemian Lager",
+      "styleFamily": "lager",
+      "abv": 4.5,
+      "color": "pale",
+      "description": "Ανοιχτόξανθη βοημική lager με τσέχικο λυκίσκο Saaz.",
+      "source": "https://voreiabeer.com/oi-byres-mas/voreia-lager-beer/"
+    },
+    {
+      "id": "siris-voreia-session-pale-ale",
+      "brandId": "voreia",
+      "name": "VOREIA Session Pale Ale",
+      "style": "Session Pale Ale",
+      "styleFamily": "pale-ale-ipa",
+      "abv": 4.8,
+      "color": "pale",
+      "description": "Ελαφριά pale ale με αρώματα εσπεριδοειδών και τροπικών φρούτων.",
+      "source": "https://voreiabeer.com/oi-byres-mas/voreia-session-pale-ale/"
+    },
+    {
+      "id": "siris-happy-hoppy-lager",
+      "brandId": "happy-brewers",
+      "name": "Hoppy Lager",
+      "style": "Hoppy Lager",
+      "styleFamily": "lager",
+      "description": "Lager με λυκίσκους Huell Melon και Vic Secret και dry hopping, με αρώματα πεπονιού και ανανά.",
+      "source": "https://www.sirisbrewery.com/happy-brewers/"
+    },
+    {
+      "id": "siris-happy-east-coast-ipa",
+      "brandId": "happy-brewers",
+      "name": "East Coast IPA",
+      "style": "East Coast IPA",
+      "styleFamily": "pale-ale-ipa",
+      "abv": 5.2,
+      "ibu": 60,
+      "description": "IPA με Mosaic, Centennial και El Dorado, με αρώματα ροδάκινου, μάνγκο και μούρων.",
+      "source": "https://www.sirisbrewery.com/happy-brewers/"
+    },
+    {
+      "id": "siris-happy-neipa",
+      "brandId": "happy-brewers",
+      "name": "New England IPA",
+      "style": "New England IPA",
+      "styleFamily": "pale-ale-ipa",
+      "description": "Θολή NEIPA με Sabro και Idaho 7 και χαμηλή πικράδα.",
+      "source": "https://www.sirisbrewery.com/happy-brewers/"
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "id": "septem",
+  "name": "Septem",
+  "city": "Χαλκίδα",
+  "region": "central-greece",
+  "kind": "microbrewery",
+  "founded": 2009,
+  "latitude": 38.46237,
+  "longitude": 23.59469,
+  "description": "Στο Ωρολόγιο Εύβοιας, δημιουργήθηκε από τον χημικό – οινολόγο Σοφοκλή Παναγιώτου και τον οικονομολόγο Γεώργιο Παναγιώτου η πρότυπη Μικροζυθοποιία Septem, η οποία ξεκίνησε τον Ιούνιο του 2009, τη διάθεση φρέσκιας, μη παστεριωμένης μπύρας. Στα λατινικά σημαίνει επτά, που είναι ο αριθμός της δημιουργίας! Aποτέλεσε έμπνευση για εμάς, καθώς κάθε τύπος μπύρας φέρει το όνομα μιας διαφορετικής ημέρας.",
+  "imageNames": [
+    "septem"
+  ],
+  "website": "https://septem.gr/",
+  "visitable": null,
+  "source": "https://septem.gr/",
+  "lastVerified": null,
+  "beers": [
+    {
+      "id": "septem-mylos",
+      "name": "Mylos 1888",
+      "style": "Heretic Lager",
+      "styleFamily": "lager",
+      "abv": 4.6,
+      "ibu": 12,
+      "color": "pale",
+      "filtered": true,
+      "description": "Lager με χαμηλή πικράδα και φρουτώδη αρώματα από dry hopping.",
+      "source": "https://septem.gr/s-beers-mylos.html",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "septem-mondays",
+      "name": "Monday's",
+      "style": "Pilsner",
+      "styleFamily": "pilsner",
+      "abv": 5.0,
+      "ibu": 27,
+      "color": "pale",
+      "filtered": true,
+      "description": "Χρυσή pilsner με έντονα αρώματα λουλουδιών, εσπεριδοειδών και λυκίσκου.",
+      "source": "https://septem.gr/s-beers-monday.html",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "septem-wday",
+      "name": "Wday",
+      "style": "Wheat IPA",
+      "styleFamily": "pale-ale-ipa",
+      "abv": 6.0,
+      "ibu": 45,
+      "filtered": false,
+      "description": "Η πρώτη ελληνική wheat IPA, με τροπικά αρώματα λυκίσκου.",
+      "source": "https://septem.gr/s-beers-wday.html",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "septem-thursdays",
+      "name": "Thursday's",
+      "style": "Irish Red Ale",
+      "styleFamily": "amber-red",
+      "abv": 5.0,
+      "ibu": 23,
+      "color": "amber",
+      "filtered": true,
+      "description": "Κόκκινη ale με νότες καραμέλας και καβουρδισμένων ξηρών καρπών.",
+      "source": "https://septem.gr/s-beers-thursday.html",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "septem-fridays",
+      "name": "Friday's",
+      "style": "Pale Ale",
+      "styleFamily": "pale-ale-ipa",
+      "abv": 4.7,
+      "ibu": 31,
+      "color": "amber",
+      "filtered": true,
+      "description": "Χρυσοχάλκινη pale ale με τσέχικο και νεοζηλανδέζικο λυκίσκο.",
+      "source": "https://septem.gr/s-beers-friday.html",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "septem-saturdays",
+      "name": "Saturday's",
+      "style": "Porter",
+      "styleFamily": "dark",
+      "abv": 5.5,
+      "ibu": 30,
+      "color": "dark",
+      "filtered": true,
+      "description": "Μαύρη porter από πέντε βύνες και αγγλικό λυκίσκο Fuggles.",
+      "source": "https://septem.gr/s-beers-saturday.html",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "septem-sundays",
+      "name": "Sunday's",
+      "style": "Honey Golden Ale",
+      "styleFamily": "pale-ale-ipa",
+      "abv": 6.5,
+      "ibu": 27,
+      "color": "pale",
+      "filtered": true,
+      "tags": [
+        "honey"
+      ],
+      "description": "Χρυσή ale διπλής ζύμωσης με μέλι ανθέων.",
+      "source": "https://septem.gr/s-beers-sunday.html",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "septem-8th-day",
+      "name": "8th Day",
+      "style": "India Pale Ale",
+      "styleFamily": "pale-ale-ipa",
+      "abv": 7.0,
+      "ibu": 65,
+      "filtered": false,
+      "description": "Δυνατή IPA με αμερικανικούς λυκίσκους Mosaic, Citra και Simcoe.",
+      "source": "https://septem.gr/s-beers-8thday.html",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "septem-quaranta-giorni",
+      "name": "Quaranta Giorni",
+      "style": "New England IPA",
+      "styleFamily": "pale-ale-ipa",
+      "abv": 5.9,
+      "description": "Θολή NEIPA με αρώματα ροδάκινου, μάνγκο και εσπεριδοειδών, χαμηλή πικράδα.",
+      "source": "https://septem.gr/s-beers-giorni.html",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "septem-dilemma",
+      "name": "Dilemma",
+      "style": "Barley Wine Barrel Aged",
+      "styleFamily": "strong-ale",
+      "abv": 10.9,
+      "ibu": 75,
+      "color": "amber",
+      "tags": [
+        "barrel-aged"
+      ],
+      "description": "Barley wine που ωριμάζει οκτώ μήνες σε δρύινα βαρέλια.",
+      "source": "https://septem.gr/s-beers-dilemma.html",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "septem-kleos",
+      "name": "Κλέος",
+      "style": "Imperial Stout Barrel Aged",
+      "styleFamily": "dark",
+      "abv": 10.3,
+      "ibu": 78,
+      "color": "dark",
+      "filtered": false,
+      "tags": [
+        "barrel-aged"
+      ],
+      "description": "Imperial stout που ωριμάζει οκτώ μήνες σε δρύινα βαρέλια ρουμιού και ουίσκι.",
+      "source": "https://septem.gr/s-beers-kleos.html",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "septem-lava",
+      "name": "Lava",
+      "style": "Imperial Red IPA",
+      "styleFamily": "pale-ale-ipa",
+      "abv": 9.0,
+      "ibu": 80,
+      "color": "amber",
+      "filtered": false,
+      "description": "Δυνατή κόκκινη IPA, η πρώτη ελληνική του στυλ, με βραβεία.",
+      "source": "https://septem.gr/s-beers-lava.html",
+      "lastVerified": "2026-10-23"
+    }
+  ]
+}

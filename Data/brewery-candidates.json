@@ -1,20 +1,9 @@
 {
-  "about": "Greek Breweries — Master Candidate List. Breweries we know of but have not verified. A brewery moves to Greek Beers/Resources/breweries.json once its own website or recent products confirm it is active. Membership of a list is not verification.",
+  "about": "Greek Breweries — Master Candidate List. Breweries we know of but have not verified. A brewery moves to Greek Beers/Catalog/<id>.json once its own website or recent products confirm it is active. Membership of a list is not verification. Check with: python3 Scripts/validate_catalog.py",
   "statuses": {
     "unverified": "Known from a list, not yet checked",
     "inactive": "Checked: closed, or no sign of activity"
   },
-  "alreadyVerified": [
-    "chios",
-    "corfu",
-    "mikonu",
-    "nissos",
-    "santorini-brewing",
-    "septem",
-    "siris",
-    "vambeer",
-    "vergina"
-  ],
   "candidates": [
     {
       "id": "athinaiki-zythopoiia",

@@ -1,0 +1,122 @@
+{
+  "id": "corfu",
+  "name": "Corfu Beer",
+  "city": "Κέρκυρα",
+  "region": "ionian-islands",
+  "kind": "microbrewery",
+  "founded": 2006,
+  "latitude": 39.623777,
+  "longitude": 19.921086,
+  "description": "Η Κερκυραϊκή ζυθοποιία ιδρύθηκε το 2006 στην Κέρκυρα. Στόχος της να επενδύσει σε καινοτόμα προϊόντα με σεβασμό στις παραδόσεις και στον πολιτισμό του τόπου. Όραμά της να αριστεύσει στο επιχειρηματικό, κοινωνικό και πολιτιστικό έργο που έχει αναλάβει. Ακολουθώντας πάντα τις αξίες της εταιρίας, όπως καινοτομία, ποιότητα, εμπειρία, παράδοση και υπερηφάνεια για τον τόπο της.",
+  "imageNames": [
+    "corfu"
+  ],
+  "website": "https://corfubeer.com/",
+  "visitable": null,
+  "source": "https://corfubeer.com/",
+  "lastVerified": null,
+  "beers": [
+    {
+      "id": "corfu-red-ale",
+      "name": "Corfu Red Ale Special",
+      "style": "Red Ale",
+      "styleFamily": "amber-red",
+      "abv": 5.0,
+      "color": "amber",
+      "description": "Κόκκινη ale με νότες καραμέλας, εσπεριδοειδών και λουλουδιών.",
+      "source": "https://corfubeer.com/products/corfu-beer/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "corfu-dark-ale",
+      "name": "Corfu Dark Ale",
+      "style": "Dark Ale",
+      "styleFamily": "dark",
+      "abv": 5.0,
+      "color": "dark",
+      "description": "Σκούρα ale με γεύσεις σοκολάτας, καραμέλας και καφέ.",
+      "source": "https://corfubeer.com/products/corfu-beer/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "corfu-ipa",
+      "name": "Corfu IPA",
+      "style": "India Pale Ale",
+      "styleFamily": "pale-ale-ipa",
+      "abv": 6.2,
+      "filtered": false,
+      "description": "Γεμάτη IPA διπλής ζύμωσης με αρώματα εσπεριδοειδών και τροπικών φρούτων.",
+      "source": "https://corfubeer.com/products/corfu-beer/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "corfu-amorosa-weiss",
+      "name": "Amorosa Weiss",
+      "style": "Weiss",
+      "styleFamily": "wheat",
+      "abv": 5.6,
+      "description": "Μπύρα σίτου με νότες γαρίφαλου, μπανάνας και βανίλιας.",
+      "source": "https://corfubeer.com/products/corfu-beer/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "corfu-epos",
+      "name": "Έπος",
+      "style": "Ale διπλής ζύμωσης με μέλι",
+      "styleFamily": "specialty",
+      "abv": 7.5,
+      "tags": [
+        "honey"
+      ],
+      "description": "Δυνατή μπύρα με μέλι ανθέων, εμπνευσμένη από την Οδύσσεια.",
+      "source": "https://corfubeer.com/products/corfu-beer/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "corfu-pilsner",
+      "name": "Corfu Pilsner",
+      "style": "Pilsner",
+      "styleFamily": "pilsner",
+      "abv": 5.0,
+      "color": "pale",
+      "description": "Διαυγής ξανθιά pilsner με γεμάτο σώμα και έντονο άρωμα λυκίσκου.",
+      "source": "https://corfubeer.com/products/corfu-beer/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "corfu-cellar-15",
+      "name": "Cellar 15",
+      "style": "Φρέσκια αφιλτράριστη",
+      "styleFamily": "specialty",
+      "abv": 5.0,
+      "filtered": false,
+      "description": "Ζωντανή μπύρα που διαρκεί 15 μέρες και πωλείται μόνο σε επιλεγμένα σημεία.",
+      "source": "https://corfubeer.com/products/corfu-beer/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "corfu-lager",
+      "name": "Corfu Lager",
+      "style": "Lager",
+      "styleFamily": "lager",
+      "abv": 4.5,
+      "color": "pale",
+      "description": "Ελαφριά, δροσερή lager από τέσσερις βύνες κριθαριού.",
+      "source": "https://corfubeer.com/products/corfu-beer/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "corfu-royal-ionian-radler",
+      "name": "Royal Ionian Radler",
+      "style": "Radler",
+      "styleFamily": "lager",
+      "abv": 2.0,
+      "tags": [
+        "fruit"
+      ],
+      "description": "Ελαφριά μπύρα με χυμό λεμονιού, φυσικά θολή.",
+      "source": "https://corfubeer.com/products/royal-ionnian/",
+      "lastVerified": "2026-10-23"
+    }
+  ]
+}

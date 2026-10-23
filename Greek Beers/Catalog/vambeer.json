@@ -1,0 +1,45 @@
+{
+  "id": "vambeer",
+  "name": "Vambeer",
+  "city": "Κατερίνη",
+  "region": "central-macedonia",
+  "kind": "microbrewery",
+  "founded": null,
+  "latitude": 40.280559,
+  "longitude": 22.50584,
+  "description": "Ακροβατώντας ανάμεσα στο μυθικό βουνό του Ολύμπου και την πλούσια ιστορία του τόπου μας βρισκόμαστε στο ιδανικό σκηνικό για να δημιουργήσουμε μοναδικό ελληνικό ζύθο. Η αγάπη για αυθεντικές γεύσεις και η βαθιά γνώση μας για τα φρέσκα προϊόντα, μας ώθησε στην παραγωγή φρέσκιας μπύρας και στη δημιουργία της μικροζυθοποιίας μας. Παράγουμε με μεράκι αφιλτράριστη, απαστερίωτη ελληνική μπύρα, χωρίς πρόσθετα και χωρίς συντηρητικά.",
+  "imageNames": [
+    "vambeer"
+  ],
+  "website": "https://vambeer.gr",
+  "visitable": null,
+  "source": "https://vambeer.gr",
+  "lastVerified": null,
+  "beers": [
+    {
+      "id": "vambeer-pils",
+      "name": "Vambeer Pils",
+      "style": "Pilsner",
+      "styleFamily": "pilsner",
+      "color": "amber",
+      "filtered": false,
+      "description": "Αφιλτράριστη pilsner με αργή ζύμωση πολλών εβδομάδων.",
+      "source": "https://vambeer.gr/project/pilsner/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "vambeer-lager",
+      "name": "Vambeer Lager",
+      "style": "Lager",
+      "styleFamily": "lager",
+      "color": "pale",
+      "filtered": false,
+      "localIngredients": [
+        "ελληνικό κριθάρι"
+      ],
+      "description": "Αφιλτράριστη lager από ελληνικό κριθάρι, με νότες εσπεριδοειδών.",
+      "source": "https://vambeer.gr/project/beers/",
+      "lastVerified": "2026-10-23"
+    }
+  ]
+}

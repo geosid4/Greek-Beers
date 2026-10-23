@@ -1,0 +1,159 @@
+{
+  "id": "vergina",
+  "name": "Βεργίνα",
+  "city": "Κομοτηνή",
+  "region": "eastern-macedonia-thrace",
+  "kind": "microbrewery",
+  "founded": 1996,
+  "latitude": 41.122439,
+  "longitude": 25.406558,
+  "description": "Η αγάπη του Δημήτρη Πολιτόπουλου για καλή μπύρα και την Ελλάδα δημιούργησαν τη Ζυθοποιία Μακεδονίας Θράκης την 1η Φεβρουαρίου 1996. H εμφιάλωση της πρώτης μπύρας ΒΕΡΓΙΝΑ έγινε στις 13 Φεβρουαρίου 1998 και σήμανε την έναρξη της επανάστασης της ανεξάρτητης μικροζυθοποιίας στην Ελλάδα.",
+  "imageNames": [
+    "vergina"
+  ],
+  "website": "https://www.verginabeer.com/",
+  "visitable": null,
+  "source": "https://www.verginabeer.com/",
+  "lastVerified": null,
+  "beers": [
+    {
+      "id": "vergina-lager",
+      "name": "Βεργίνα Lager",
+      "style": "Premium Lager",
+      "styleFamily": "lager",
+      "abv": 5.0,
+      "ibu": 18,
+      "ibuMax": 22,
+      "color": "pale",
+      "localIngredients": [
+        "βύνη Θράκης"
+      ],
+      "description": "Η κλασική χρυσόξανθη lager της Βεργίνας, με 100% βύνη Θράκης.",
+      "source": "https://www.verginabeer.com/beer/vergina-lager/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "vergina-red",
+      "name": "Βεργίνα Red",
+      "style": "Red Amber Lager",
+      "styleFamily": "lager",
+      "abv": 5.8,
+      "ibu": 23,
+      "ibuMax": 27,
+      "color": "amber",
+      "localIngredients": [
+        "βύνη Θράκης"
+      ],
+      "description": "Κόκκινη lager με καβουρδισμένες και καραμελωμένες βύνες.",
+      "source": "https://www.verginabeer.com/beer/vergina-red/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "vergina-weiss",
+      "name": "Βεργίνα Weiss",
+      "style": "Hefeweizen",
+      "styleFamily": "wheat",
+      "abv": 5.4,
+      "ibu": 14,
+      "ibuMax": 16,
+      "color": "amber",
+      "localIngredients": [
+        "βύνη Θράκης"
+      ],
+      "description": "Θολή μπύρα σίτου με αρώματα γαρίφαλου και μπανάνας, πολυβραβευμένη.",
+      "source": "https://www.verginabeer.com/beer/vergina-weiss/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "vergina-strong",
+      "name": "Βεργίνα Strong Lager",
+      "style": "Unfiltered Strong Lager",
+      "styleFamily": "lager",
+      "abv": 6.3,
+      "ibu": 18,
+      "ibuMax": 22,
+      "color": "pale",
+      "filtered": false,
+      "localIngredients": [
+        "βύνη Θράκης"
+      ],
+      "description": "Αφιλτράριστη δυνατή lager σε περιορισμένη έκδοση.",
+      "source": "https://www.verginabeer.com/beer/strong-lager/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "vergina-black",
+      "name": "Βεργίνα Black",
+      "style": "Dry Stout",
+      "styleFamily": "dark",
+      "abv": 5.5,
+      "ibu": 25,
+      "ibuMax": 27,
+      "color": "dark",
+      "filtered": false,
+      "localIngredients": [
+        "βύνη Θράκης"
+      ],
+      "description": "Αφιλτράριστη ξηρή stout με καβουρδισμένες βύνες.",
+      "source": "https://www.verginabeer.com/beer/vergina-black/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "vergina-alcohol-free",
+      "name": "Βεργίνα Alcohol Free",
+      "style": "Lager χωρίς αλκοόλ",
+      "styleFamily": "lager",
+      "abv": 0.4,
+      "ibu": 17,
+      "ibuMax": 19,
+      "color": "pale",
+      "localIngredients": [
+        "βύνη Θράκης"
+      ],
+      "description": "Η συνταγή της Βεργίνα Lager με ειδική μαγιά που κρατά το αλκοόλ στο 0,4%.",
+      "source": "https://www.verginabeer.com/beer/alcohol-free/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "vergina-honey-spice",
+      "name": "Βεργίνα Honey & Spice",
+      "style": "Ale διπλής ζύμωσης",
+      "styleFamily": "belgian",
+      "abv": 9.0,
+      "ibu": 16,
+      "ibuMax": 19,
+      "color": "pale",
+      "filtered": false,
+      "localIngredients": [
+        "βύνη Θράκης"
+      ],
+      "tags": [
+        "honey",
+        "spiced"
+      ],
+      "description": "Δυνατή ale διπλής ζύμωσης με θυμαρίσιο μέλι, περγαμόντο και ροζ πιπέρι.",
+      "source": "https://www.verginabeer.com/beer/vergina-honey-spice/",
+      "lastVerified": "2026-10-23"
+    },
+    {
+      "id": "vergina-radler",
+      "name": "Βεργίνα Radler",
+      "style": "Radler",
+      "styleFamily": "lager",
+      "abv": 2.0,
+      "ibu": 8,
+      "ibuMax": 12,
+      "color": "pale",
+      "localIngredients": [
+        "βύνη Θράκης"
+      ],
+      "tags": [
+        "fruit",
+        "honey"
+      ],
+      "description": "Ελαφριά μπύρα με λεμόνι, μέλι και λεμονόχορτο.",
+      "source": "https://www.verginabeer.com/beer/vergina-radler/",
+      "lastVerified": "2026-10-23"
+    }
+  ]
+}
