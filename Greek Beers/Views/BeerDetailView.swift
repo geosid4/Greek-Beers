@@ -3,6 +3,7 @@
 //  Zythos
 //
 
+import SwiftData
 import SwiftUI
 
 struct BeerDetailView: View {
@@ -10,13 +11,22 @@ struct BeerDetailView: View {
     @Environment(BeersViewModel.self) private var vm
     @Environment(BreweriesViewModel.self) private var breweriesVM
     @Environment(AppRouter.self) private var router
+    @Environment(\.modelContext) private var modelContext
+    @Query private var logs: [BeerLog]
 
     let beer: Beer
+
+    @State private var notesDraft = ""
+
+    private var log: BeerLog? {
+        logs.first { $0.beerId == beer.id }
+    }
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 header
+                journal
                 if let brewery = vm.brewery(for: beer) {
                     breweryCard(brewery)
                 }
@@ -33,6 +43,17 @@ struct BeerDetailView: View {
         }
         .navigationTitle(beer.name)
         .navigationBarTitleDisplayMode(.inline)
+        .scrollDismissesKeyboard(.interactively)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                FavoriteButton(isFavorite: log?.isFavorite == true) {
+                    modelContext.updateLog(for: beer) { $0.isFavorite.toggle() }
+                }
+            }
+        }
+        .onAppear {
+            notesDraft = log?.notes ?? ""
+        }
     }
 }
 
@@ -43,6 +64,7 @@ struct BeerDetailView: View {
     .environment(BeersViewModel())
     .environment(BreweriesViewModel())
     .environment(AppRouter())
+    .modelContainer(for: [BeerLog.self, BreweryLog.self], inMemory: true)
 }
 
 extension BeerDetailView {
@@ -60,6 +82,55 @@ extension BeerDetailView {
                     .foregroundStyle(.secondary)
             }
         }
+    }
+
+    // The user's own record: tried, stars and notes
+    private var journal: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Button {
+                modelContext.updateLog(for: beer) { log in
+                    if log.isTried {
+                        // Stars only make sense for a beer you've tried
+                        log.triedAt = nil
+                        log.rating = nil
+                    } else {
+                        log.triedAt = .now
+                    }
+                }
+            } label: {
+                Label(triedTitle, systemImage: log?.isTried == true ? "checkmark.circle.fill" : "circle")
+                    .font(.headline)
+                    .foregroundStyle(log?.isTried == true ? Color.green : Color.primary)
+                    .contentTransition(.symbolEffect(.replace))
+            }
+            .buttonStyle(.plain)
+
+            StarRating(rating: log?.rating) { rating in
+                modelContext.updateLog(for: beer) { log in
+                    log.rating = rating
+                    if rating != nil && log.triedAt == nil {
+                        log.triedAt = .now
+                    }
+                }
+            }
+
+            TextField("Οι σημειώσεις σου", text: $notesDraft, axis: .vertical)
+                .lineLimit(2...6)
+                .padding(10)
+                .background(.background, in: .rect(cornerRadius: 10))
+                .onChange(of: notesDraft) {
+                    guard notesDraft != (log?.notes ?? "") else { return }
+                    modelContext.updateLog(for: beer) { $0.notes = notesDraft }
+                }
+        }
+        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(.quaternary.opacity(0.5), in: .rect(cornerRadius: 14))
+    }
+
+    private var triedTitle: String {
+        guard let triedAt = log?.triedAt else { return "Το δοκίμασα" }
+        return "Δοκιμάστηκε \(triedAt.formatted(date: .abbreviated, time: .omitted))"
     }
 
     private func breweryCard(_ brewery: Brewery) -> some View {

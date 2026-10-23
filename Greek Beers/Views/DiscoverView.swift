@@ -45,6 +45,7 @@ struct DiscoverView: View {
 #Preview {
     DiscoverView()
         .environment(BreweriesViewModel())
+        .modelContainer(for: [BeerLog.self, BreweryLog.self], inMemory: true)
 }
 
 extension DiscoverView {

@@ -39,9 +39,7 @@ struct RootView: View {
                 .tabItem { Label("Μπύρες", systemImage: "mug") }
                 .tag(AppTab.beers)
 
-            // Filled in by My Beer Journey
-            ContentUnavailableView("Σύντομα", systemImage: "medal",
-                                   description: Text("Οι μπύρες που δοκίμασες και το Beer Passport σου."))
+            JourneyView()
                 .tabItem { Label("Journey", systemImage: "medal") }
                 .tag(AppTab.journey)
         }
@@ -53,4 +51,5 @@ struct RootView: View {
         .environment(BreweriesViewModel())
         .environment(BeersViewModel())
         .environment(AppRouter())
+        .modelContainer(for: [BeerLog.self, BreweryLog.self], inMemory: true)
 }

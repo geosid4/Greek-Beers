@@ -5,6 +5,7 @@
 //  Created by George Sidiropoulos on 11/7/23.
 //
 
+import SwiftData
 import SwiftUI
 
 @main
@@ -21,5 +22,7 @@ struct ZythosApp: App {
                 .environment(beers)
                 .environment(router)
         }
+        // The user's own records; the catalog itself stays in the bundled JSON
+        .modelContainer(for: [BeerLog.self, BreweryLog.self])
     }
 }

@@ -7,16 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A7E00000000000000000015 /* SharedComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000014 /* SharedComponents.swift */; };
-		5A7E00000000000000000013 /* BeersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000012 /* BeersViewModel.swift */; };
-		5A7E00000000000000000011 /* BeerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000010 /* BeerDetailView.swift */; };
-		5A7E0000000000000000000F /* BeersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E0000000000000000000E /* BeersView.swift */; };
-		5A7E0000000000000000000D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E0000000000000000000C /* RootView.swift */; };
-		5A7E0000000000000000000B /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E0000000000000000000A /* BottomSheet.swift */; };
-		5A7E00000000000000000009 /* BeerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000008 /* BeerRowView.swift */; };
-		5A7E00000000000000000002 /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000001 /* Beer.swift */; };
-		5A7E00000000000000000004 /* breweries.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000003 /* breweries.json */; };
-		5A7E00000000000000000006 /* beers.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000005 /* beers.json */; };
+		5A7E00000000000000000019 /* JourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000018 /* JourneyView.swift */; };
+		5A7E00000000000000000017 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000016 /* UserData.swift */; };
 		266FCA6E2A5DA3B30085D145 /* ZythosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266FCA6D2A5DA3B30085D145 /* ZythosApp.swift */; };
 		266FCA722A5DA3B40085D145 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 266FCA712A5DA3B40085D145 /* Assets.xcassets */; };
 		266FCA752A5DA3B40085D145 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 266FCA742A5DA3B40085D145 /* Preview Assets.xcassets */; };
@@ -28,19 +20,21 @@
 		26864BE12A5FC41F00B96DD4 /* BreweryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26864BE02A5FC41F00B96DD4 /* BreweryDetailView.swift */; };
 		26C02B292A5E82920057DA88 /* BreweriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C02B282A5E82920057DA88 /* BreweriesListView.swift */; };
 		26C02B2D2A5EF92D0057DA88 /* BreweryMapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C02B2C2A5EF92D0057DA88 /* BreweryMapAnnotationView.swift */; };
+		5A7E00000000000000000002 /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000001 /* Beer.swift */; };
+		5A7E00000000000000000004 /* breweries.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000003 /* breweries.json */; };
+		5A7E00000000000000000006 /* beers.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000005 /* beers.json */; };
+		5A7E00000000000000000009 /* BeerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000008 /* BeerRowView.swift */; };
+		5A7E0000000000000000000B /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E0000000000000000000A /* BottomSheet.swift */; };
+		5A7E0000000000000000000D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E0000000000000000000C /* RootView.swift */; };
+		5A7E0000000000000000000F /* BeersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E0000000000000000000E /* BeersView.swift */; };
+		5A7E00000000000000000011 /* BeerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000010 /* BeerDetailView.swift */; };
+		5A7E00000000000000000013 /* BeersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000012 /* BeersViewModel.swift */; };
+		5A7E00000000000000000015 /* SharedComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000014 /* SharedComponents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5A7E00000000000000000014 /* SharedComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedComponents.swift; sourceTree = "<group>"; };
-		5A7E00000000000000000012 /* BeersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersViewModel.swift; sourceTree = "<group>"; };
-		5A7E00000000000000000010 /* BeerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailView.swift; sourceTree = "<group>"; };
-		5A7E0000000000000000000E /* BeersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersView.swift; sourceTree = "<group>"; };
-		5A7E0000000000000000000C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		5A7E0000000000000000000A /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
-		5A7E00000000000000000008 /* BeerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerRowView.swift; sourceTree = "<group>"; };
-		5A7E00000000000000000001 /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
-		5A7E00000000000000000003 /* breweries.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = breweries.json; sourceTree = "<group>"; };
-		5A7E00000000000000000005 /* beers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = beers.json; sourceTree = "<group>"; };
+		5A7E00000000000000000018 /* JourneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyView.swift; sourceTree = "<group>"; };
+		5A7E00000000000000000016 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		266FCA6A2A5DA3B30085D145 /* Greek Beers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Greek Beers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		266FCA6D2A5DA3B30085D145 /* ZythosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZythosApp.swift; sourceTree = "<group>"; };
 		266FCA712A5DA3B40085D145 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +47,16 @@
 		26864BE02A5FC41F00B96DD4 /* BreweryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryDetailView.swift; sourceTree = "<group>"; };
 		26C02B282A5E82920057DA88 /* BreweriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweriesListView.swift; sourceTree = "<group>"; };
 		26C02B2C2A5EF92D0057DA88 /* BreweryMapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryMapAnnotationView.swift; sourceTree = "<group>"; };
+		5A7E00000000000000000001 /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
+		5A7E00000000000000000003 /* breweries.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = breweries.json; sourceTree = "<group>"; };
+		5A7E00000000000000000005 /* beers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = beers.json; sourceTree = "<group>"; };
+		5A7E00000000000000000008 /* BeerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerRowView.swift; sourceTree = "<group>"; };
+		5A7E0000000000000000000A /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
+		5A7E0000000000000000000C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		5A7E0000000000000000000E /* BeersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersView.swift; sourceTree = "<group>"; };
+		5A7E00000000000000000010 /* BeerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailView.swift; sourceTree = "<group>"; };
+		5A7E00000000000000000012 /* BeersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersViewModel.swift; sourceTree = "<group>"; };
+		5A7E00000000000000000014 /* SharedComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedComponents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 			children = (
 				266FCA7D2A5DA5C00085D145 /* IntroView.swift */,
 				266FCA872A5DBC120085D145 /* DiscoverView.swift */,
+				5A7E00000000000000000018 /* JourneyView.swift */,
 				5A7E00000000000000000014 /* SharedComponents.swift */,
 				5A7E00000000000000000010 /* BeerDetailView.swift */,
 				5A7E0000000000000000000E /* BeersView.swift */,
@@ -137,6 +142,7 @@
 			children = (
 				266FCA822A5DB3850085D145 /* Brewery.swift */,
 				5A7E00000000000000000001 /* Beer.swift */,
+				5A7E00000000000000000016 /* UserData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -186,7 +192,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 2700;
 				TargetAttributes = {
 					266FCA692A5DA3B30085D145 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -238,6 +244,7 @@
 				266FCA8A2A5DC08E0085D145 /* BreweriesViewModel.swift in Sources */,
 				5A7E00000000000000000013 /* BeersViewModel.swift in Sources */,
 				266FCA882A5DBC120085D145 /* DiscoverView.swift in Sources */,
+				5A7E00000000000000000019 /* JourneyView.swift in Sources */,
 				5A7E00000000000000000015 /* SharedComponents.swift in Sources */,
 				5A7E00000000000000000011 /* BeerDetailView.swift in Sources */,
 				5A7E0000000000000000000F /* BeersView.swift in Sources */,
@@ -245,6 +252,7 @@
 				5A7E0000000000000000000B /* BottomSheet.swift in Sources */,
 				266FCA832A5DB3850085D145 /* Brewery.swift in Sources */,
 				5A7E00000000000000000002 /* Beer.swift in Sources */,
+				5A7E00000000000000000017 /* UserData.swift in Sources */,
 				26C02B292A5E82920057DA88 /* BreweriesListView.swift in Sources */,
 				266FCA7E2A5DA5C00085D145 /* IntroView.swift in Sources */,
 			);
@@ -287,8 +295,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = YNTNLH2HH8;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -308,6 +318,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -347,8 +358,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = YNTNLH2HH8;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -361,6 +374,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -375,9 +389,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Greek Beers/Preview Content\"";
-				DEVELOPMENT_TEAM = YNTNLH2HH8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Zythos;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -389,7 +403,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				INFOPLIST_KEY_CFBundleDisplayName = Zythos;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MyIOsProjects.Greek-Beers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -406,9 +419,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Greek Beers/Preview Content\"";
-				DEVELOPMENT_TEAM = YNTNLH2HH8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Zythos;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -420,7 +433,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				INFOPLIST_KEY_CFBundleDisplayName = Zythos;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MyIOsProjects.Greek-Beers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

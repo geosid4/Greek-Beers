@@ -10,6 +10,9 @@ struct BeerRowView: View {
     let beer: Beer
     // Shown when the row appears outside its brewery's page, e.g. in the Beers catalog
     var breweryName: String? = nil
+    // From the user's log, when there is one
+    var isTried = false
+    var rating: Int? = nil
 
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
@@ -30,6 +33,16 @@ struct BeerRowView: View {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+
+            if let rating {
+                StarsLabel(rating: rating)
+                    .padding(.top, 4)
+            } else if isTried {
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundStyle(.green)
+                    .padding(.top, 2)
+                    .accessibilityLabel("Δοκιμασμένη")
+            }
         }
         .accessibilityElement(children: .combine)
     }

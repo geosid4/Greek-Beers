@@ -5,12 +5,14 @@
 //  Created by George Sidiropoulos on 13/7/23.
 //
 
+import SwiftData
 import SwiftUI
 
 // The sheet's brewery state: name and close button in the header, everything else scrolls
 struct BreweryDetailView: View {
 
     @Environment(\.openURL) private var openURL
+    @Query private var logs: [BeerLog]
 
     let brewery: Brewery
     let beers: [Beer]
@@ -37,6 +39,7 @@ struct BreweryDetailView: View {
         BreweryDetailView(brewery: brewery, beers: catalog.beers(for: brewery))
     }
     .environment(BreweriesViewModel())
+    .modelContainer(for: [BeerLog.self, BreweryLog.self], inMemory: true)
 }
 
 extension BreweryDetailView {
@@ -86,7 +89,8 @@ extension BreweryDetailView {
                     .foregroundStyle(.secondary)
             } else {
                 ForEach(beers) { beer in
-                    BeerRowView(beer: beer)
+                    let log = logs.first { $0.beerId == beer.id }
+                    BeerRowView(beer: beer, isTried: log?.isTried == true, rating: log?.rating)
                     if beer != beers.last {
                         Divider()
                     }
@@ -126,8 +130,14 @@ extension BreweryDetailView {
     struct Header: View {
 
         @Environment(BreweriesViewModel.self) private var vm
+        @Environment(\.modelContext) private var modelContext
+        @Query private var logs: [BreweryLog]
 
         let brewery: Brewery
+
+        private var isFavorite: Bool {
+            logs.first { $0.breweryId == brewery.id }?.isFavorite == true
+        }
 
         var body: some View {
             HStack(spacing: 12) {
@@ -144,6 +154,11 @@ extension BreweryDetailView {
                         .foregroundStyle(.secondary)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
+
+                FavoriteButton(isFavorite: isFavorite) {
+                    modelContext.updateLog(for: brewery) { $0.isFavorite.toggle() }
+                }
+                .font(.title3)
 
                 Button(action: vm.deselect) {
                     Image(systemName: "xmark")

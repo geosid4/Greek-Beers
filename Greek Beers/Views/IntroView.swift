@@ -46,4 +46,5 @@ struct IntroView: View {
         .environment(BreweriesViewModel())
         .environment(BeersViewModel())
         .environment(AppRouter())
+        .modelContainer(for: [BeerLog.self, BreweryLog.self], inMemory: true)
 }

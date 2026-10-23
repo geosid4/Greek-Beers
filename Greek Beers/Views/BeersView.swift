@@ -3,12 +3,14 @@
 //  Zythos
 //
 
+import SwiftData
 import SwiftUI
 
 // The Beers tab: every beer in the catalog, grouped by style family
 struct BeersView: View {
 
     @Environment(BeersViewModel.self) private var vm
+    @Query private var logs: [BeerLog]
 
     var body: some View {
         @Bindable var vm = vm
@@ -52,6 +54,7 @@ struct BeersView: View {
         .environment(BeersViewModel())
         .environment(BreweriesViewModel())
         .environment(AppRouter())
+        .modelContainer(for: [BeerLog.self, BreweryLog.self], inMemory: true)
 }
 
 extension BeersView {
@@ -62,7 +65,9 @@ extension BeersView {
                 Section(group.family.name) {
                     ForEach(group.beers) { beer in
                         NavigationLink(value: beer) {
-                            BeerRowView(beer: beer, breweryName: vm.brewery(for: beer)?.name)
+                            let log = logs.first { $0.beerId == beer.id }
+                            BeerRowView(beer: beer, breweryName: vm.brewery(for: beer)?.name,
+                                        isTried: log?.isTried == true, rating: log?.rating)
                         }
                     }
                 }

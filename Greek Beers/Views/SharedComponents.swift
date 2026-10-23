@@ -81,3 +81,61 @@ struct BreweryLogoView: View {
         .accessibilityHidden(true)
     }
 }
+
+// Five tappable stars. Tapping the current rating again clears it
+struct StarRating: View {
+
+    let rating: Int?
+    var size: Font = .title2
+    let onChange: (Int?) -> Void
+
+    var body: some View {
+        HStack(spacing: 6) {
+            ForEach(1...5, id: \.self) { star in
+                Button {
+                    onChange(rating == star ? nil : star)
+                } label: {
+                    Image(systemName: star <= (rating ?? 0) ? "star.fill" : "star")
+                        .font(size)
+                        .foregroundStyle(star <= (rating ?? 0) ? Color.yellow : Color.secondary)
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("\(star) αστέρια")
+                .accessibilityAddTraits(star == rating ? .isSelected : [])
+            }
+        }
+    }
+}
+
+// Read-only stars for lists
+struct StarsLabel: View {
+
+    let rating: Int
+
+    var body: some View {
+        HStack(spacing: 1) {
+            ForEach(1...5, id: \.self) { star in
+                Image(systemName: star <= rating ? "star.fill" : "star")
+            }
+        }
+        .font(.caption2)
+        .foregroundStyle(.yellow)
+        .accessibilityElement()
+        .accessibilityLabel("\(rating) από 5 αστέρια")
+    }
+}
+
+struct FavoriteButton: View {
+
+    let isFavorite: Bool
+    let toggle: () -> Void
+
+    var body: some View {
+        Button(action: toggle) {
+            Image(systemName: isFavorite ? "heart.fill" : "heart")
+                .foregroundStyle(isFavorite ? Color.red : Color.secondary)
+                .contentTransition(.symbolEffect(.replace))
+        }
+        .accessibilityLabel(isFavorite ? "Αφαίρεση από τα αγαπημένα" : "Προσθήκη στα αγαπημένα")
+    }
+}
