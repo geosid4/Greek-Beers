@@ -31,7 +31,7 @@ struct BeerCardView: View {
                             .lineLimit(1)
                     }
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Palette.muted)
                 }
 
                 HStack(spacing: 6) {

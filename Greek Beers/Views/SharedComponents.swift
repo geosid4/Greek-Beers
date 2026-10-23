@@ -10,6 +10,8 @@ import SwiftUI
 enum Palette {
     static let background = Color("AppBackground")
     static let surface = Color("Surface")
+    // Blue-grey for secondary text and inactive controls
+    static let muted = Color("Muted")
 }
 
 extension Font {
@@ -39,7 +41,7 @@ struct SearchField: View {
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Palette.muted)
             TextField(prompt, text: $text)
                 .autocorrectionDisabled()
                 .submitLabel(.search)
@@ -48,7 +50,7 @@ struct SearchField: View {
                     text = ""
                 } label: {
                     Image(systemName: "xmark.circle.fill")
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Palette.muted)
                 }
                 .accessibilityLabel("Καθαρισμός αναζήτησης")
             }
@@ -121,7 +123,7 @@ struct PassportStamp: View {
                 .frame(width: size, height: size)
                 .overlay {
                     Circle()
-                        .strokeBorder(isVisited ? Color.accentColor : Color.secondary,
+                        .strokeBorder(isVisited ? Color.accentColor : Palette.muted,
                                       style: StrokeStyle(lineWidth: isVisited ? 3 : 1.5, dash: isVisited ? [] : [4, 5]))
                 }
 
@@ -151,7 +153,7 @@ struct StarRating: View {
                 } label: {
                     Image(systemName: star <= (rating ?? 0) ? "star.fill" : "star")
                         .font(size)
-                        .foregroundStyle(star <= (rating ?? 0) ? Color.accentColor : Color.secondary)
+                        .foregroundStyle(star <= (rating ?? 0) ? Color.accentColor : Palette.muted)
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel("\(star) αστέρια")
@@ -187,7 +189,7 @@ struct FavoriteButton: View {
     var body: some View {
         Button(action: toggle) {
             Image(systemName: isFavorite ? "heart.fill" : "heart")
-                .foregroundStyle(isFavorite ? Color.red : Color.secondary)
+                .foregroundStyle(isFavorite ? Color.red : Palette.muted)
                 .contentTransition(.symbolEffect(.replace))
         }
         .accessibilityLabel(isFavorite ? "Αφαίρεση από τα αγαπημένα" : "Προσθήκη στα αγαπημένα")

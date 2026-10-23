@@ -121,10 +121,10 @@ extension FiltersView {
                 Text(title)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Text("\(count)")
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Palette.muted)
                 Image(systemName: isOn ? "checkmark.circle.fill" : "circle")
                     .font(.title3)
-                    .foregroundStyle(isOn ? Color.accentColor : Color.secondary)
+                    .foregroundStyle(isOn ? Color.accentColor : Palette.muted)
             }
             .foregroundStyle(Color.primary)
             .contentShape(.rect)

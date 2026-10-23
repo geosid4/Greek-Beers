@@ -92,12 +92,12 @@ extension BreweryPickerView {
                     .font(.headline)
                 Text("\(brewery.city) · \(count) \(count == 1 ? "μπύρα" : "μπύρες")")
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Palette.muted)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                 .font(.title3)
-                .foregroundStyle(isSelected ? Color.accentColor : Color.secondary)
+                .foregroundStyle(isSelected ? Color.accentColor : Palette.muted)
         }
         .foregroundStyle(Color.primary)
         .accessibilityAddTraits(isSelected ? .isSelected : [])

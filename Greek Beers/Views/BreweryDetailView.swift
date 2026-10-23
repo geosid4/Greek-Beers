@@ -98,13 +98,13 @@ extension BreweryDetailView {
                         .font(.headline)
                     Text("Η επίσκεψη μετράει στο διαβατήριό σου, ξεχωριστά από τις μπύρες.")
                         .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Palette.muted)
                 } else {
                     Text("Η σφραγίδα της \(brewery.name)")
                         .font(.headline)
                     Text("Πέρασες από τη ζυθοποιία; Σφράγισε το διαβατήριό σου.")
                         .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Palette.muted)
                 }
 
                 Button(visitedAt == nil ? "Σφράγισε επίσκεψη" : "Αναίρεση") {
@@ -134,7 +134,7 @@ extension BreweryDetailView {
                 if !beers.isEmpty {
                     Text("Δοκίμασες \(triedCount)/\(beers.count)")
                         .font(.subheadline.monospacedDigit())
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Palette.muted)
                 }
             }
 
@@ -145,7 +145,7 @@ extension BreweryDetailView {
             if beers.isEmpty {
                 Text("Δεν έχουμε καταχωρίσει ακόμα μπύρες γι' αυτή τη ζυθοποιία.")
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Palette.muted)
             } else {
                 ForEach(beers) { beer in
                     let log = logs.first { $0.beerId == beer.id }
@@ -179,11 +179,11 @@ extension BreweryDetailView {
                 }
             }
             .font(.subheadline)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Palette.muted)
 
             Text(brewery.description)
                 .font(.body)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Palette.muted)
         }
     }
 }
@@ -213,7 +213,7 @@ extension BreweryDetailView {
                         .minimumScaleFactor(0.7)
                     Text("\(brewery.city) · \(brewery.kind.name)")
                         .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Palette.muted)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -225,7 +225,7 @@ extension BreweryDetailView {
                 Button(action: vm.deselect) {
                     Image(systemName: "xmark")
                         .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Palette.muted)
                         .frame(width: 30, height: 30)
                         .background(.quaternary, in: .circle)
                 }

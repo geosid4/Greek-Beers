@@ -23,7 +23,7 @@ struct BeerRowView: View {
                     .font(.headline)
                 Text(details)
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Palette.muted)
 
                 if !beer.localIngredients.isEmpty {
                     Label(beer.localIngredients.joined(separator: ", "), systemImage: "leaf")

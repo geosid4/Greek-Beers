@@ -120,7 +120,7 @@ extension BeersView {
             HStack {
                 Text("\(beers.count) \(beers.count == 1 ? "μπύρα" : "μπύρες")")
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Palette.muted)
                 Spacer()
                 if vm.activeFilterCount > 0 {
                     Button("Καθαρισμός φίλτρων") {

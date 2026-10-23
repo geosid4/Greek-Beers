@@ -44,6 +44,16 @@ struct RootView: View {
                 .tabItem { Label("Διαβατήριο", systemImage: "book.closed") }
                 .tag(AppTab.journey)
         }
+        .onAppear(perform: styleLargeTitles)
+    }
+
+    // Large navigation titles in the same heavy condensed face as Font.display. Set here rather
+    // than in the App's init: touching UIKit appearance that early loses the amber accent colour
+    private func styleLargeTitles() {
+        let largeTitle = UIFont.systemFont(ofSize: 34, weight: .heavy, width: .condensed)
+        UINavigationBar.appearance().largeTitleTextAttributes = [
+            .font: UIFontMetrics(forTextStyle: .largeTitle).scaledFont(for: largeTitle)
+        ]
     }
 }
 

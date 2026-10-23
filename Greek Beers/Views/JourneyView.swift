@@ -61,7 +61,7 @@ struct JourneyView: View {
                                                 .font(.headline)
                                             Text(brewery.city)
                                                 .font(.subheadline)
-                                                .foregroundStyle(.secondary)
+                                                .foregroundStyle(Palette.muted)
                                         }
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         Image(systemName: "map")
@@ -161,7 +161,7 @@ extension JourneyView {
                         .fontWeight(.bold)
                     Text("από \(catalog.beers.count)")
                         .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Palette.muted)
                 }
             }
             .frame(width: 104, height: 104)
@@ -186,7 +186,7 @@ extension JourneyView {
                 .foregroundStyle(Color.accentColor)
             Text(label)
                 .font(.caption)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Palette.muted)
         }
         .accessibilityElement(children: .combine)
     }
@@ -209,7 +209,7 @@ extension JourneyView {
                             .minimumScaleFactor(0.8)
                         Text("\(beers.filter { triedIds.contains($0.id) }.count)/\(beers.count)")
                             .font(.caption2.monospacedDigit())
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(Palette.muted)
                     }
                     .foregroundStyle(Color.primary)
                 }
@@ -240,7 +240,7 @@ extension JourneyView {
         VStack(alignment: .leading, spacing: 10) {
             Text("Άνοιξε μια μπύρα και πάτα «Το δοκίμασα»: θα εμφανιστεί εδώ και θα μετρήσει στα επιτεύγματα.")
                 .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Palette.muted)
             Button("Δες τις μπύρες") {
                 router.tab = .beers
             }
@@ -271,7 +271,7 @@ private struct AchievementRow: View {
         HStack(spacing: 14) {
             Image(systemName: achievement.symbol)
                 .font(.title3)
-                .foregroundStyle(achievement.isUnlocked ? Palette.background : Color.secondary)
+                .foregroundStyle(achievement.isUnlocked ? Palette.background : Palette.muted)
                 .frame(width: 44, height: 44)
                 .background(achievement.isUnlocked ? Color.accentColor : Palette.background,
                             in: .rect(cornerRadius: 12))
@@ -287,7 +287,7 @@ private struct AchievementRow: View {
                 }
                 Text(achievement.detail)
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Palette.muted)
                 ProgressView(value: Double(min(achievement.current, achievement.goal)), total: Double(max(achievement.goal, 1)))
             }
         }

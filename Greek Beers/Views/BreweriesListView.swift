@@ -58,7 +58,7 @@ extension BreweriesListView {
                 .font(.headline)
             Text("Δοκίμασε άλλη αναζήτηση ή λιγότερα φίλτρα.")
                 .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Palette.muted)
             Button("Καθαρισμός φίλτρων", action: vm.clearFilters)
                 .font(.subheadline)
         }
@@ -77,7 +77,7 @@ extension BreweriesListView {
                     .font(.headline)
                 Text("\(brewery.city) · \(beerCount) \(beerCount == 1 ? "μπύρα" : "μπύρες")")
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Palette.muted)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             Image(systemName: "chevron.right")

@@ -31,7 +31,7 @@ struct BeerDetailView: View {
                 if let description = beer.displayDescription {
                     Text(description)
                         .font(.body)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Palette.muted)
                 }
                 journal
                 facts
@@ -105,7 +105,7 @@ extension BeerDetailView {
                 .font(.label)
                 .textCase(.uppercase)
                 .tracking(1.5)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Palette.muted)
             Text(beer.name)
                 .font(.display(.largeTitle))
             if let brewery {
@@ -161,7 +161,7 @@ extension BeerDetailView {
         VStack(alignment: .leading, spacing: 4) {
             Text(label)
                 .font(.caption)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Palette.muted)
             value()
                 .font(.title3.monospacedDigit())
                 .foregroundStyle(Color.accentColor)
@@ -188,7 +188,7 @@ extension BeerDetailView {
                 .font(.label)
                 .textCase(.uppercase)
                 .tracking(1.5)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Palette.muted)
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
@@ -278,7 +278,7 @@ extension BeerDetailView {
             ForEach(rows, id: \.0) { label, value in
                 HStack {
                     Text(label)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Palette.muted)
                     Spacer()
                     Text(value)
                         .multilineTextAlignment(.trailing)
@@ -304,11 +304,11 @@ extension BeerDetailView {
                 }
             }
             .font(.footnote)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Palette.muted)
         } else {
             Label("Τα στοιχεία δεν έχουν επιβεβαιωθεί ακόμα.", systemImage: "exclamationmark.circle")
                 .font(.footnote)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Palette.muted)
         }
     }
 }
