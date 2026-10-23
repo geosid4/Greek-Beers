@@ -1,0 +1,37 @@
+{
+  "id": "kefalonia-ithaca",
+  "name": "Kefalonian Beer",
+  "city": "Κεφαλονιά",
+  "region": "ionian-islands",
+  "kind": "microbrewery",
+  "founded": null,
+  "latitude": 38.2195,
+  "longitude": 20.6386,
+  "description": "Η Μικροζυθοποιία Κεφαλονιάς και Ιθάκης στον Καραβόμυλο, στον δρόμο Σάμης – Αγίας Ευφημίας. Φτιάχνει απαστερίωτη μπύρα όλο τον χρόνο και έχει tap room για γευσιγνωσία.",
+  "imageNames": [],
+  "website": "https://www.kefalonianbeer.com/",
+  "visitable": true,
+  "source": "https://www.kefalonianbeer.com/",
+  "lastVerified": "2026-10-23",
+  "beers": [
+    {
+      "id": "kefalonia-premium-lager",
+      "name": "Kefalonian Premium Lager",
+      "style": "Premium Lager",
+      "styleFamily": "lager",
+      "abv": 5.0,
+      "description": "Ελαφριά, δροσερή lager με ήπια πικράδα και διακριτικό άρωμα εσπεριδοειδών.",
+      "source": "https://www.kefalonianbeer.com/oi-byres/kefalonitiki-mpira-premium-lager-2"
+    },
+    {
+      "id": "kefalonia-siora-red-ale",
+      "name": "Kefalonian Siora Red Ale",
+      "style": "Red Ale",
+      "styleFamily": "amber-red",
+      "abv": 5.8,
+      "color": "amber",
+      "description": "Βαθυκόκκινη ale με τρεις ποικιλίες λυκίσκου και ελαφριά νότα καραμέλας.",
+      "source": "https://www.kefalonianbeer.com/oi-byres/kefalonitiki-mpira-premium-lager-3"
+    }
+  ]
+}
