@@ -70,7 +70,12 @@ struct PintGlassShape: Shape {
 extension Beer {
 
     var formattedABV: String? {
-        abv.map { "\($0.formatted(.number.precision(.fractionLength(0...1))))% ABV" }
+        abvPercent.map { "\($0) ABV" }
+    }
+
+    // "5.5%", for places where ABV is already understood, like a row's right edge
+    var abvPercent: String? {
+        abv.map { "\($0.formatted(.number.precision(.fractionLength(0...1))))%" }
     }
 
     var formattedIBU: String? {

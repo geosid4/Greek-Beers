@@ -125,7 +125,7 @@ extension BeerDetailView {
     // ABV, IBU and colour as tiles, leaving out whatever we don't know
     @ViewBuilder
     private var stats: some View {
-        let abv = beer.abv.map { "\($0.formatted(.number.precision(.fractionLength(0...1))))%" }
+        let abv = beer.abvPercent
         let ibu = beer.formattedIBU.map { $0.replacingOccurrences(of: " IBU", with: "") }
 
         if abv != nil || ibu != nil || beer.color != nil {
@@ -200,7 +200,7 @@ extension BeerDetailView {
                                     .font(.subheadline.weight(.semibold))
                                     .lineLimit(2, reservesSpace: true)
                                     .multilineTextAlignment(.leading)
-                                Text(other.abv.map { "\($0.formatted(.number.precision(.fractionLength(0...1))))%" } ?? other.style)
+                                Text(other.abvPercent ?? other.style)
                                     .font(.footnote.monospacedDigit())
                                     .foregroundStyle(Color.accentColor)
                                     .lineLimit(1)

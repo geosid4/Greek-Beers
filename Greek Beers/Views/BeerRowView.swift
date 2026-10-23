@@ -5,6 +5,7 @@
 
 import SwiftUI
 
+// A beer on one line: glass, name, brewery and style, the user's mark, and ABV on the right
 struct BeerRowView: View {
 
     let beer: Beer
@@ -15,15 +16,17 @@ struct BeerRowView: View {
     var rating: Int? = nil
 
     var body: some View {
-        HStack(alignment: .top, spacing: 12) {
+        HStack(spacing: 14) {
             BeerGlassView(beer: beer, height: 34)
 
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: 2) {
                 Text(beer.name)
                     .font(.headline)
+                    .lineLimit(1)
                 Text(details)
                     .font(.subheadline)
                     .foregroundStyle(Palette.muted)
+                    .lineLimit(1)
 
                 if !beer.localIngredients.isEmpty {
                     Label(beer.localIngredients.joined(separator: ", "), systemImage: "leaf")
@@ -35,20 +38,26 @@ struct BeerRowView: View {
 
             if let rating {
                 StarsLabel(rating: rating)
-                    .padding(.top, 4)
             } else if isTried {
                 Image(systemName: "checkmark.circle.fill")
                     .foregroundStyle(Color.accentColor)
-                    .padding(.top, 2)
                     .accessibilityLabel("Δοκιμασμένη")
             }
+
+            if let abv = beer.abvPercent {
+                Text(abv)
+                    .font(.subheadline.monospacedDigit())
+                    .foregroundStyle(Color.accentColor)
+                    .frame(minWidth: 44, alignment: .trailing)
+            }
         }
+        .contentShape(.rect)
         .accessibilityElement(children: .combine)
     }
 
-    // "Μπύρα Χίου · Pilsner · 5% ABV · 18–22 IBU", leaving out whatever we don't know
+    // "Μπύρα Χίου · Pilsner", leaving out the brewery on its own page
     private var details: String {
-        [breweryName, beer.style, beer.formattedABV, beer.formattedIBU]
+        [breweryName, beer.style]
             .compactMap { $0 }
             .joined(separator: " · ")
     }

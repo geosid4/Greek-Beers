@@ -26,8 +26,9 @@ struct BreweryDetailView: View {
                 if brewery.canBeVisited {
                     visitCard
                 }
+                about
                 beersSection
-                aboutSection
+                dataNotice
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal)
@@ -132,7 +133,7 @@ extension BreweryDetailView {
                     .font(.display(.title2))
                 Spacer()
                 if !beers.isEmpty {
-                    Text("Δοκίμασες \(triedCount)/\(beers.count)")
+                    Text("Δοκίμασες \(Text("\(triedCount)/\(beers.count)").foregroundStyle(Color.accentColor))")
                         .font(.subheadline.monospacedDigit())
                         .foregroundStyle(Palette.muted)
                 }
@@ -175,6 +176,7 @@ extension BreweryDetailView {
         ForEach(beers) { beer in
             let log = logs.first { $0.beerId == beer.id }
             BeerRowView(beer: beer, isTried: log?.isTried == true, rating: log?.rating)
+                .padding(.vertical, 6)
             if beer != beers.last {
                 Divider()
             }
@@ -199,27 +201,38 @@ extension BreweryDetailView {
         return beers.filter { tried.contains($0.id) }.count
     }
 
-    private var aboutSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Σχετικά")
-                .font(.display(.title2))
-
-            VStack(alignment: .leading, spacing: 6) {
-                Label(brewery.region.name, systemImage: "map")
-                if let founded = brewery.founded {
-                    Label("Από το \(String(founded))", systemImage: "calendar")
-                }
-                if let visitable = brewery.visitable {
-                    Label(visitable ? "Δέχεται επισκέψεις" : "Δεν δέχεται επισκέψεις",
-                          systemImage: visitable ? "door.left.hand.open" : "door.left.hand.closed")
-                }
-            }
-            .font(.subheadline)
-            .foregroundStyle(Palette.muted)
-
+    // What the brewery says about itself, then whether it takes visitors when we know
+    private var about: some View {
+        VStack(alignment: .leading, spacing: 10) {
             Text(brewery.description)
                 .font(.body)
                 .foregroundStyle(Palette.muted)
+
+            if let visitable = brewery.visitable {
+                Label(visitable ? "Δέχεται επισκέψεις" : "Δεν δέχεται επισκέψεις",
+                      systemImage: visitable ? "door.left.hand.open" : "door.left.hand.closed")
+                    .font(.subheadline)
+                    .foregroundStyle(Palette.muted)
+            }
+        }
+    }
+
+    // Data quality is the point of the catalog, so say where this came from and when
+    @ViewBuilder
+    private var dataNotice: some View {
+        if let lastVerified = brewery.lastVerified {
+            HStack(spacing: 4) {
+                Text("Ελέγχθηκε \(lastVerified.formatted(date: .abbreviated, time: .omitted))")
+                if let source = brewery.source {
+                    Text("·")
+                    Link("Πηγή", destination: source)
+                }
+            }
+            .font(.footnote)
+            .foregroundStyle(Palette.muted)
+        } else if let source = brewery.source {
+            Link("Πηγή: \(source.host() ?? source.absoluteString)", destination: source)
+                .font(.footnote)
         }
     }
 }
@@ -238,18 +251,29 @@ extension BreweryDetailView {
             logs.first { $0.breweryId == brewery.id }?.isFavorite == true
         }
 
+        // "Μικροζυθοποιία · από το 2009"
+        private var eyebrow: String {
+            [brewery.kind.name, brewery.founded.map { "από το \(String($0))" }]
+                .compactMap { $0 }
+                .joined(separator: " · ")
+        }
+
         var body: some View {
             HStack(spacing: 12) {
                 BreweryLogoView(brewery: brewery, size: 56)
 
                 VStack(alignment: .leading, spacing: 2) {
+                    SectionLabel(eyebrow)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
                     Text(brewery.name)
                         .font(.display(.title))
                         .lineLimit(1)
                         .minimumScaleFactor(0.7)
-                    Text("\(brewery.city) · \(brewery.kind.name)")
+                    Text("\(brewery.city) · \(brewery.region.name)")
                         .font(.subheadline)
                         .foregroundStyle(Palette.muted)
+                        .lineLimit(1)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
 
