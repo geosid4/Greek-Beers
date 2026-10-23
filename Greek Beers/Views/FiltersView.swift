@@ -16,43 +16,47 @@ struct FiltersView: View {
 
         NavigationStack {
             List {
-                Section {
-                    NavigationLink {
-                        BreweryPickerView()
-                    } label: {
-                        LabeledContent("Ζυθοποιίες", value: brewerySummary)
-                    }
-                }
-
-                Section("Στυλ") {
-                    ForEach(vm.families, id: \.family) { family, count in
-                        checkRow(family.name, count: count, isOn: vm.selectedFamilies.contains(family)) {
-                            BeerGlassView(color: family.displayColor, height: 26)
-                        } toggle: {
-                            vm.toggle(family)
+                Group {
+                    Section {
+                        NavigationLink {
+                            BreweryPickerView()
+                        } label: {
+                            LabeledContent("Ζυθοποιίες", value: brewerySummary)
                         }
                     }
-                }
 
-                Section("Περιφέρεια") {
-                    ForEach(vm.regions, id: \.region) { region, count in
-                        checkRow(region.name, count: count, isOn: vm.selectedRegions.contains(region)) {
-                            Image(systemName: "mappin.and.ellipse")
-                                .foregroundStyle(Color.accentColor)
-                        } toggle: {
-                            vm.toggle(region)
+                    Section("Στυλ") {
+                        ForEach(vm.families, id: \.family) { family, count in
+                            checkRow(family.name, count: count, isOn: vm.selectedFamilies.contains(family)) {
+                                BeerGlassView(color: family.displayColor, height: 26)
+                            } toggle: {
+                                vm.toggle(family)
+                            }
                         }
                     }
-                }
 
-                Section {
-                    Toggle(isOn: $vm.localIngredientsOnly) {
-                        Label("Μόνο με ελληνικά υλικά", systemImage: "leaf.fill")
+                    Section("Περιφέρεια") {
+                        ForEach(vm.regions, id: \.region) { region, count in
+                            checkRow(region.name, count: count, isOn: vm.selectedRegions.contains(region)) {
+                                Image(systemName: "mappin.and.ellipse")
+                                    .foregroundStyle(Color.accentColor)
+                            } toggle: {
+                                vm.toggle(region)
+                            }
+                        }
                     }
-                } footer: {
-                    Text("Μαστίχα Χίου, βύνη Θράκης, ελληνικό κριθάρι και ό,τι άλλο δηλώνει η ζυθοποιία.")
+
+                    Section {
+                        Toggle(isOn: $vm.localIngredientsOnly) {
+                            Label("Μόνο με ελληνικά υλικά", systemImage: "leaf.fill")
+                        }
+                    } footer: {
+                        Text("Μαστίχα Χίου, βύνη Θράκης, ελληνικό κριθάρι και ό,τι άλλο δηλώνει η ζυθοποιία.")
+                    }
                 }
+                .listRowBackground(Palette.surface)
             }
+            .appListBackground()
             .navigationTitle("Φίλτρα")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -75,9 +79,10 @@ struct FiltersView: View {
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
+                .foregroundStyle(Palette.background)
                 .controlSize(.large)
                 .padding()
-                .background(.bar)
+                .background(Palette.background)
             }
         }
     }

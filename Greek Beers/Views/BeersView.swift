@@ -30,7 +30,7 @@ struct BeersView: View {
                 }
                 .scrollDismissesKeyboard(.immediately)
             }
-            .background(Color(.systemGroupedBackground))
+            .background(Palette.background)
             .navigationTitle("Μπύρες")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -74,15 +74,15 @@ extension BeersView {
                                 .font(.caption.weight(.bold))
                                 .padding(.horizontal, 6)
                                 .padding(.vertical, 1)
-                                .background(.white, in: .capsule)
+                                .background(Palette.background, in: .capsule)
                                 .foregroundStyle(Color.accentColor)
                         }
                     }
                     .font(.subheadline.weight(.semibold))
                     .padding(.horizontal, 14)
                     .frame(height: 36)
-                    .foregroundStyle(vm.activeFilterCount > 0 ? Color.white : Color.primary)
-                    .background(vm.activeFilterCount > 0 ? Color.accentColor : Color(.secondarySystemGroupedBackground),
+                    .foregroundStyle(vm.activeFilterCount > 0 ? Palette.background : Color.primary)
+                    .background(vm.activeFilterCount > 0 ? Color.accentColor : Palette.surface,
                                 in: .capsule)
                 }
                 .buttonStyle(.plain)
@@ -161,8 +161,8 @@ private struct BreweryChip: View {
         .padding(.leading, 6)
         .padding(.trailing, 14)
         .frame(height: 36)
-        .foregroundStyle(isSelected ? Color.white : Color.primary)
-        .background(isSelected ? Color.accentColor : Color(.secondarySystemGroupedBackground), in: .capsule)
+        .foregroundStyle(isSelected ? Palette.background : Color.primary)
+        .background(isSelected ? Color.accentColor : Palette.surface, in: .capsule)
         .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 }

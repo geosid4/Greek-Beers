@@ -5,6 +5,21 @@
 
 import SwiftUI
 
+// The design's colours. The app is dark-only, so each has a single value;
+// the background is also the launch screen's, so launch hands over seamlessly
+enum Palette {
+    static let background = Color("AppBackground")
+    static let surface = Color("Surface")
+}
+
+extension View {
+    // Lists draw their own grey grouped background; swap it for the app's
+    func appListBackground() -> some View {
+        scrollContentBackground(.hidden)
+            .background(Palette.background)
+    }
+}
+
 // Search box used at the top of both the Discover sheet and the Beers tab
 struct SearchField: View {
 
@@ -29,7 +44,7 @@ struct SearchField: View {
             }
         }
         .padding(10)
-        .background(.quaternary, in: .rect(cornerRadius: 12))
+        .background(Palette.surface, in: .rect(cornerRadius: 12))
     }
 }
 
@@ -50,8 +65,8 @@ struct FilterChip: View {
         .font(.subheadline)
         .padding(.horizontal, 12)
         .padding(.vertical, 6)
-        .foregroundStyle(isActive ? Color.white : Color.primary)
-        .background(isActive ? Color.accentColor : Color.secondary.opacity(0.15), in: .capsule)
+        .foregroundStyle(isActive ? Palette.background : Color.primary)
+        .background(isActive ? Color.accentColor : Palette.surface, in: .capsule)
     }
 }
 
@@ -97,7 +112,7 @@ struct StarRating: View {
                 } label: {
                     Image(systemName: star <= (rating ?? 0) ? "star.fill" : "star")
                         .font(size)
-                        .foregroundStyle(star <= (rating ?? 0) ? Color.yellow : Color.secondary)
+                        .foregroundStyle(star <= (rating ?? 0) ? Color.accentColor : Color.secondary)
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel("\(star) αστέρια")
@@ -119,7 +134,7 @@ struct StarsLabel: View {
             }
         }
         .font(.caption2)
-        .foregroundStyle(.yellow)
+        .foregroundStyle(Color.accentColor)
         .accessibilityElement()
         .accessibilityLabel("\(rating) από 5 αστέρια")
     }

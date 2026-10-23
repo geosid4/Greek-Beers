@@ -14,34 +14,38 @@ struct BreweryPickerView: View {
 
     var body: some View {
         List {
-            if query.isEmpty {
-                Button {
-                    withAnimation(.snappy) { vm.selectedBreweryIds = [] }
-                } label: {
-                    HStack {
-                        Text("Όλες οι ζυθοποιίες")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        if vm.selectedBreweryIds.isEmpty {
-                            Image(systemName: "checkmark")
-                                .foregroundStyle(Color.accentColor)
+            Group {
+                if query.isEmpty {
+                    Button {
+                        withAnimation(.snappy) { vm.selectedBreweryIds = [] }
+                    } label: {
+                        HStack {
+                            Text("Όλες οι ζυθοποιίες")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            if vm.selectedBreweryIds.isEmpty {
+                                Image(systemName: "checkmark")
+                                    .foregroundStyle(Color.accentColor)
+                            }
                         }
+                        .foregroundStyle(Color.primary)
                     }
-                    .foregroundStyle(Color.primary)
                 }
-            }
 
-            ForEach(groups, id: \.region) { region, breweries in
-                Section(region.name) {
-                    ForEach(breweries) { brewery in
-                        Button {
-                            withAnimation(.snappy) { vm.toggle(brewery) }
-                        } label: {
-                            row(brewery)
+                ForEach(groups, id: \.region) { region, breweries in
+                    Section(region.name) {
+                        ForEach(breweries) { brewery in
+                            Button {
+                                withAnimation(.snappy) { vm.toggle(brewery) }
+                            } label: {
+                                row(brewery)
+                            }
                         }
                     }
                 }
             }
+            .listRowBackground(Palette.surface)
         }
+        .appListBackground()
         .overlay {
             if groups.isEmpty {
                 ContentUnavailableView.search(text: query)

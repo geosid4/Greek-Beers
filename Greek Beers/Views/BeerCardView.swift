@@ -58,7 +58,7 @@ struct BeerCardView: View {
             }
         }
         .padding(12)
-        .background(Color(.secondarySystemGroupedBackground), in: .rect(cornerRadius: 18))
+        .background(Palette.surface, in: .rect(cornerRadius: 18))
         .contentShape(.rect(cornerRadius: 18))
         .accessibilityElement(children: .combine)
     }
@@ -112,5 +112,5 @@ struct Badge: View {
         }
         .padding()
     }
-    .background(Color(.systemGroupedBackground))
+    .background(Palette.background)
 }

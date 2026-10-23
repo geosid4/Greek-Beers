@@ -44,6 +44,7 @@ struct BeerDetailView: View {
         .navigationTitle(beer.name)
         .navigationBarTitleDisplayMode(.inline)
         .scrollDismissesKeyboard(.interactively)
+        .background(Palette.background)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 FavoriteButton(isFavorite: log?.isFavorite == true) {
@@ -117,7 +118,7 @@ extension BeerDetailView {
             TextField("Οι σημειώσεις σου", text: $notesDraft, axis: .vertical)
                 .lineLimit(2...6)
                 .padding(10)
-                .background(.background, in: .rect(cornerRadius: 10))
+                .background(Palette.background, in: .rect(cornerRadius: 10))
                 .onChange(of: notesDraft) {
                     guard notesDraft != (log?.notes ?? "") else { return }
                     modelContext.updateLog(for: beer) { $0.notes = notesDraft }
@@ -125,7 +126,7 @@ extension BeerDetailView {
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.quaternary.opacity(0.5), in: .rect(cornerRadius: 14))
+        .background(Palette.surface, in: .rect(cornerRadius: 14))
     }
 
     private var triedTitle: String {
@@ -151,7 +152,7 @@ extension BeerDetailView {
                     .foregroundStyle(Color.accentColor)
             }
             .padding(12)
-            .background(.quaternary.opacity(0.5), in: .rect(cornerRadius: 14))
+            .background(Palette.surface, in: .rect(cornerRadius: 14))
             .foregroundStyle(Color.primary)
         }
         .buttonStyle(.plain)

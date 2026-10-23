@@ -53,6 +53,7 @@ extension BreweryDetailView {
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.borderedProminent)
+            .foregroundStyle(Palette.background)
 
             if let website = brewery.website {
                 Button {

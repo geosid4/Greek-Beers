@@ -53,7 +53,7 @@ struct BottomSheet<Header: View, Content: View>: View {
         .background {
             // Reaches under the tab bar, where the list scrolls on
             UnevenRoundedRectangle(topLeadingRadius: 20, topTrailingRadius: 20)
-                .fill(.regularMaterial)
+                .fill(Palette.background)
                 .ignoresSafeArea(edges: .bottom)
         }
         .shadow(color: .black.opacity(0.15), radius: 12, y: -2)

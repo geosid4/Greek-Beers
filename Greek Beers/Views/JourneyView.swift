@@ -24,6 +24,8 @@ struct JourneyView: View {
                     list
                 }
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Palette.background)
             .navigationTitle("Journey")
             .navigationDestination(for: Beer.self) { beer in
                 BeerDetailView(beer: beer)
@@ -64,56 +66,60 @@ extension JourneyView {
 
     private var list: some View {
         List {
-            Section {
-                summary
-            }
-
-            if !favoriteBeers.isEmpty {
-                Section("Αγαπημένες μπύρες") {
-                    ForEach(favoriteBeers) { beer in
-                        NavigationLink(value: beer) {
-                            beerRow(beer)
-                        }
-                    }
+            Group {
+                Section {
+                    summary
                 }
-            }
 
-            if !favoriteBreweries.isEmpty {
-                Section("Αγαπημένες ζυθοποιίες") {
-                    ForEach(favoriteBreweries) { brewery in
-                        Button {
-                            router.showOnMap(brewery, using: breweriesVM)
-                        } label: {
-                            HStack(spacing: 12) {
-                                BreweryLogoView(brewery: brewery, size: 40)
-                                VStack(alignment: .leading, spacing: 2) {
-                                    Text(brewery.name)
-                                        .font(.headline)
-                                    Text(brewery.city)
-                                        .font(.subheadline)
-                                        .foregroundStyle(.secondary)
-                                }
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                Image(systemName: "map")
-                                    .foregroundStyle(Color.accentColor)
+                if !favoriteBeers.isEmpty {
+                    Section("Αγαπημένες μπύρες") {
+                        ForEach(favoriteBeers) { beer in
+                            NavigationLink(value: beer) {
+                                beerRow(beer)
                             }
-                            .foregroundStyle(Color.primary)
                         }
                     }
                 }
-            }
 
-            if !tried.isEmpty {
-                Section("Δοκίμασες") {
-                    ForEach(tried, id: \.beer.id) { beer, _ in
-                        NavigationLink(value: beer) {
-                            beerRow(beer)
+                if !favoriteBreweries.isEmpty {
+                    Section("Αγαπημένες ζυθοποιίες") {
+                        ForEach(favoriteBreweries) { brewery in
+                            Button {
+                                router.showOnMap(brewery, using: breweriesVM)
+                            } label: {
+                                HStack(spacing: 12) {
+                                    BreweryLogoView(brewery: brewery, size: 40)
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(brewery.name)
+                                            .font(.headline)
+                                        Text(brewery.city)
+                                            .font(.subheadline)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    Image(systemName: "map")
+                                        .foregroundStyle(Color.accentColor)
+                                }
+                                .foregroundStyle(Color.primary)
+                            }
+                        }
+                    }
+                }
+
+                if !tried.isEmpty {
+                    Section("Δοκίμασες") {
+                        ForEach(tried, id: \.beer.id) { beer, _ in
+                            NavigationLink(value: beer) {
+                                beerRow(beer)
+                            }
                         }
                     }
                 }
             }
+            .listRowBackground(Palette.surface)
         }
         .listStyle(.insetGrouped)
+        .appListBackground()
     }
 
     private func beerRow(_ beer: Beer) -> some View {
@@ -164,6 +170,7 @@ extension JourneyView {
                 router.tab = .beers
             }
             .buttonStyle(.borderedProminent)
+            .foregroundStyle(Palette.background)
         }
     }
 }
