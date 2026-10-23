@@ -38,7 +38,7 @@ struct BeerRowView: View {
                     .padding(.top, 4)
             } else if isTried {
                 Image(systemName: "checkmark.circle.fill")
-                    .foregroundStyle(.green)
+                    .foregroundStyle(Color.accentColor)
                     .padding(.top, 2)
                     .accessibilityLabel("Δοκιμασμένη")
             }

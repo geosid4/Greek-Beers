@@ -25,16 +25,18 @@ struct BeerDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                header
-                journal
-                if let brewery = vm.brewery(for: beer) {
-                    breweryCard(brewery)
-                }
-                facts
+                hero
+                title
+                stats
                 if let description = beer.displayDescription {
                     Text(description)
                         .font(.body)
                         .foregroundStyle(.secondary)
+                }
+                journal
+                facts
+                if !sameBreweryBeers.isEmpty {
+                    sameBrewery
                 }
                 dataNotice
             }
@@ -46,6 +48,12 @@ struct BeerDetailView: View {
         .scrollDismissesKeyboard(.interactively)
         .background(Palette.background)
         .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                ShareLink(item: shareText) {
+                    Image(systemName: "square.and.arrow.up")
+                }
+                .accessibilityLabel("Κοινοποίηση")
+            }
             ToolbarItem(placement: .topBarTrailing) {
                 FavoriteButton(isFavorite: log?.isFavorite == true) {
                     modelContext.updateLog(for: beer) { $0.isFavorite.toggle() }
@@ -70,18 +78,143 @@ struct BeerDetailView: View {
 
 extension BeerDetailView {
 
-    private var header: some View {
-        HStack(spacing: 16) {
-            BeerGlassView(beer: beer, height: 96)
+    private var brewery: Brewery? { vm.brewery(for: beer) }
 
-            VStack(alignment: .leading, spacing: 4) {
-                Text(beer.name)
-                    .font(.title)
-                    .fontWeight(.bold)
-                Text(beer.style)
-                    .font(.title3)
-                    .foregroundStyle(.secondary)
+    // The glass large on its own panel, with the beer's Greek ingredients called out
+    private var hero: some View {
+        BeerGlassView(beer: beer, height: 170)
+            .frame(maxWidth: .infinity)
+            .frame(height: 240)
+            .background(Palette.surface, in: .rect(cornerRadius: 28))
+            .overlay(alignment: .bottomLeading) {
+                if !beer.localIngredients.isEmpty {
+                    Label("Τοπικό υλικό: \(beer.localIngredients.joined(separator: ", "))", systemImage: "leaf.fill")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.green)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 7)
+                        .background(Palette.background, in: .capsule)
+                        .padding(14)
+                }
             }
+    }
+
+    private var title: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(beer.style)
+                .font(.label)
+                .textCase(.uppercase)
+                .tracking(1.5)
+                .foregroundStyle(.secondary)
+            Text(beer.name)
+                .font(.display(.largeTitle))
+            if let brewery {
+                Button {
+                    router.showOnMap(brewery, using: breweriesVM)
+                } label: {
+                    Text("\(brewery.name) · \(brewery.city) \(Image(systemName: "chevron.right"))")
+                        .font(.subheadline.weight(.semibold))
+                }
+                .buttonStyle(.plain)
+                .foregroundStyle(Color.accentColor)
+                .accessibilityHint("Δες τη ζυθοποιία στον χάρτη")
+            }
+        }
+    }
+
+    // ABV, IBU and colour as tiles, leaving out whatever we don't know
+    @ViewBuilder
+    private var stats: some View {
+        let abv = beer.abv.map { "\($0.formatted(.number.precision(.fractionLength(0...1))))%" }
+        let ibu = beer.formattedIBU.map { $0.replacingOccurrences(of: " IBU", with: "") }
+
+        if abv != nil || ibu != nil || beer.color != nil {
+            HStack(spacing: 8) {
+                if let abv {
+                    statTile("Αλκοόλ") {
+                        Text(abv)
+                    }
+                }
+                if let ibu {
+                    statTile("Πικράδα (IBU)") {
+                        Text(ibu)
+                    }
+                }
+                if let color = beer.color {
+                    statTile("Χρώμα") {
+                        HStack(spacing: 6) {
+                            Circle()
+                                .fill(beer.displayColor)
+                                .frame(width: 12, height: 12)
+                            Text(color.name)
+                                .font(.headline)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.8)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private func statTile(_ label: String, @ViewBuilder value: () -> some View) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(label)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            value()
+                .font(.title3.monospacedDigit())
+                .foregroundStyle(Color.accentColor)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(12)
+        .background(Palette.surface, in: .rect(cornerRadius: 16))
+        .accessibilityElement(children: .combine)
+    }
+
+    private var shareText: String {
+        let from = brewery.map { " της \($0.name)" } ?? ""
+        return "\(beer.name)\(from) (\(beer.style)) στο Zythos, τον οδηγό της ελληνικής μπύρας"
+    }
+
+    private var sameBreweryBeers: [Beer] {
+        guard let brewery else { return [] }
+        return vm.catalog.beers(for: brewery).filter { $0.id != beer.id }
+    }
+
+    private var sameBrewery: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Από την ίδια ζυθοποιία")
+                .font(.label)
+                .textCase(.uppercase)
+                .tracking(1.5)
+                .foregroundStyle(.secondary)
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 10) {
+                    ForEach(sameBreweryBeers) { other in
+                        NavigationLink(value: other) {
+                            VStack(alignment: .leading, spacing: 6) {
+                                BeerGlassView(beer: other, height: 34)
+                                Text(other.name)
+                                    .font(.subheadline.weight(.semibold))
+                                    .lineLimit(2, reservesSpace: true)
+                                    .multilineTextAlignment(.leading)
+                                Text(other.abv.map { "\($0.formatted(.number.precision(.fractionLength(0...1))))%" } ?? other.style)
+                                    .font(.footnote.monospacedDigit())
+                                    .foregroundStyle(Color.accentColor)
+                                    .lineLimit(1)
+                            }
+                            .frame(width: 140, alignment: .leading)
+                            .padding(12)
+                            .background(Palette.surface, in: .rect(cornerRadius: 16))
+                            .foregroundStyle(Color.primary)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+            }
+            .scrollClipDisabled()
         }
     }
 
@@ -101,7 +234,7 @@ extension BeerDetailView {
             } label: {
                 Label(triedTitle, systemImage: log?.isTried == true ? "checkmark.circle.fill" : "circle")
                     .font(.headline)
-                    .foregroundStyle(log?.isTried == true ? Color.green : Color.primary)
+                    .foregroundStyle(log?.isTried == true ? Color.accentColor : Color.primary)
                     .contentTransition(.symbolEffect(.replace))
             }
             .buttonStyle(.plain)
@@ -134,39 +267,11 @@ extension BeerDetailView {
         return "Δοκιμάστηκε \(triedAt.formatted(date: .abbreviated, time: .omitted))"
     }
 
-    private func breweryCard(_ brewery: Brewery) -> some View {
-        Button {
-            router.showOnMap(brewery, using: breweriesVM)
-        } label: {
-            HStack(spacing: 12) {
-                BreweryLogoView(brewery: brewery, size: 44)
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(brewery.name)
-                        .font(.headline)
-                    Text("\(brewery.city) · Δες στον χάρτη")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                Image(systemName: "map")
-                    .foregroundStyle(Color.accentColor)
-            }
-            .padding(12)
-            .background(Palette.surface, in: .rect(cornerRadius: 14))
-            .foregroundStyle(Color.primary)
-        }
-        .buttonStyle(.plain)
-    }
-
-    // Only the facts we know; nothing is shown as "unknown"
+    // The rest of what we know, below the tiles; nothing is shown as "unknown"
     private var facts: some View {
         let rows: [(String, String)] = [
             ("Οικογένεια", beer.styleFamily.name),
-            ("Αλκοόλ", beer.formattedABV),
-            ("Πικράδα", beer.formattedIBU),
-            ("Χρώμα", beer.color?.name),
-            ("Φιλτράρισμα", beer.filtered.map { $0 ? "Φιλτραρισμένη" : "Αφιλτράριστη" }),
-            ("Τοπικά υλικά", beer.localIngredients.isEmpty ? nil : beer.localIngredients.joined(separator: ", "))
+            ("Φιλτράρισμα", beer.filtered.map { $0 ? "Φιλτραρισμένη" : "Αφιλτράριστη" })
         ].compactMap { label, value in value.map { (label, $0) } }
 
         return VStack(spacing: 0) {

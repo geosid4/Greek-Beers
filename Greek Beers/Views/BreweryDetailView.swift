@@ -128,9 +128,8 @@ extension BreweryDetailView {
     private var beersSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(alignment: .firstTextBaseline) {
-                Text("Μπύρες")
-                    .font(.title3)
-                    .fontWeight(.semibold)
+                Text(beers.count == 1 ? "1 μπύρα" : "\(beers.count) μπύρες")
+                    .font(.display(.title2))
                 Spacer()
                 if !beers.isEmpty {
                     Text("Δοκίμασες \(triedCount)/\(beers.count)")
@@ -167,8 +166,7 @@ extension BreweryDetailView {
     private var aboutSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Σχετικά")
-                .font(.title3)
-                .fontWeight(.semibold)
+                .font(.display(.title2))
 
             VStack(alignment: .leading, spacing: 6) {
                 Label(brewery.region.name, systemImage: "map")
@@ -210,8 +208,7 @@ extension BreweryDetailView {
 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(brewery.name)
-                        .font(.title2)
-                        .fontWeight(.bold)
+                        .font(.display(.title))
                         .lineLimit(1)
                         .minimumScaleFactor(0.7)
                     Text("\(brewery.city) · \(brewery.kind.name)")

@@ -12,6 +12,16 @@ enum Palette {
     static let surface = Color("Surface")
 }
 
+extension Font {
+    // The design's heavy condensed display face for names and titles; scales with Dynamic Type
+    static func display(_ style: Font.TextStyle) -> Font {
+        .system(style, weight: .heavy).width(.condensed)
+    }
+
+    // Small condensed labels above sections and names, shown in capitals
+    static let label = Font.subheadline.weight(.semibold).width(.condensed)
+}
+
 extension View {
     // Lists draw their own grey grouped background; swap it for the app's
     func appListBackground() -> some View {

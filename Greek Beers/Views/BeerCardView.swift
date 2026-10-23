@@ -53,7 +53,7 @@ struct BeerCardView: View {
                 StarsLabel(rating: rating)
             } else if isTried {
                 Image(systemName: "checkmark.circle.fill")
-                    .foregroundStyle(.green)
+                    .foregroundStyle(Color.accentColor)
                     .accessibilityLabel("Δοκιμασμένη")
             }
         }
