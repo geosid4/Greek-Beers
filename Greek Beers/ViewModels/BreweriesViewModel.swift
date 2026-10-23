@@ -32,9 +32,57 @@ final class BreweriesViewModel {
     //Show brewery detail sheet
     var sheetBrewery: Brewery?
 
-    //Breweries grouped by region, in the order the regions are declared
+    //Search and filters
+    var searchText = ""
+    var regionFilter: Region?
+    var kindFilter: Brewery.Kind?
+    var visitableOnly = false
+
+    var isFiltering: Bool {
+        !searchText.isEmpty || regionFilter != nil || kindFilter != nil || visitableOnly
+    }
+
+    //Only the regions and kinds that some brewery has, so filters never offer empty choices
+    var availableRegions: [Region] {
+        let used = Set(breweries.map(\.region))
+        return Region.allCases.filter(used.contains)
+    }
+
+    var availableKinds: [Brewery.Kind] {
+        let used = Set(breweries.map(\.kind))
+        return Brewery.Kind.allCases.filter(used.contains)
+    }
+
+    //Breweries that pass the search and filters, in catalog order
+    var filteredBreweries: [Brewery] {
+        breweries.filter { brewery in
+            (regionFilter == nil || brewery.region == regionFilter)
+                && (kindFilter == nil || brewery.kind == kindFilter)
+                && (!visitableOnly || brewery.visitable == true)
+                && matchesSearch(brewery)
+        }
+    }
+
+    // Case and accent insensitive, so "βεργινα" finds "Βεργίνα".
+    // Also matches the brewery's beers, so "IPA" finds breweries that make one
+    private func matchesSearch(_ brewery: Brewery) -> Bool {
+        let query = searchText.trimmingCharacters(in: .whitespaces)
+        guard !query.isEmpty else { return true }
+        let fields = [brewery.name, brewery.city, brewery.region.name]
+            + catalog.beers(for: brewery).flatMap { [$0.name, $0.style] }
+        return fields.contains { $0.localizedStandardContains(query) }
+    }
+
+    func clearFilters() {
+        searchText = ""
+        regionFilter = nil
+        kindFilter = nil
+        visitableOnly = false
+    }
+
+    //Filtered breweries grouped by region, in the order the regions are declared
     var breweriesByRegion: [(region: Region, breweries: [Brewery])] {
-        let grouped = Dictionary(grouping: breweries, by: \.region)
+        let grouped = Dictionary(grouping: filteredBreweries, by: \.region)
         return Region.allCases.compactMap { region in
             guard let breweries = grouped[region] else { return nil }
             return (region, breweries.sorted { $0.name < $1.name })
@@ -70,15 +118,21 @@ final class BreweriesViewModel {
         }
     }
 
+    // Steps through the breweries that pass the filters
     func nextButtonPressed() {
-        guard let selectedBrewery,
-              let currentIndex = breweries.firstIndex(of: selectedBrewery) else {
+        let candidates = filteredBreweries
+        guard let first = candidates.first else {
             print("Ώρα για Ουίσκι!")
+            return
+        }
+        guard let selectedBrewery,
+              let currentIndex = candidates.firstIndex(of: selectedBrewery) else {
+            show(first)
             return
         }
 
         // Wrap around to the first brewery after the last one
-        let nextIndex = (currentIndex + 1) % breweries.count
-        show(breweries[nextIndex])
+        let nextIndex = (currentIndex + 1) % candidates.count
+        show(candidates[nextIndex])
     }
 }

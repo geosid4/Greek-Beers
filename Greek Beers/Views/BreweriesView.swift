@@ -30,7 +30,7 @@ struct BreweriesView: View {
             }
         }
         .sheet(item: $vm.sheetBrewery) { brewery in
-            BreweryDetailView(brewery: brewery)
+            BreweryDetailView(brewery: brewery, beers: vm.catalog.beers(for: brewery))
         }
     }
 }
@@ -78,7 +78,7 @@ extension BreweriesView {
         @Bindable var vm = vm
 
         return Map(position: $vm.cameraPosition) {
-            ForEach(vm.breweries) { brewery in
+            ForEach(vm.filteredBreweries) { brewery in
                 Annotation(brewery.name, coordinate: brewery.coordinates) {
                     BreweryMapAnnotationView()
                         .scaleEffect(vm.selectedBrewery == brewery ? 1 : 0.7)

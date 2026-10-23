@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A7E00000000000000000009 /* BeerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000008 /* BeerRowView.swift */; };
 		5A7E00000000000000000002 /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000001 /* Beer.swift */; };
 		5A7E00000000000000000004 /* breweries.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000003 /* breweries.json */; };
 		5A7E00000000000000000006 /* beers.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000005 /* beers.json */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A7E00000000000000000008 /* BeerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerRowView.swift; sourceTree = "<group>"; };
 		5A7E00000000000000000001 /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
 		5A7E00000000000000000003 /* breweries.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = breweries.json; sourceTree = "<group>"; };
 		5A7E00000000000000000005 /* beers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = beers.json; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				26C02B2A2A5EAF690057DA88 /* BreweryPreviewView.swift */,
 				26C02B2C2A5EF92D0057DA88 /* BreweryMapAnnotationView.swift */,
 				26864BE02A5FC41F00B96DD4 /* BreweryDetailView.swift */,
+				5A7E00000000000000000008 /* BeerRowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				266FCA862A5DB6CD0085D145 /* Catalog.swift in Sources */,
 				26C02B2D2A5EF92D0057DA88 /* BreweryMapAnnotationView.swift in Sources */,
 				26864BE12A5FC41F00B96DD4 /* BreweryDetailView.swift in Sources */,
+				5A7E00000000000000000009 /* BeerRowView.swift in Sources */,
 				266FCA6E2A5DA3B30085D145 /* ZythosApp.swift in Sources */,
 				266FCA8A2A5DC08E0085D145 /* BreweriesViewModel.swift in Sources */,
 				26C02B2B2A5EAF690057DA88 /* BreweryPreviewView.swift in Sources */,

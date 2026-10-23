@@ -12,6 +12,7 @@ struct BreweryDetailView: View {
     @Environment(\.dismiss) private var dismiss
 
     let brewery: Brewery
+    let beers: [Beer]
 
     var body: some View {
         ScrollView {
@@ -23,6 +24,8 @@ struct BreweryDetailView: View {
                     titleSection
                     Divider()
                     descriptionSection
+                    Divider()
+                    beersSection
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
@@ -36,7 +39,9 @@ struct BreweryDetailView: View {
 }
 
 #Preview {
-    BreweryDetailView(brewery: Catalog.bundled.breweries[0])
+    let catalog = Catalog.bundled
+    return BreweryDetailView(brewery: catalog.breweries[0],
+                             beers: catalog.beers(for: catalog.breweries[0]))
 }
 
 extension BreweryDetailView {
@@ -81,10 +86,15 @@ extension BreweryDetailView {
                 .font(.title3)
                 .foregroundStyle(.secondary)
 
-            HStack(spacing: 8) {
+            VStack(alignment: .leading, spacing: 4) {
                 Label(brewery.region.name, systemImage: "map")
+                Label(brewery.kind.name, systemImage: "building.2")
                 if let founded = brewery.founded {
-                    Label(String(founded), systemImage: "calendar")
+                    Label("Από το \(String(founded))", systemImage: "calendar")
+                }
+                if let visitable = brewery.visitable {
+                    Label(visitable ? "Δέχεται επισκέψεις" : "Δεν δέχεται επισκέψεις",
+                          systemImage: visitable ? "door.left.hand.open" : "door.left.hand.closed")
                 }
             }
             .font(.footnote)
@@ -101,6 +111,27 @@ extension BreweryDetailView {
             if let url = brewery.website {
                 Link("Ιστοσελίδα ζυθοποιίας", destination: url)
                     .font(.headline)
+            }
+        }
+    }
+
+    private var beersSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Μπύρες")
+                .font(.title2)
+                .fontWeight(.semibold)
+
+            if beers.isEmpty {
+                Text("Δεν έχουμε καταχωρίσει ακόμα μπύρες γι' αυτή τη ζυθοποιία.")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            } else {
+                ForEach(beers) { beer in
+                    BeerRowView(beer: beer)
+                    if beer != beers.last {
+                        Divider()
+                    }
+                }
             }
         }
     }
