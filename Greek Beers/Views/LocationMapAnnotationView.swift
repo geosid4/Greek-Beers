@@ -8,38 +8,32 @@
 import SwiftUI
 
 struct LocationMapAnnotationView: View {
-    
-    let accentColor = Color("AccentColor")
-    
+
     var body: some View {
         VStack(spacing: 0) {
-            Image(systemName: "wineglass")
+            Image(systemName: "mug.fill")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25, height: 25)
-                .font(.headline)
-                .foregroundColor(.white)
+                .foregroundStyle(.white)
                 .padding(6)
-                .background(accentColor)
-                .cornerRadius(36)
-            
+                .background(Color.accentColor, in: .circle)
+
             Image(systemName: "triangle.fill")
                 .resizable()
                 .scaledToFit()
-                .foregroundColor(accentColor)
+                .foregroundStyle(Color.accentColor)
                 .frame(width: 10, height: 10)
-                .rotationEffect(Angle(degrees: 180))
+                .rotationEffect(.degrees(180))
                 .offset(y: -3)
                 .padding(.bottom, 40)
         }
     }
 }
 
-struct LocationMapAnnotationView_Previews: PreviewProvider {
-    static var previews: some View {
-        ZStack{
-            Color.black.ignoresSafeArea()
-            LocationMapAnnotationView()
-        }
+#Preview {
+    ZStack {
+        Color.black.ignoresSafeArea()
+        LocationMapAnnotationView()
     }
 }

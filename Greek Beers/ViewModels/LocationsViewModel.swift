@@ -9,37 +9,45 @@ import Foundation
 import MapKit
 import SwiftUI
 
+@Observable
+final class LocationsViewModel {
 
-class LocationsViewModel: ObservableObject {
-    
     //All loaded locations
-    @Published var locations: [Location]
-    
+    let locations: [Location]
+
     //Current location on map
-    @Published var mapLocation: Location {
-        didSet{
-            updateMapRegion(location: mapLocation)
+    var mapLocation: Location? {
+        didSet {
+            if let mapLocation { updateMapRegion(location: mapLocation) }
         }
     }
-    
-    @Published var cameraPosition: MapCameraPosition = .automatic
-    let mapSpan = MKCoordinateSpan(latitudeDelta: 7.0, longitudeDelta: 7.0)
-    
+
+    var cameraPosition: MapCameraPosition = .automatic
+    private let mapSpan = MKCoordinateSpan(latitudeDelta: 7.0, longitudeDelta: 7.0)
+
     //Show list of locations
-    @Published var showLocationsList: Bool = false
-    
-    //Show next location detail sheet
-    @Published var sheetLocation: Location? = nil
-    
-    
-    init(){
-        let locations = LocationDataService.locations
-        self.locations = locations
-        self.mapLocation = locations.first!
-        
-        self.updateMapRegion(location: locations.first!)
+    var showLocationsList = false
+
+    //Show location detail sheet
+    var sheetLocation: Location?
+
+    //Locations grouped by region, in the order the regions are declared
+    var locationsByRegion: [(region: Region, locations: [Location])] {
+        let grouped = Dictionary(grouping: locations, by: \.region)
+        return Region.allCases.compactMap { region in
+            guard let locations = grouped[region] else { return nil }
+            return (region, locations.sorted { $0.name < $1.name })
+        }
     }
-    
+
+    init(locations: [Location] = LocationDataService.locations) {
+        self.locations = locations
+        self.mapLocation = locations.first
+        if let first = locations.first {
+            updateMapRegion(location: first)
+        }
+    }
+
     private func updateMapRegion(location: Location) {
         withAnimation(.easeInOut) {
             cameraPosition = .region(MKCoordinateRegion(
@@ -47,42 +55,29 @@ class LocationsViewModel: ObservableObject {
                 span: mapSpan))
         }
     }
-    
-     func toggleLocationsList() {
+
+    func toggleLocationsList() {
         withAnimation(.easeInOut) {
-            showLocationsList = !showLocationsList
+            showLocationsList.toggle()
         }
     }
-    
+
     func showNextLocation(location: Location) {
         withAnimation(.easeInOut) {
             mapLocation = location
             showLocationsList = false
-            
-            
         }
     }
-        func nextButtonPressed() {
-            //get the current index
-            guard let currentIndex = locations.firstIndex(where: { $0 == mapLocation}) else {
-                print("Ώρα για Ουίσκι!")
-                return
-            }
-            
-            //check if the currentIndex is valid
-            let nextIndex = currentIndex + 1
-            guard locations.indices.contains(nextIndex) else {
-                //next index is not valid
-                //restart from 0
-                guard let firstLocation = locations.first else {return}
-                showNextLocation(location: firstLocation)
-                return
-            }
-            
-            // Next index IS valid
-            let nextLocation = locations[nextIndex]
-            showNextLocation(location: nextLocation)
-        
-        
-   }
+
+    func nextButtonPressed() {
+        guard let mapLocation,
+              let currentIndex = locations.firstIndex(of: mapLocation) else {
+            print("Ώρα για Ουίσκι!")
+            return
+        }
+
+        // Wrap around to the first location after the last one
+        let nextIndex = (currentIndex + 1) % locations.count
+        showNextLocation(location: locations[nextIndex])
+    }
 }

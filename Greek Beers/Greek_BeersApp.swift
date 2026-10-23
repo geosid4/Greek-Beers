@@ -9,13 +9,13 @@ import SwiftUI
 
 @main
 struct Greek_BeersApp: App {
-    
-    @StateObject private var vm = LocationsViewModel()
-    
+
+    @State private var vm = LocationsViewModel()
+
     var body: some Scene {
         WindowGroup {
             IntroView()
-                .environmentObject(vm)
+                .environment(vm)
         }
     }
 }
