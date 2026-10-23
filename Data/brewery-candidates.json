@@ -1,0 +1,931 @@
+{
+  "about": "Greek Breweries — Master Candidate List. Breweries we know of but have not verified. A brewery moves to Greek Beers/Resources/breweries.json once its own website or recent products confirm it is active. Membership of a list is not verification.",
+  "statuses": {
+    "unverified": "Known from a list, not yet checked",
+    "inactive": "Checked: closed, or no sign of activity"
+  },
+  "alreadyVerified": [
+    "chios",
+    "corfu",
+    "mikonu",
+    "nissos",
+    "santorini-brewing",
+    "septem",
+    "siris",
+    "vambeer",
+    "vergina"
+  ],
+  "candidates": [
+    {
+      "id": "athinaiki-zythopoiia",
+      "name": "Αθηναϊκή Ζυθοποιία",
+      "city": "Αθήνα",
+      "kind": "industrial",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Μέλη Ένωσης Ελλήνων Ζυθοποιών"
+      ],
+      "note": "Εγκαταστάσεις σε Αθήνα, Πάτρα, Θεσσαλονίκη",
+      "lastChecked": null
+    },
+    {
+      "id": "vap-p-koygios",
+      "name": "ΒΑΠ Π. Κούγιος",
+      "city": "Ρόδος",
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Μέλη Ένωσης Ελλήνων Ζυθοποιών"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "elixi-mikrozythopoiia",
+      "name": "ΕΛΙΞΗ Μικροζυθοποιία",
+      "city": "Εύβοια",
+      "kind": "microbrewery",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Μέλη Ένωσης Ελλήνων Ζυθοποιών"
+      ],
+      "note": "Ίδια με το Elixi Brewery",
+      "lastChecked": null
+    },
+    {
+      "id": "zythopoiia-pineioy",
+      "name": "Ζυθοποιία Πηνειού",
+      "city": "Λάρισα",
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Μέλη Ένωσης Ελλήνων Ζυθοποιών"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "zythopoiia-plastigga",
+      "name": "Ζυθοποιία Πλάστιγγα",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Μέλη Ένωσης Ελλήνων Ζυθοποιών"
+      ],
+      "note": "Έδρα άγνωστη",
+      "lastChecked": null
+    },
+    {
+      "id": "ikariaki-zythopoiia",
+      "name": "Ικαριακή Ζυθοποιία",
+      "city": "Ικαρία",
+      "kind": "microbrewery",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Μέλη Ένωσης Ελλήνων Ζυθοποιών",
+        "https://www.travel.gr/en/food-and-drink-en/12-greek-island-beers-to-try-in-2026/"
+      ],
+      "note": "Χωρίς δικό της site. Το travel.gr (Αύγ. 2026) αναφέρει την Ικαριώτισσα Lager 5% και ale, red ale, porter. Λείπει πηγή της ίδιας της ζυθοποιίας.",
+      "lastChecked": "2026-10-23"
+    },
+    {
+      "id": "kritikes-zythopoiies-zidianakis",
+      "name": "Κρητικές Ζυθοποιίες – Ζηδιανάκης",
+      "city": "Ηράκλειο",
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Μέλη Ένωσης Ελλήνων Ζυθοποιών"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "kritiki-zythopoiia",
+      "name": "Κρητική Ζυθοποιία",
+      "city": "Χανιά",
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Μέλη Ένωσης Ελλήνων Ζυθοποιών"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "mikrozythopoiia-kavalas",
+      "name": "Μικροζυθοποιία Καβάλας",
+      "city": "Καβάλα",
+      "kind": "microbrewery",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Μέλη Ένωσης Ελλήνων Ζυθοποιών"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "local-streets-beer",
+      "name": "Local Streets Beer",
+      "city": "Βόλος",
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Μέλη Ένωσης Ελλήνων Ζυθοποιών"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "olympiaki-zythopoiia",
+      "name": "Ολυμπιακή Ζυθοποιία",
+      "city": "Ριτσώνα",
+      "kind": "industrial",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Μέλη Ένωσης Ελλήνων Ζυθοποιών"
+      ],
+      "note": "Εγκαταστάσεις σε Ριτσώνα και Θεσσαλονίκη",
+      "lastChecked": null
+    },
+    {
+      "id": "protypi-mikrozythopoiia-thessalonikis",
+      "name": "Πρότυπη Μικροζυθοποιία Θεσσαλονίκης",
+      "city": "Θεσσαλονίκη",
+      "kind": "microbrewery",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Μέλη Ένωσης Ελλήνων Ζυθοποιών"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "zythopoiia-anastasioy",
+      "name": "Ζυθοποιία Αναστασίου",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "zeos-zythopoiia",
+      "name": "Ζέος Ζυθοποιία",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "zythopoiia-ipeiroy",
+      "name": "Ζυθοποιία Ηπείρου",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "zythopoiia-serron",
+      "name": "Ζυθοποιία Σερρών",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "makedoniki-mikrozythopoiia-dramas",
+      "name": "Μακεδονική Μικροζυθοποιία Δράμας",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "mikrozythopoiia-eyrytanias",
+      "name": "Μικροζυθοποιία Ευρυτανίας",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "mikrozythopoiia-samothrakis",
+      "name": "Μικροζυθοποιία Σαμοθράκης",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "mikrozythopoiia-agioy-nikolaoy",
+      "name": "Μικροζυθοποιία Αγίου Νικολάου",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "zythopoiia-atalantis",
+      "name": "Ζυθοποιία Αταλάντης",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "peiraiki-mikrozythopoiia",
+      "name": "Πειραϊκή Μικροζυθοποιία",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "zythopoiia-ioanninon",
+      "name": "Ζυθοποιία Ιωαννίνων",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "zythopoiia-pamvotis",
+      "name": "Ζυθοποιία Παμβώτις",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "ftelos-brewery",
+      "name": "Ftelos Brewery",
+      "city": "Σαντορίνη",
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "mikrozythopoiia-fonias",
+      "name": "Μικροζυθοποιία Φονιάς",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "mikrozythopoiia-marmita",
+      "name": "Μικροζυθοποιία Μαρμίτα",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "nissiopi",
+      "name": "Nissiopi",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "johnnie-s-beer",
+      "name": "Johnnie's Beer",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "charma",
+      "name": "Charma",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "nema",
+      "name": "Nema",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "valia-calda",
+      "name": "Valia Calda",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "xaos",
+      "name": "Xaos",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "utopia",
+      "name": "Utopia",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "iama-brewery",
+      "name": "Iama Brewery",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "pariani",
+      "name": "Pariani",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "katsika",
+      "name": "Katsika",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "flaros",
+      "name": "Flaros",
+      "city": null,
+      "kind": null,
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Δημοσιεύματα για την ελληνική craft σκηνή (λίστα χρήστη)"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "strange-brew",
+      "name": "Strange Brew",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "seven-islands-brewery",
+      "name": "Seven Islands Brewery",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "blame-the-sun",
+      "name": "Blame the Sun",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "kirki-beers",
+      "name": "Kirki Beers",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "lazy-goat",
+      "name": "Lazy Goat",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "sui-generis",
+      "name": "Sui Generis",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "mustaki",
+      "name": "Mustaki",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "vasta",
+      "name": "Vasta",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "brewtiful",
+      "name": "Brewtiful",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "morias",
+      "name": "Morias",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "midnight-circus",
+      "name": "Midnight Circus",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "syrma",
+      "name": "Syrma",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "sourmena-brew",
+      "name": "Sourmena Brew",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "monachus-brewing",
+      "name": "Monachus Brewing",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "noble-men",
+      "name": "Noble Men",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "main-squeeze-brewing",
+      "name": "Main Squeeze Brewing",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "raven-brewing",
+      "name": "Raven Brewing",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "c0nifer-brewery",
+      "name": "C0nifer Brewery",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "azrael-brewery",
+      "name": "Azrael Brewery",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "dreamer-brewing",
+      "name": "Dreamer Brewing",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "kentavros",
+      "name": "Kentavros",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "dedalos",
+      "name": "Dedalos",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "clepsydra",
+      "name": "Clepsydra",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "wolf-did-it",
+      "name": "Wolf Did It",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "evripos",
+      "name": "Evripos",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "kult",
+      "name": "Kult",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "wings",
+      "name": "Wings",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "valtinger",
+      "name": "Valtinger",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "trikalon-zythos",
+      "name": "Τρικάλων Ζύθος",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "thessaliki-zythopoiia",
+      "name": "Θεσσαλική Ζυθοποιία",
+      "city": null,
+      "kind": "gypsy",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "Λίστα gypsy brewers / ανεξάρτητων brands (λίστα χρήστη)"
+      ],
+      "note": "Πιθανώς παράγει σε εγκαταστάσεις τρίτων",
+      "lastChecked": null
+    },
+    {
+      "id": "mikrozythopoiia-kefalonias-kai-ithakis",
+      "name": "Μικροζυθοποιία Κεφαλονιάς και Ιθάκης",
+      "city": "Κεφαλονιά",
+      "kind": "microbrewery",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "https://www.travel.gr/en/food-and-drink-en/12-greek-island-beers-to-try-in-2026/"
+      ],
+      "note": null,
+      "lastChecked": null
+    },
+    {
+      "id": "levante-beer",
+      "name": "Levante Beer",
+      "city": "Ζάκυνθος",
+      "kind": "microbrewery",
+      "status": "unverified",
+      "website": null,
+      "sources": [
+        "https://www.travel.gr/en/food-and-drink-en/12-greek-island-beers-to-try-in-2026/"
+      ],
+      "note": null,
+      "lastChecked": null
+    }
+  ]
+}
