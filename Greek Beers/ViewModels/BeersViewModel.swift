@@ -5,21 +5,6 @@
 
 import Foundation
 
-// A group of beers the Beers tab can open on its own page
-enum BeerCollection: Hashable {
-    case family(StyleFamily)
-    case localIngredients
-    case region(Region)
-
-    var title: String {
-        switch self {
-        case .family(let family): family.name
-        case .localIngredients: "Με ελληνικά υλικά"
-        case .region(let region): region.name
-        }
-    }
-}
-
 @Observable
 final class BeersViewModel {
 
@@ -36,20 +21,32 @@ final class BeersViewModel {
     var searchText = ""
     var sortOrder: SortOrder = .name
 
-    var isSearching: Bool {
-        !searchText.trimmingCharacters(in: .whitespaces).isEmpty
+    //Filters. An empty set means no filter on that dimension
+    var selectedBreweryIds: Set<String> = []
+    var selectedFamilies: Set<StyleFamily> = []
+    var selectedRegions: Set<Region> = []
+    var localIngredientsOnly = false
+
+    var activeFilterCount: Int {
+        selectedBreweryIds.count + selectedFamilies.count + selectedRegions.count + (localIngredientsOnly ? 1 : 0)
     }
 
-    var searchResults: [Beer] {
-        sorted(catalog.beers.filter(matchesSearch))
+    var filteredBeers: [Beer] {
+        sorted(catalog.beers.filter { beer in
+            (selectedBreweryIds.isEmpty || selectedBreweryIds.contains(beer.breweryId))
+                && (selectedFamilies.isEmpty || selectedFamilies.contains(beer.styleFamily))
+                && (selectedRegions.isEmpty || brewery(for: beer).map { selectedRegions.contains($0.region) } == true)
+                && (!localIngredientsOnly || !beer.localIngredients.isEmpty)
+                && matchesSearch(beer)
+        })
     }
 
-    var allBeers: [Beer] {
-        sorted(catalog.beers)
+    var breweriesByName: [Brewery] {
+        catalog.breweries.sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
     }
 
-    var beersWithLocalIngredients: [Beer] {
-        beers(in: .localIngredients)
+    var selectedBreweries: [Brewery] {
+        breweriesByName.filter { selectedBreweryIds.contains($0.id) }
     }
 
     //Style families and regions that have at least one beer, with how many
@@ -62,7 +59,7 @@ final class BeersViewModel {
 
     var regions: [(region: Region, count: Int)] {
         Region.allCases.compactMap { region in
-            let count = beers(in: .region(region)).count
+            let count = catalog.beers.filter { brewery(for: $0)?.region == region }.count
             return count > 0 ? (region, count) : nil
         }
     }
@@ -71,15 +68,27 @@ final class BeersViewModel {
         self.catalog = catalog
     }
 
-    func beers(in collection: BeerCollection) -> [Beer] {
-        let beers = catalog.beers.filter { beer in
-            switch collection {
-            case .family(let family): beer.styleFamily == family
-            case .localIngredients: !beer.localIngredients.isEmpty
-            case .region(let region): brewery(for: beer)?.region == region
-            }
-        }
-        return sorted(beers)
+    func toggle(_ brewery: Brewery) {
+        selectedBreweryIds.formSymmetricDifference([brewery.id])
+    }
+
+    func toggle(_ family: StyleFamily) {
+        selectedFamilies.formSymmetricDifference([family])
+    }
+
+    func toggle(_ region: Region) {
+        selectedRegions.formSymmetricDifference([region])
+    }
+
+    func clearFilters() {
+        selectedBreweryIds = []
+        selectedFamilies = []
+        selectedRegions = []
+        localIngredientsOnly = false
+    }
+
+    func beerCount(for brewery: Brewery) -> Int {
+        catalog.beers(for: brewery).count
     }
 
     func brewery(for beer: Beer) -> Brewery? {

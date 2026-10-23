@@ -73,6 +73,14 @@ extension Beer {
         abv.map { "\($0.formatted(.number.precision(.fractionLength(0...1))))% ABV" }
     }
 
+    var formattedIBU: String? {
+        guard let ibu else { return nil }
+        if let ibuMax, ibuMax != ibu {
+            return "\(ibu)–\(ibuMax) IBU"
+        }
+        return "\(ibu) IBU"
+    }
+
     // Falls back to the style family's colour when the beer's own colour isn't known
     var displayColor: Color {
         switch color {

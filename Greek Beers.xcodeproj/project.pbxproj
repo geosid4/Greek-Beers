@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A7E0000000000000000001F /* BeerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E0000000000000000001E /* BeerCollectionView.swift */; };
+		5A7E00000000000000000023 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000022 /* FiltersView.swift */; };
+		5A7E00000000000000000021 /* BreweryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000020 /* BreweryPickerView.swift */; };
 		5A7E0000000000000000001D /* BeerCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E0000000000000000001C /* BeerCardView.swift */; };
 		5A7E0000000000000000001B /* BeerGlassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E0000000000000000001A /* BeerGlassView.swift */; };
 		5A7E00000000000000000019 /* JourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000018 /* JourneyView.swift */; };
@@ -35,7 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5A7E0000000000000000001E /* BeerCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerCollectionView.swift; sourceTree = "<group>"; };
+		5A7E00000000000000000022 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
+		5A7E00000000000000000020 /* BreweryPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryPickerView.swift; sourceTree = "<group>"; };
 		5A7E0000000000000000001C /* BeerCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerCardView.swift; sourceTree = "<group>"; };
 		5A7E0000000000000000001A /* BeerGlassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerGlassView.swift; sourceTree = "<group>"; };
 		5A7E00000000000000000018 /* JourneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyView.swift; sourceTree = "<group>"; };
@@ -121,7 +123,8 @@
 				5A7E00000000000000000014 /* SharedComponents.swift */,
 				5A7E00000000000000000010 /* BeerDetailView.swift */,
 				5A7E0000000000000000000E /* BeersView.swift */,
-				5A7E0000000000000000001E /* BeerCollectionView.swift */,
+				5A7E00000000000000000022 /* FiltersView.swift */,
+				5A7E00000000000000000020 /* BreweryPickerView.swift */,
 				5A7E0000000000000000001C /* BeerCardView.swift */,
 				5A7E0000000000000000001A /* BeerGlassView.swift */,
 				5A7E0000000000000000000C /* RootView.swift */,
@@ -254,7 +257,8 @@
 				5A7E00000000000000000015 /* SharedComponents.swift in Sources */,
 				5A7E00000000000000000011 /* BeerDetailView.swift in Sources */,
 				5A7E0000000000000000000F /* BeersView.swift in Sources */,
-				5A7E0000000000000000001F /* BeerCollectionView.swift in Sources */,
+				5A7E00000000000000000023 /* FiltersView.swift in Sources */,
+				5A7E00000000000000000021 /* BreweryPickerView.swift in Sources */,
 				5A7E0000000000000000001D /* BeerCardView.swift in Sources */,
 				5A7E0000000000000000001B /* BeerGlassView.swift in Sources */,
 				5A7E0000000000000000000D /* RootView.swift in Sources */,

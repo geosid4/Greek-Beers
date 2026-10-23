@@ -6,28 +6,27 @@
 import SwiftData
 import SwiftUI
 
-// The Beers tab and the app's first screen: browse by style, local ingredients and region,
-// or search everything
+// The Beers tab and the app's first screen: only beers, narrowed by search and filters
 struct BeersView: View {
 
     @Environment(BeersViewModel.self) private var vm
+
+    @State private var showsFilters = false
 
     var body: some View {
         @Bindable var vm = vm
 
         NavigationStack {
-            // The search box sits above the scroll view, so it stays put while the page scrolls
+            // Search and the filter row sit above the scroll view, so they stay put while the list scrolls
             VStack(spacing: 0) {
                 SearchField(prompt: "Μπύρα, στυλ ή ζυθοποιία", text: $vm.searchText)
                     .padding(.horizontal)
+                    .padding(.top, 8)
+                filterBar
                     .padding(.vertical, 8)
 
                 ScrollView {
-                    if vm.isSearching {
-                        searchResults
-                    } else {
-                        browse
-                    }
+                    results
                 }
                 .scrollDismissesKeyboard(.immediately)
             }
@@ -42,8 +41,8 @@ struct BeersView: View {
             .navigationDestination(for: Beer.self) { beer in
                 BeerDetailView(beer: beer)
             }
-            .navigationDestination(for: BeerCollection.self) { collection in
-                BeerCollectionView(collection: collection)
+            .sheet(isPresented: $showsFilters) {
+                FiltersView()
             }
         }
     }
@@ -59,135 +58,139 @@ struct BeersView: View {
 
 extension BeersView {
 
-    private var browse: some View {
-        LazyVStack(alignment: .leading, spacing: 28) {
-            section("Στυλ") {
-                LazyVGrid(columns: [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)],
-                          spacing: 12) {
-                    ForEach(vm.families, id: \.family) { family, count in
-                        NavigationLink(value: BeerCollection.family(family)) {
-                            StyleTile(family: family, count: count)
-                        }
-                        .buttonStyle(.plain)
-                    }
-                }
-                .padding(.horizontal)
-            }
-
-            if !vm.beersWithLocalIngredients.isEmpty {
-                section("Με ελληνικά υλικά", seeAll: .localIngredients) {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 12) {
-                            ForEach(vm.beersWithLocalIngredients) { beer in
-                                NavigationLink(value: beer) {
-                                    LocalBeerCardView(beer: beer, brewery: vm.brewery(for: beer))
-                                }
-                                .buttonStyle(.plain)
-                            }
-                        }
-                        .padding(.horizontal)
-                    }
-                }
-            }
-
-            section("Ανά περιφέρεια") {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 10) {
-                        ForEach(vm.regions, id: \.region) { region, count in
-                            NavigationLink(value: BeerCollection.region(region)) {
-                                RegionChip(region: region, count: count)
-                            }
-                            .buttonStyle(.plain)
+    // The filters button, the active style, region and ingredient filters as removable chips,
+    // then every brewery as a toggle chip
+    private var filterBar: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 8) {
+                Button {
+                    showsFilters = true
+                } label: {
+                    HStack(spacing: 6) {
+                        Image(systemName: "line.3.horizontal.decrease")
+                        Text("Φίλτρα")
+                        if vm.activeFilterCount > 0 {
+                            Text("\(vm.activeFilterCount)")
+                                .font(.caption.weight(.bold))
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 1)
+                                .background(.white, in: .capsule)
+                                .foregroundStyle(Color.accentColor)
                         }
                     }
-                    .padding(.horizontal)
+                    .font(.subheadline.weight(.semibold))
+                    .padding(.horizontal, 14)
+                    .frame(height: 36)
+                    .foregroundStyle(vm.activeFilterCount > 0 ? Color.white : Color.primary)
+                    .background(vm.activeFilterCount > 0 ? Color.accentColor : Color(.secondarySystemGroupedBackground),
+                                in: .capsule)
+                }
+                .buttonStyle(.plain)
+
+                ForEach(StyleFamily.allCases.filter(vm.selectedFamilies.contains)) { family in
+                    FilterToken(title: family.name) { vm.toggle(family) }
+                }
+                ForEach(Region.allCases.filter(vm.selectedRegions.contains)) { region in
+                    FilterToken(title: region.name) { vm.toggle(region) }
+                }
+                if vm.localIngredientsOnly {
+                    FilterToken(title: "Ελληνικά υλικά") { vm.localIngredientsOnly = false }
+                }
+
+                // Fixed alphabetical order, so chips don't move under the finger while picking several
+                ForEach(vm.breweriesByName) { brewery in
+                    Button {
+                        withAnimation(.snappy) { vm.toggle(brewery) }
+                    } label: {
+                        BreweryChip(brewery: brewery, isSelected: vm.selectedBreweryIds.contains(brewery.id))
+                    }
+                    .buttonStyle(.plain)
                 }
             }
-
-            section("Όλες οι μπύρες") {
-                BeerCardList(beers: vm.allBeers)
-            }
+            .padding(.horizontal)
+            .animation(.snappy, value: vm.activeFilterCount)
         }
-        .padding(.vertical)
     }
 
     @ViewBuilder
-    private var searchResults: some View {
-        let results = vm.searchResults
-        if results.isEmpty {
-            ContentUnavailableView.search(text: vm.searchText)
-                .padding(.top, 60)
-        } else {
-            BeerCardList(beers: results)
-                .padding(.vertical)
-        }
-    }
+    private var results: some View {
+        let beers = vm.filteredBeers
 
-    private func section(_ title: String, seeAll collection: BeerCollection? = nil,
-                         @ViewBuilder content: () -> some View) -> some View {
         VStack(alignment: .leading, spacing: 12) {
-            HStack(alignment: .firstTextBaseline) {
-                Text(title)
-                    .font(.title2)
-                    .fontWeight(.bold)
+            HStack {
+                Text("\(beers.count) \(beers.count == 1 ? "μπύρα" : "μπύρες")")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
                 Spacer()
-                if let collection {
-                    NavigationLink("Όλες", value: collection)
-                        .font(.subheadline)
+                if vm.activeFilterCount > 0 {
+                    Button("Καθαρισμός φίλτρων") {
+                        withAnimation(.snappy) { vm.clearFilters() }
+                    }
+                    .font(.subheadline)
                 }
             }
             .padding(.horizontal)
 
-            content()
-        }
-    }
-}
-
-// A style family as a coloured tile with its glass
-private struct StyleTile: View {
-
-    let family: StyleFamily
-    let count: Int
-
-    var body: some View {
-        HStack(alignment: .bottom) {
-            VStack(alignment: .leading, spacing: 4) {
-                Text(family.name)
-                    .font(.headline)
-                    .multilineTextAlignment(.leading)
-                    .lineLimit(2, reservesSpace: true)
-                Text("\(count) \(count == 1 ? "μπύρα" : "μπύρες")")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+            if beers.isEmpty {
+                ContentUnavailableView {
+                    Label("Καμία μπύρα", systemImage: "mug")
+                } description: {
+                    Text("Δοκίμασε άλλη αναζήτηση ή λιγότερα φίλτρα.")
+                }
+                .padding(.top, 40)
+            } else {
+                BeerCardList(beers: beers)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-
-            BeerGlassView(color: family.displayColor, height: 52)
         }
-        .padding(14)
-        .background(family.displayColor.opacity(0.18), in: .rect(cornerRadius: 18))
-        .contentShape(.rect(cornerRadius: 18))
-        .accessibilityElement(children: .combine)
+        .padding(.vertical)
     }
 }
 
-private struct RegionChip: View {
+private struct BreweryChip: View {
 
-    let region: Region
-    let count: Int
+    let brewery: Brewery
+    let isSelected: Bool
 
     var body: some View {
         HStack(spacing: 6) {
-            Image(systemName: "mappin.and.ellipse")
-                .foregroundStyle(Color.accentColor)
-            Text(region.name)
-            Text("\(count)")
-                .foregroundStyle(.secondary)
+            BreweryLogoView(brewery: brewery, size: 24)
+            Text(brewery.name)
+                .lineLimit(1)
         }
         .font(.subheadline)
-        .padding(.horizontal, 14)
-        .padding(.vertical, 10)
-        .background(Color(.secondarySystemGroupedBackground), in: .capsule)
+        .padding(.leading, 6)
+        .padding(.trailing, 14)
+        .frame(height: 36)
+        .foregroundStyle(isSelected ? Color.white : Color.primary)
+        .background(isSelected ? Color.accentColor : Color(.secondarySystemGroupedBackground), in: .capsule)
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
+    }
+}
+
+// An active filter, removed by tapping it
+private struct FilterToken: View {
+
+    let title: String
+    let remove: () -> Void
+
+    var body: some View {
+        Button {
+            withAnimation(.snappy) { remove() }
+        } label: {
+            HStack(spacing: 4) {
+                Text(title)
+                    .lineLimit(1)
+                Image(systemName: "xmark")
+                    .font(.caption2.weight(.bold))
+            }
+            .font(.subheadline)
+            .padding(.horizontal, 12)
+            .frame(height: 36)
+            .foregroundStyle(Color.accentColor)
+            .background(Color.accentColor.opacity(0.12), in: .capsule)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Αφαίρεση φίλτρου \(title)")
     }
 }
 

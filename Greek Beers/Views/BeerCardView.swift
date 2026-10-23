@@ -3,6 +3,7 @@
 //  Zythos
 //
 
+import SwiftData
 import SwiftUI
 
 // A beer as a card: glass, name, brewery and ABV, with the user's stars when there are some
@@ -63,38 +64,26 @@ struct BeerCardView: View {
     }
 }
 
-// The tall card in the "Με ελληνικά υλικά" carousel
-struct LocalBeerCardView: View {
+// Beers as tappable cards, marked with what the user has tried
+struct BeerCardList: View {
 
-    let beer: Beer
-    let brewery: Brewery?
+    @Environment(BeersViewModel.self) private var vm
+    @Query private var logs: [BeerLog]
+
+    let beers: [Beer]
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            BeerGlassView(beer: beer, height: 80)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 12)
-                .background(beer.displayColor.opacity(0.15), in: .rect(cornerRadius: 14))
-
-            Text(beer.name)
-                .font(.headline)
-                .lineLimit(2, reservesSpace: true)
-            if let brewery {
-                Text(brewery.name)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
+        LazyVStack(spacing: 10) {
+            ForEach(beers) { beer in
+                let log = logs.first { $0.beerId == beer.id }
+                NavigationLink(value: beer) {
+                    BeerCardView(beer: beer, brewery: vm.brewery(for: beer),
+                                 isTried: log?.isTried == true, rating: log?.rating)
+                }
+                .buttonStyle(.plain)
             }
-            Label(beer.localIngredients.joined(separator: ", "), systemImage: "leaf.fill")
-                .font(.caption)
-                .foregroundStyle(.green)
-                .lineLimit(1)
         }
-        .padding(12)
-        .frame(width: 170)
-        .background(Color(.secondarySystemGroupedBackground), in: .rect(cornerRadius: 18))
-        .contentShape(.rect(cornerRadius: 18))
-        .accessibilityElement(children: .combine)
+        .padding(.horizontal)
     }
 }
 
@@ -120,7 +109,6 @@ struct Badge: View {
                 BeerCardView(beer: beer, brewery: catalog.breweries.first { $0.id == beer.breweryId },
                              isTried: true, rating: 4)
             }
-            LocalBeerCardView(beer: catalog.beers[4], brewery: catalog.breweries[2])
         }
         .padding()
     }

@@ -162,7 +162,7 @@ extension BeerDetailView {
         let rows: [(String, String)] = [
             ("Οικογένεια", beer.styleFamily.name),
             ("Αλκοόλ", beer.formattedABV),
-            ("Πικράδα", beer.ibu.map { "\($0) IBU" }),
+            ("Πικράδα", beer.formattedIBU),
             ("Χρώμα", beer.color?.name),
             ("Φιλτράρισμα", beer.filtered.map { $0 ? "Φιλτραρισμένη" : "Αφιλτράριστη" }),
             ("Τοπικά υλικά", beer.localIngredients.isEmpty ? nil : beer.localIngredients.joined(separator: ", "))

@@ -46,13 +46,11 @@ struct BeerRowView: View {
         .accessibilityElement(children: .combine)
     }
 
-    // "Μπύρα Χίου · Pilsner · 5% ABV · 30 IBU", leaving out whatever we don't know
+    // "Μπύρα Χίου · Pilsner · 5% ABV · 18–22 IBU", leaving out whatever we don't know
     private var details: String {
-        var parts = [breweryName, beer.style, beer.formattedABV].compactMap { $0 }
-        if let ibu = beer.ibu {
-            parts.append("\(ibu) IBU")
-        }
-        return parts.joined(separator: " · ")
+        [breweryName, beer.style, beer.formattedABV, beer.formattedIBU]
+            .compactMap { $0 }
+            .joined(separator: " · ")
     }
 }
 

@@ -15,8 +15,9 @@ struct Beer: Identifiable, Hashable, Decodable {
     let style: String
     let styleFamily: StyleFamily
     let abv: Double?
-    // Only when a reliable source states it
+    // Only when a reliable source states it. Some breweries give a range, e.g. 18-22
     let ibu: Int?
+    let ibuMax: Int?
     let color: BeerColor?
     let filtered: Bool?
     // Greek or local ingredients worth highlighting, e.g. "μαστίχα"
@@ -43,7 +44,7 @@ enum StyleFamily: String, Decodable, CaseIterable, Identifiable {
         switch self {
         case .lager: "Lager & Pilsner"
         case .wheat: "Weiss & Σίτου"
-        case .paleAleIPA: "Pale Ale & IPA"
+        case .paleAleIPA: "Ale & IPA"
         case .stoutPorter: "Stout & Porter"
         case .sour: "Sour"
         case .belgianStrong: "Belgian & Strong"
