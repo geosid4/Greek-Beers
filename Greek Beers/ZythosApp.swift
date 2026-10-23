@@ -10,12 +10,16 @@ import SwiftUI
 @main
 struct ZythosApp: App {
 
-    @State private var vm = BreweriesViewModel()
+    @State private var breweries = BreweriesViewModel()
+    @State private var beers = BeersViewModel()
+    @State private var router = AppRouter()
 
     var body: some Scene {
         WindowGroup {
             IntroView()
-                .environment(vm)
+                .environment(breweries)
+                .environment(beers)
+                .environment(router)
         }
     }
 }

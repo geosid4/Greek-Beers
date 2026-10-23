@@ -44,4 +44,6 @@ struct IntroView: View {
 #Preview {
     IntroView()
         .environment(BreweriesViewModel())
+        .environment(BeersViewModel())
+        .environment(AppRouter())
 }

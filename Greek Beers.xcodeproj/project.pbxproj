@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A7E00000000000000000015 /* SharedComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000014 /* SharedComponents.swift */; };
+		5A7E00000000000000000013 /* BeersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000012 /* BeersViewModel.swift */; };
+		5A7E00000000000000000011 /* BeerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000010 /* BeerDetailView.swift */; };
+		5A7E0000000000000000000F /* BeersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E0000000000000000000E /* BeersView.swift */; };
 		5A7E0000000000000000000D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E0000000000000000000C /* RootView.swift */; };
 		5A7E0000000000000000000B /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E0000000000000000000A /* BottomSheet.swift */; };
 		5A7E00000000000000000009 /* BeerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E00000000000000000008 /* BeerRowView.swift */; };
@@ -27,6 +31,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A7E00000000000000000014 /* SharedComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedComponents.swift; sourceTree = "<group>"; };
+		5A7E00000000000000000012 /* BeersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersViewModel.swift; sourceTree = "<group>"; };
+		5A7E00000000000000000010 /* BeerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailView.swift; sourceTree = "<group>"; };
+		5A7E0000000000000000000E /* BeersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeersView.swift; sourceTree = "<group>"; };
 		5A7E0000000000000000000C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		5A7E0000000000000000000A /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		5A7E00000000000000000008 /* BeerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerRowView.swift; sourceTree = "<group>"; };
@@ -102,6 +110,9 @@
 			children = (
 				266FCA7D2A5DA5C00085D145 /* IntroView.swift */,
 				266FCA872A5DBC120085D145 /* DiscoverView.swift */,
+				5A7E00000000000000000014 /* SharedComponents.swift */,
+				5A7E00000000000000000010 /* BeerDetailView.swift */,
+				5A7E0000000000000000000E /* BeersView.swift */,
 				5A7E0000000000000000000C /* RootView.swift */,
 				5A7E0000000000000000000A /* BottomSheet.swift */,
 				26C02B282A5E82920057DA88 /* BreweriesListView.swift */,
@@ -116,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				266FCA892A5DC08E0085D145 /* BreweriesViewModel.swift */,
+				5A7E00000000000000000012 /* BeersViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -224,7 +236,11 @@
 				5A7E00000000000000000009 /* BeerRowView.swift in Sources */,
 				266FCA6E2A5DA3B30085D145 /* ZythosApp.swift in Sources */,
 				266FCA8A2A5DC08E0085D145 /* BreweriesViewModel.swift in Sources */,
+				5A7E00000000000000000013 /* BeersViewModel.swift in Sources */,
 				266FCA882A5DBC120085D145 /* DiscoverView.swift in Sources */,
+				5A7E00000000000000000015 /* SharedComponents.swift in Sources */,
+				5A7E00000000000000000011 /* BeerDetailView.swift in Sources */,
+				5A7E0000000000000000000F /* BeersView.swift in Sources */,
 				5A7E0000000000000000000D /* RootView.swift in Sources */,
 				5A7E0000000000000000000B /* BottomSheet.swift in Sources */,
 				266FCA832A5DB3850085D145 /* Brewery.swift in Sources */,
