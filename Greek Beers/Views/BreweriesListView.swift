@@ -1,6 +1,6 @@
 //
-//  LocationsListView.swift
-//  Greek Beers
+//  BreweriesListView.swift
+//  Zythos
 //
 //  Created by George Sidiropoulos on 12/7/23.
 //
@@ -8,19 +8,19 @@
 
 import SwiftUI
 
-struct LocationsListView: View {
+struct BreweriesListView: View {
 
-    @Environment(LocationsViewModel.self) private var vm
+    @Environment(BreweriesViewModel.self) private var vm
 
     var body: some View {
         List {
-            ForEach(vm.locationsByRegion, id: \.region) { group in
-                Section(group.region.rawValue) {
-                    ForEach(group.locations) { location in
+            ForEach(vm.breweriesByRegion, id: \.region) { group in
+                Section(group.region.name) {
+                    ForEach(group.breweries) { brewery in
                         Button {
-                            vm.showNextLocation(location: location)
+                            vm.show(brewery)
                         } label: {
-                            listRowView(location: location)
+                            listRowView(brewery: brewery)
                         }
                         .padding(.vertical, 4)
                         .listRowBackground(Color.clear)
@@ -35,15 +35,15 @@ struct LocationsListView: View {
 }
 
 #Preview {
-    LocationsListView()
-        .environment(LocationsViewModel())
+    BreweriesListView()
+        .environment(BreweriesViewModel())
 }
 
-extension LocationsListView {
+extension BreweriesListView {
 
-    private func listRowView(location: Location) -> some View {
+    private func listRowView(brewery: Brewery) -> some View {
         HStack {
-            if let imageName = location.imageNames.first {
+            if let imageName = brewery.imageNames.first {
                 Image(imageName)
                     .resizable()
                     .scaledToFit()
@@ -52,9 +52,9 @@ extension LocationsListView {
                     .background(Color.white, in: .rect(cornerRadius: 10))
             }
             VStack(alignment: .leading) {
-                Text(location.name)
+                Text(brewery.name)
                     .font(.headline)
-                Text(location.cityName)
+                Text(brewery.city)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }

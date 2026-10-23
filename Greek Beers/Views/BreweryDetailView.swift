@@ -1,17 +1,17 @@
 //
-//  LocationDetailView.swift
-//  Greek Beers
+//  BreweryDetailView.swift
+//  Zythos
 //
 //  Created by George Sidiropoulos on 13/7/23.
 //
 
 import SwiftUI
 
-struct LocationDetailView: View {
+struct BreweryDetailView: View {
 
     @Environment(\.dismiss) private var dismiss
 
-    let location: Location
+    let brewery: Brewery
 
     var body: some View {
         ScrollView {
@@ -36,10 +36,10 @@ struct LocationDetailView: View {
 }
 
 #Preview {
-    LocationDetailView(location: LocationDataService.locations[0])
+    BreweryDetailView(brewery: Catalog.bundled.breweries[0])
 }
 
-extension LocationDetailView {
+extension BreweryDetailView {
 
     private var backButton: some View {
         Button {
@@ -59,7 +59,7 @@ extension LocationDetailView {
     // Logos have white backgrounds, so they sit on white and are fitted rather than cropped
     private var imageSection: some View {
         TabView {
-            ForEach(location.imageNames, id: \.self) { imageName in
+            ForEach(brewery.imageNames, id: \.self) { imageName in
                 Image(imageName)
                     .resizable()
                     .scaledToFit()
@@ -69,21 +69,21 @@ extension LocationDetailView {
         }
         .frame(height: 400)
         .background(Color.white)
-        .tabViewStyle(.page(indexDisplayMode: location.imageNames.count > 1 ? .automatic : .never))
+        .tabViewStyle(.page(indexDisplayMode: brewery.imageNames.count > 1 ? .automatic : .never))
     }
 
     private var titleSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(location.name)
+            Text(brewery.name)
                 .font(.largeTitle)
                 .fontWeight(.semibold)
-            Text(location.cityName)
+            Text(brewery.city)
                 .font(.title3)
                 .foregroundStyle(.secondary)
 
             HStack(spacing: 8) {
-                Label(location.region.rawValue, systemImage: "map")
-                if let founded = location.founded {
+                Label(brewery.region.name, systemImage: "map")
+                if let founded = brewery.founded {
                     Label(String(founded), systemImage: "calendar")
                 }
             }
@@ -94,11 +94,11 @@ extension LocationDetailView {
 
     private var descriptionSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text(location.description)
+            Text(brewery.description)
                 .font(.body)
                 .foregroundStyle(.secondary)
 
-            if let url = location.link {
+            if let url = brewery.website {
                 Link("Ιστοσελίδα ζυθοποιίας", destination: url)
                     .font(.headline)
             }

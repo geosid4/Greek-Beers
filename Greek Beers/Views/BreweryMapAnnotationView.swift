@@ -1,13 +1,13 @@
 //
-//  LocationMapAnnotationView.swift
-//  Greek Beers
+//  BreweryMapAnnotationView.swift
+//  Zythos
 //
 //  Created by George Sidiropoulos on 12/7/23.
 //
 
 import SwiftUI
 
-struct LocationMapAnnotationView: View {
+struct BreweryMapAnnotationView: View {
 
     var body: some View {
         VStack(spacing: 0) {
@@ -34,6 +34,6 @@ struct LocationMapAnnotationView: View {
 #Preview {
     ZStack {
         Color.black.ignoresSafeArea()
-        LocationMapAnnotationView()
+        BreweryMapAnnotationView()
     }
 }

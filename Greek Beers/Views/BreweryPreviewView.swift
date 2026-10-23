@@ -1,17 +1,17 @@
 //
-//  LocationPreviewView.swift
-//  Greek Beers
+//  BreweryPreviewView.swift
+//  Zythos
 //
 //  Created by George Sidiropoulos on 12/7/23.
 //
 
 import SwiftUI
 
-struct LocationPreviewView: View {
+struct BreweryPreviewView: View {
 
-    @Environment(LocationsViewModel.self) private var vm
+    @Environment(BreweriesViewModel.self) private var vm
 
-    let location: Location
+    let brewery: Brewery
 
     var body: some View {
         HStack(alignment: .bottom, spacing: 0) {
@@ -38,17 +38,17 @@ struct LocationPreviewView: View {
 #Preview {
     ZStack {
         Color.green.ignoresSafeArea()
-        LocationPreviewView(location: LocationDataService.locations[0])
+        BreweryPreviewView(brewery: Catalog.bundled.breweries[0])
             .padding()
     }
-    .environment(LocationsViewModel())
+    .environment(BreweriesViewModel())
 }
 
-extension LocationPreviewView {
+extension BreweryPreviewView {
 
     private var imageSection: some View {
         ZStack {
-            if let imageName = location.imageNames.first {
+            if let imageName = brewery.imageNames.first {
                 Image(imageName)
                     .resizable()
                     .scaledToFit()
@@ -61,11 +61,11 @@ extension LocationPreviewView {
 
     private var titleSection: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(location.name)
+            Text(brewery.name)
                 .font(.title2)
                 .fontWeight(.bold)
 
-            Text(location.cityName)
+            Text(brewery.city)
                 .font(.subheadline)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -73,7 +73,7 @@ extension LocationPreviewView {
 
     private var learnMoreButton: some View {
         Button {
-            vm.sheetLocation = location
+            vm.sheetBrewery = brewery
         } label: {
             Text("Περισσότερα")
                 .font(.headline)

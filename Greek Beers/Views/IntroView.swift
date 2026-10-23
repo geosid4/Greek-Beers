@@ -1,6 +1,6 @@
 //
 //  IntroView.swift
-//  Greek Beers
+//  Zythos
 //
 //  Created by George Sidiropoulos on 11/7/23.
 //
@@ -14,13 +14,16 @@ struct IntroView: View {
 
     var body: some View {
         if isActive {
-            LocationsView()
+            BreweriesView()
         } else {
             VStack {
                 Image("beer")
-                Text("Beers in Greece")
-                    .font(.custom("Baskerville-Bold", size: 40))
+                Text("Zythos")
+                    .font(.custom("Baskerville-Bold", size: 56))
                     .foregroundStyle(.primary.opacity(0.8))
+                Text("Greek Beer Guide")
+                    .font(.custom("Baskerville", size: 28))
+                    .foregroundStyle(.secondary)
             }
             .scaleEffect(size)
             .opacity(opacity)
@@ -40,5 +43,5 @@ struct IntroView: View {
 
 #Preview {
     IntroView()
-        .environment(LocationsViewModel())
+        .environment(BreweriesViewModel())
 }

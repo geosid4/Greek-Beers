@@ -1,6 +1,6 @@
 //
-//  Greek_BeersApp.swift
-//  Greek Beers
+//  ZythosApp.swift
+//  Zythos
 //
 //  Created by George Sidiropoulos on 11/7/23.
 //
@@ -8,9 +8,9 @@
 import SwiftUI
 
 @main
-struct Greek_BeersApp: App {
+struct ZythosApp: App {
 
-    @State private var vm = LocationsViewModel()
+    @State private var vm = BreweriesViewModel()
 
     var body: some Scene {
         WindowGroup {

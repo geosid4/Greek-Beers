@@ -1,6 +1,6 @@
 //
-//  LocationsView.swift
-//  Greek Beers
+//  BreweriesView.swift
+//  Zythos
 //
 //  Created by George Sidiropoulos on 11/7/23.
 //
@@ -9,9 +9,9 @@ import SwiftUI
 import MapKit
 
 
-struct LocationsView: View {
+struct BreweriesView: View {
 
-    @Environment(LocationsViewModel.self) private var vm
+    @Environment(BreweriesViewModel.self) private var vm
 
     var body: some View {
         @Bindable var vm = vm
@@ -26,26 +26,26 @@ struct LocationsView: View {
 
                 Spacer()
 
-                locationsPreviewStack
+                previewStack
             }
         }
-        .sheet(item: $vm.sheetLocation) { location in
-            LocationDetailView(location: location)
+        .sheet(item: $vm.sheetBrewery) { brewery in
+            BreweryDetailView(brewery: brewery)
         }
     }
 }
 
 #Preview {
-    LocationsView()
-        .environment(LocationsViewModel())
+    BreweriesView()
+        .environment(BreweriesViewModel())
 }
 
-extension LocationsView {
+extension BreweriesView {
 
     private var header: some View {
         VStack {
-            Button(action: vm.toggleLocationsList) {
-                Text(vm.mapLocation.map { "\($0.name), \($0.cityName)" } ?? "")
+            Button(action: vm.toggleBreweryList) {
+                Text(vm.selectedBrewery.map { "\($0.name), \($0.city)" } ?? "")
                     .font(.title2)
                     .fontWeight(.black)
                     .foregroundStyle(Color.primary)
@@ -54,19 +54,19 @@ extension LocationsView {
                     .frame(height: 55)
                     .frame(maxWidth: .infinity)
                     .padding(.horizontal, 44)
-                    .animation(.none, value: vm.mapLocation)
+                    .animation(.none, value: vm.selectedBrewery)
                     .overlay(alignment: .leading) {
                         Image(systemName: "arrow.down")
                             .font(.headline)
                             .foregroundStyle(Color.primary)
                             .padding()
-                            .rotationEffect(.degrees(vm.showLocationsList ? 180 : 0))
+                            .rotationEffect(.degrees(vm.showBreweryList ? 180 : 0))
                     }
             }
             .accessibilityHint("Εμφάνιση λίστας ζυθοποιιών")
 
-            if vm.showLocationsList {
-                LocationsListView()
+            if vm.showBreweryList {
+                BreweriesListView()
             }
         }
         .background(.thickMaterial)
@@ -78,13 +78,13 @@ extension LocationsView {
         @Bindable var vm = vm
 
         return Map(position: $vm.cameraPosition) {
-            ForEach(vm.locations) { location in
-                Annotation(location.name, coordinate: location.coordinates) {
-                    LocationMapAnnotationView()
-                        .scaleEffect(vm.mapLocation == location ? 1 : 0.7)
+            ForEach(vm.breweries) { brewery in
+                Annotation(brewery.name, coordinate: brewery.coordinates) {
+                    BreweryMapAnnotationView()
+                        .scaleEffect(vm.selectedBrewery == brewery ? 1 : 0.7)
                         .shadow(radius: 10)
                         .onTapGesture {
-                            vm.showNextLocation(location: location)
+                            vm.show(brewery)
                         }
                 }
                 .annotationTitles(.hidden)
@@ -92,13 +92,13 @@ extension LocationsView {
         }
     }
 
-    private var locationsPreviewStack: some View {
+    private var previewStack: some View {
         ZStack {
-            if let location = vm.mapLocation {
-                LocationPreviewView(location: location)
+            if let brewery = vm.selectedBrewery {
+                BreweryPreviewView(brewery: brewery)
                     .shadow(color: .black.opacity(0.3), radius: 20)
                     .padding()
-                    .id(location.id)
+                    .id(brewery.id)
                     .transition(.asymmetric(
                         insertion: .move(edge: .trailing),
                         removal: .move(edge: .leading)))
