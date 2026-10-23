@@ -24,12 +24,19 @@ struct Brewery: Identifiable, Hashable, Decodable {
     let website: URL?
     // nil when we don't know yet whether it accepts visitors
     let visitable: Bool?
+    // Product lines the brewery sells under, e.g. VOREIA and Happy Brewers from Siris.
+    // Empty when it sells under its own name
+    let brands: [Brand]
     // Where the information came from, and when someone last checked it
     let source: URL?
     let lastVerified: Date?
 
     var coordinates: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+
+    func brand(id: String?) -> Brand? {
+        brands.first { $0.id == id }
     }
 
     // Gypsy brewers have no place of their own; unknown visitability still gets a stamp
@@ -55,6 +62,14 @@ struct Brewery: Identifiable, Hashable, Decodable {
             }
         }
     }
+}
+
+// A brewery's product line. Not a style: VOREIA makes a Pilsner and a Stout
+struct Brand: Identifiable, Hashable, Decodable {
+    // Unique across the catalog. Never change it once published
+    let id: String
+    let name: String
+    let website: URL?
 }
 
 // The 13 administrative regions (Περιφέρειες) of Greece, roughly north to south

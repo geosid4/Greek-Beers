@@ -11,6 +11,7 @@ struct BeerCardView: View {
 
     let beer: Beer
     let brewery: Brewery?
+    var brand: Brand? = nil
     var isTried = false
     var rating: Int? = nil
 
@@ -27,7 +28,8 @@ struct BeerCardView: View {
                 if let brewery {
                     HStack(spacing: 6) {
                         BreweryLogoView(brewery: brewery, size: 20)
-                        Text(brewery.name)
+                        // "VOREIA · Siris Craft Brewery" when the beer belongs to a brand
+                        Text([brand?.name, brewery.name].compactMap { $0 }.joined(separator: " · "))
                             .lineLimit(1)
                     }
                     .font(.subheadline)
@@ -77,7 +79,7 @@ struct BeerCardList: View {
             ForEach(beers) { beer in
                 let log = logs.first { $0.beerId == beer.id }
                 NavigationLink(value: beer) {
-                    BeerCardView(beer: beer, brewery: vm.brewery(for: beer),
+                    BeerCardView(beer: beer, brewery: vm.brewery(for: beer), brand: vm.brand(for: beer),
                                  isTried: log?.isTried == true, rating: log?.rating)
                 }
                 .buttonStyle(.plain)

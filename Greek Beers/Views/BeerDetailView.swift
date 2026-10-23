@@ -112,7 +112,7 @@ extension BeerDetailView {
                 Button {
                     router.showOnMap(brewery, using: breweriesVM)
                 } label: {
-                    Text("\(brewery.name) · \(brewery.city) \(Image(systemName: "chevron.right"))")
+                    Text("\([vm.brand(for: beer)?.name, brewery.name, brewery.city].compactMap { $0 }.joined(separator: " · ")) \(Image(systemName: "chevron.right"))")
                         .font(.subheadline.weight(.semibold))
                 }
                 .buttonStyle(.plain)

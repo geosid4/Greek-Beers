@@ -92,16 +92,20 @@ final class BeersViewModel {
     }
 
     func brewery(for beer: Beer) -> Brewery? {
-        catalog.breweries.first { $0.id == beer.breweryId }
+        catalog.brewery(for: beer)
     }
 
-    // Case and accent insensitive; also matches the brewery, its city and the local ingredients
+    func brand(for beer: Beer) -> Brand? {
+        catalog.brand(for: beer)
+    }
+
+    // Case and accent insensitive; also matches the brand, the brewery, its city and the local ingredients
     private func matchesSearch(_ beer: Beer) -> Bool {
         let query = searchText.trimmingCharacters(in: .whitespaces)
         guard !query.isEmpty else { return true }
         let fields = [beer.name, beer.style, beer.styleFamily.name]
             + beer.localIngredients
-            + [brewery(for: beer)?.name, brewery(for: beer)?.city].compactMap { $0 }
+            + [brand(for: beer)?.name, brewery(for: beer)?.name, brewery(for: beer)?.city].compactMap { $0 }
         return fields.contains { $0.localizedStandardContains(query) }
     }
 

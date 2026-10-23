@@ -228,7 +228,7 @@ extension JourneyView {
             Achievement(id: "local-taste", title: "Τοπική γεύση", detail: "Μπύρα με ελληνικά υλικά",
                         symbol: "leaf.fill", current: triedBeers.filter { !$0.localIngredients.isEmpty }.count, goal: 1),
             Achievement(id: "dark-side", title: "Σκοτεινή πλευρά", detail: "3 stout ή porter",
-                        symbol: "moon.fill", current: triedBeers.filter { $0.styleFamily == .stoutPorter }.count, goal: 3),
+                        symbol: "moon.fill", current: triedBeers.filter { $0.styleFamily == .dark }.count, goal: 3),
             Achievement(id: "end-to-end", title: "Από άκρη σε άκρη", detail: "Μπύρα από κάθε ζυθοποιία",
                         symbol: "map.fill", current: breweriesTasted.count, goal: catalog.breweries.count),
             Achievement(id: "traveller", title: "Ταξιδευτής", detail: "Επισκέψου 3 ζυθοποιίες",

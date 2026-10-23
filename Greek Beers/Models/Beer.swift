@@ -10,6 +10,8 @@ struct Beer: Identifiable, Hashable, Decodable {
     // Stable identifier, "<brewery id>-<beer slug>". Never change it once published
     let id: String
     let breweryId: String
+    // The brewery's product line, e.g. VOREIA from Siris. nil when the brewery sells under its own name
+    let brandId: String?
     let name: String
     // The style as the brewery labels it, e.g. "Bohemian Pilsner"
     let style: String
@@ -27,28 +29,44 @@ struct Beer: Identifiable, Hashable, Decodable {
     let lastVerified: Date?
 }
 
-// A handful of families a casual drinker recognises, instead of the 100+ BJCP styles
+// One taxonomy for every brewery and brand, with families a casual drinker recognises instead of
+// the 100+ BJCP styles. Each beer has exactly one family; its precise style stays in Beer.style
 enum StyleFamily: String, Decodable, CaseIterable, Identifiable {
+    // Helles, Vienna, Bohemian, Hoppy Lager
     case lager
-    case wheat
+    // German and Czech Pilsner
+    case pilsner
+    // Pale Ale, West and East Coast IPA, NEIPA, Session IPA
     case paleAleIPA = "pale-ale-ipa"
-    case stoutPorter = "stout-porter"
+    // Witbier, Weissbier, Hefeweizen
+    case wheat
+    // Amber Ale, Irish Red Ale
+    case amberRed = "amber-red"
+    // Stout, Porter, Imperial Porter
+    case dark
+    // Saison, Tripel, Belgian Strong Ale
+    case belgian
+    // Berliner Weisse, Gose, Fruited Sour
     case sour
-    case belgianStrong = "belgian-strong"
-    // Anything that doesn't fit the families above
+    // Barrel-aged, smoked, unusual ingredients, or a style the brewery doesn't name
     case specialty
+    // Low-alcohol and alcohol-free, whatever the base style
+    case lowNoAlcohol = "low-no-alcohol"
 
     var id: Self { self }
 
     var name: String {
         switch self {
-        case .lager: "Lager & Pilsner"
-        case .wheat: "Weiss & Σίτου"
-        case .paleAleIPA: "Ale & IPA"
-        case .stoutPorter: "Stout & Porter"
+        case .lager: "Lager"
+        case .pilsner: "Pilsner"
+        case .paleAleIPA: "Pale Ale & IPA"
+        case .wheat: "Μπύρες σίτου"
+        case .amberRed: "Amber & Red Ale"
+        case .dark: "Stout & Porter"
+        case .belgian: "Belgian"
         case .sour: "Sour"
-        case .belgianStrong: "Belgian & Strong"
         case .specialty: "Ιδιαίτερες"
+        case .lowNoAlcohol: "Χαμηλό / χωρίς αλκοόλ"
         }
     }
 }

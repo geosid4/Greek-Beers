@@ -40,16 +40,29 @@ struct Catalog {
         beers.filter { $0.breweryId == brewery.id }
     }
 
-    // Catches hand-editing mistakes: duplicate ids and beers pointing at a missing brewery
+    func brewery(for beer: Beer) -> Brewery? {
+        breweries.first { $0.id == beer.breweryId }
+    }
+
+    func brand(for beer: Beer) -> Brand? {
+        brewery(for: beer)?.brand(id: beer.brandId)
+    }
+
+    // Catches hand-editing mistakes: duplicate ids, beers pointing at a missing brewery,
+    // and beers naming a brand their brewery doesn't have
     private func validate() throws {
         let breweryIds = breweries.map(\.id)
+        let brandIds = breweries.flatMap(\.brands).map(\.id)
         let beerIds = beers.map(\.id)
-        if let duplicate = firstDuplicate(in: breweryIds + beerIds) {
+        if let duplicate = firstDuplicate(in: breweryIds + brandIds + beerIds) {
             throw CatalogError.duplicateId(duplicate)
         }
         let known = Set(breweryIds)
         if let orphan = beers.first(where: { !known.contains($0.breweryId) }) {
             throw CatalogError.unknownBrewery(beer: orphan.id, brewery: orphan.breweryId)
+        }
+        if let stray = beers.first(where: { $0.brandId != nil && brand(for: $0) == nil }) {
+            throw CatalogError.unknownBrand(beer: stray.id, brand: stray.brandId ?? "")
         }
     }
 
@@ -83,4 +96,5 @@ enum CatalogError: Error {
     case missingFile(String)
     case duplicateId(String)
     case unknownBrewery(beer: String, brewery: String)
+    case unknownBrand(beer: String, brand: String)
 }

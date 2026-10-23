@@ -103,12 +103,15 @@ extension StyleFamily {
     var displayColor: Color {
         switch self {
         case .lager: Color(red: 0.96, green: 0.80, blue: 0.35)
-        case .wheat: Color(red: 0.98, green: 0.87, blue: 0.58)
+        case .pilsner: Color(red: 0.98, green: 0.88, blue: 0.45)
         case .paleAleIPA: Color(red: 0.86, green: 0.55, blue: 0.20)
-        case .stoutPorter: Color(red: 0.22, green: 0.12, blue: 0.07)
+        case .wheat: Color(red: 0.98, green: 0.87, blue: 0.58)
+        case .amberRed: Color(red: 0.72, green: 0.27, blue: 0.14)
+        case .dark: Color(red: 0.22, green: 0.12, blue: 0.07)
+        case .belgian: Color(red: 0.70, green: 0.35, blue: 0.12)
         case .sour: Color(red: 0.84, green: 0.33, blue: 0.38)
-        case .belgianStrong: Color(red: 0.70, green: 0.35, blue: 0.12)
         case .specialty: Color(red: 0.62, green: 0.68, blue: 0.32)
+        case .lowNoAlcohol: Color(red: 0.93, green: 0.88, blue: 0.70)
         }
     }
 }

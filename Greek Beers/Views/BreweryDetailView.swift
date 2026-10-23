@@ -146,16 +146,52 @@ extension BreweryDetailView {
                 Text("Δεν έχουμε καταχωρίσει ακόμα μπύρες γι' αυτή τη ζυθοποιία.")
                     .font(.subheadline)
                     .foregroundStyle(Palette.muted)
+            } else if brewery.brands.isEmpty {
+                beerRows(beers)
             } else {
-                ForEach(beers) { beer in
-                    let log = logs.first { $0.beerId == beer.id }
-                    BeerRowView(beer: beer, isTried: log?.isTried == true, rating: log?.rating)
-                    if beer != beers.last {
-                        Divider()
+                // Breweries with product lines list each line on its own, e.g. VOREIA then Happy Brewers
+                ForEach(brandGroups, id: \.title) { group in
+                    VStack(alignment: .leading, spacing: 10) {
+                        HStack(alignment: .firstTextBaseline) {
+                            Text(group.title)
+                                .font(.headline)
+                            Spacer()
+                            if let website = group.website {
+                                Link(destination: website) {
+                                    Image(systemName: "arrow.up.right.square")
+                                }
+                                .accessibilityLabel("Ιστοσελίδα \(group.title)")
+                            }
+                        }
+                        beerRows(group.beers)
                     }
+                    .padding(.top, 6)
                 }
             }
         }
+    }
+
+    private func beerRows(_ beers: [Beer]) -> some View {
+        ForEach(beers) { beer in
+            let log = logs.first { $0.beerId == beer.id }
+            BeerRowView(beer: beer, isTried: log?.isTried == true, rating: log?.rating)
+            if beer != beers.last {
+                Divider()
+            }
+        }
+    }
+
+    // The brewery's brands in its own order, then any beer sold under the brewery's name
+    private var brandGroups: [(title: String, website: URL?, beers: [Beer])] {
+        var groups: [(title: String, website: URL?, beers: [Beer])] = brewery.brands.compactMap { brand in
+            let branded = beers.filter { $0.brandId == brand.id }
+            return branded.isEmpty ? nil : (brand.name, brand.website, branded)
+        }
+        let unbranded = beers.filter { $0.brandId == nil }
+        if !unbranded.isEmpty {
+            groups.append((brewery.name, nil, unbranded))
+        }
+        return groups
     }
 
     private var triedCount: Int {
